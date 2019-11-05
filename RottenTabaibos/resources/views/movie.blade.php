@@ -60,18 +60,17 @@
                     <h4>Mystery</h4>
                     <div class="info">
                         <div class="likes">
-                            <i class="fas fa-heart " style="color:red"></i>456
+                            <i class="fas fa-heart"></i> 456
                         </div>
                         <div class="imdb">
-                            <i class="fab fa-imdb " style="color: red;"></i>8,0
+                            <i class="fab fa-imdb"></i> 8,0
                         </div>
                         <div class="runtime">
-                            <i class="far fa-clock" style="color: red;"></i> 1hr 40 min
+                            <i class="far fa-clock"></i> 1hr 40 min
                         </div>
-                        <i class="fas fa-calendar-alt" style="color: red;"></i> 31 March 1995
+                        <i class="fas fa-calendar-alt"></i> 31 March 1995
                         <div class="website">
-                            <a target="blank" href="http://www.foxmovies.com/movies/fight-club"><i
-                                    class="fas fa-globe-africa" style="color: red;"> </i> Website</a>
+                            <i class="fas fa-globe-africa"></i> <a target="blank" href="http://www.foxmovies.com/movies/fight-club">Website</a>
                         </div>
                     </div>
                     <h4>Synopsis</h4>
@@ -110,7 +109,7 @@
                         <div class="list-cast">
                             <div class="tableCell">
                                 <a class="avatar-thumb" href="https://www.imdb.com/name/nm0000158/" target="_blank"
-                                    title="IMDb Profile"> <img src="actors/thumb/nm0000158.jpg" alt="Tom Hanks Picture">
+                                    title="IMDb Profile"> <img src="https://www.thefamouspeople.com/profiles/quiz_images/qid_19_leonardo-dicaprio.jpg" alt="Tom Hanks Picture">
                                 </a>
                             </div>
                             <div class="list-cast-info tableCell">
