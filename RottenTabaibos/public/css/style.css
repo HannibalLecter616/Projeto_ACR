@@ -331,6 +331,23 @@ label {
     width: 100%;
  }
 
+/****** movie.blade.php *****/
+ /* Color of the icons */
+ .info i {
+    color: red;
+ }
+
+ /* Actors Images*/
+ .avatar-thumb img {
+     width: 60px;
+     height: 60px;
+ }
+
+ /* Trailer */
+ .trailer {
+     margin-right: 5%;
+ }
+
 /****** Style Star Rating Widget *****/
 
 .rating {
