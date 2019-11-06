@@ -98,18 +98,7 @@
                             <a href="movie/fast-furious-presents-hobbs-shaw-2019.html" class="movie-title">Joker</a>
                             <div class="movie-year">2019</div>
                         </div>
-                    </div>
-                    <div class="movie">
-                        <!-- https://image.tmdb.org/t/p/w185//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg -->
-                        <a href="#" class="movie-link">
-                            <img src="https://image.tmdb.org/t/p/w185//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg" alt="">
-                        </a>
-                        <div class="movie-box">
-                            <a href="movie/fast-furious-presents-hobbs-shaw-2019.html" class="movie-title">Joker</a>
-                            <div class="movie-year">2019</div>
-                        </div>
-                    </div>
-
+            </div>
                 </div>
             </div>
             <div class="recent">
@@ -122,16 +111,6 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="movie">
-                        <!-- https://image.tmdb.org/t/p/w185//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg -->
-                        <a href="#" class="movie-link">
-                            <img src="https://image.tmdb.org/t/p/w185//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg" alt="">
-                        </a>
-                        <div class="movie-box">
-                            <a href="movie/fast-furious-presents-hobbs-shaw-2019.html" class="movie-title">Joker</a>
-                            <div class="movie-year">2019</div>
-                        </div>
-                    </div>
                     <div class="movie">
                         <!-- https://image.tmdb.org/t/p/w185//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg -->
                         <a href="#" class="movie-link">
