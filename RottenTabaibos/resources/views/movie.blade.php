@@ -9,13 +9,13 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.11.1/css/all.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
     <header>
         <div class="logo-container">
-            <a href="index.html">
+            <a href="/">
                 <img src="/images/logo/1.png" alt="logo" height="38">
             </a>
         </div>
@@ -25,10 +25,10 @@
             </div>
         </form>
         <div class="topnav">
-                
+
                 @if (Route::has('login'))
                 <div class="nav-link">
-                    
+
                     @auth
                         <a class="principal" href="/">Home</a>
                         <a href="/procura">Browse</a>
@@ -51,34 +51,31 @@
             <div class="row">
                 <div class="movie-main">
                     <a href="#" class="movie-link">
-                        <img src="https://image.tmdb.org/t/p/w500//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg" alt="" width="300">
+                        <img src="https://image.tmdb.org/t/p/w500/.{{$movie['poster_path']}}" alt="" width="300">
                     </a>
                 </div>
                 <div class="movie-text">
-                    <h1>Joker</h1>
-                    <h4>2019</h4>
-                    <h4>Mystery</h4>
+                    <h1>{{$movie['original_title']}}</h1>
+                    <h4>{{substr($movie['release_date'],0,4)}}</h4>
+                    {{-- <h4>{{$movie['genres'][0]}}</h4> --}}
                     <div class="info">
                         <div class="likes">
-                            <i class="fas fa-heart " style="color:red"></i>456
+                            <i class="fas fa-heart " style="color:red"></i> {{$movie['vote_count']}}
                         </div>
                         <div class="imdb">
-                            <i class="fab fa-imdb " style="color: red;"></i>8,0
+                            <i class="fab fa-imdb " style="color: red;"></i> {{$movie['vote_average']}}
                         </div>
                         <div class="runtime">
-                            <i class="far fa-clock" style="color: red;"></i> 1hr 40 min
+                            <i class="far fa-clock" style="color: red;"></i> {{$movie['runtime']}}
                         </div>
-                        <i class="fas fa-calendar-alt" style="color: red;"></i> 31 March 1995
+                        <i class="fas fa-calendar-alt" style="color: red;"></i> {{$movie['release_date']}}
                         <div class="website">
                             <a target="blank" href="http://www.foxmovies.com/movies/fight-club"><i
-                                    class="fas fa-globe-africa" style="color: red;"> </i> Website</a>
+                                    class="fas fa-globe-africa" style="color: red;"> </i> {{$movie['homepage']}}</a>
                         </div>
                     </div>
                     <h4>Synopsis</h4>
-                    <h5>During the 1980s, a failed stand-up co
-                        median is driven insane and turns to a life of crime
-                        and chaos
-                        in Gotham City while becoming an infamous psychopathic crime figure.</h5>
+                    <h5>{{$movie['overview']}}</h5>
                     <div class=" rating-star">
                         <fieldset class="rating">
                             <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5"
