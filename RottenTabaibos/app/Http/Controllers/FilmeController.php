@@ -32,6 +32,8 @@ class FilmeController extends Controller
         $comment = $response->getBody();
         $comment = json_decode($comment, true);
 
+
+
         return view('movie', ['movie' => $movie,'crew'=>$crew['cast'],'trailer'=>$trailer['results'], 'comment' => $comment['results']]);
     }
 }

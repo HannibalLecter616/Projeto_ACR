@@ -1,3 +1,6 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+
 body {
     font-family: 'Poppins', sans-serif;
 }
@@ -113,8 +116,8 @@ div.movie-text {
 }
 
 .avatar-thumb {
-    width: 40px;
-    height: 40px;
+    /* width: 40px;
+    height: 40px; */
     border-radius: 50%;
 }
 

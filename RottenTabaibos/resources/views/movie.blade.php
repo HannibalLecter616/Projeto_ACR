@@ -19,7 +19,7 @@
                 <img src="/images/logo/1.png" alt="logo" height="38">
             </a>
         </div>
-        <form method="GET" action="https://" accept-charset="UTF-8" id="quick-search" name="quick-search">
+        <form method="GET" action="/search/" accept-charset="UTF-8" id="quick-search" name="quick-search">
             <div id="quick-search-container">
                 <input id="quick-search-input" name="query" placeholder="Pesquisar" autocomplete="off" type="search" >
             </div>
@@ -133,18 +133,21 @@
                 @if (count($comment) != 0)
                 <div class="reviews">
                     <h3>Reviews</h3>
+                    @for ($i = 0; $i < 3; $i++)
+
                     <div class="review-properties">
 
-                        Reviewed by <span class="review-author">{{$comment[0]['author']}}</span>
+                        Reviewed by <span class="review-author"><strong>{{$comment[$i]['author']}}</strong></span>
                         <span class="icon-star"></span>
-                        <span class="review-rating">9 / 10</span>
+                        {{-- <span class="review-rating">9 / 10</span> --}}
                     </div>
-                    <h4>A sequel that didn't need to be made...but I'm glad it was!</h4>
+                    {{-- <h4>A sequel that didn't need to be made...but I'm glad it was!</h4> --}}
                     <article>
-                        <p>{{str_limit($comment[0]['content'],20)}}</p>
+                        <p>{{str_limit($comment[$i]['content'],200)}}</p>
                     </article>
                     <div class="line"></div>
                     <br>
+                    @endfor
                 </div>
                 @else
                 <div class="reviews">

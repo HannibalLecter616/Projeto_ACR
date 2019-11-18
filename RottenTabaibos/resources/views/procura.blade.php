@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.11.1/css/all.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
@@ -25,9 +25,9 @@
         <div class="topnav">
         @if (Route::has('login'))
                 <div class="nav-link">
-                    
+
                     @auth
-                        <a class="principal" href="/">Home</a>                  
+                        <a class="principal" href="/">Home</a>
                     @else
                         <a class="principal" href="/">Home</a>
                         <a href="{{ route('login') }}">Login</a>
@@ -43,13 +43,13 @@
     <hr>
 
     <div class="procura-principal">
-        
-            <label><b>Procurar Filmes / Series / Atores</b></label> 
+
+            <label><b>Procurar Filmes / Series / Atores</b></label>
             <input type="text" placeholder="Inserir item de procura" name="nome_procura" >
 
         <div class="campos-procura">
                 <label for="genero">Genero:</label>
-                      
+
                 <select name="procura-genero" id="genero">
                     <option value="">----</option>
                     <option value="dog">Dog</option>
@@ -59,7 +59,7 @@
         </div>
         <div class="campos-procura">
                 <label for="ordem_por">Ordenar por:</label>
-                
+
                 <select name="ordem" id="ordem_por">
                     <option value="">----</option>
                     <option value="dog">Dog</option>
@@ -78,57 +78,19 @@
         <section class="home">
             <div class="popular">
                 <div class="movie-row">
-                    <div class="movie">
-                        <!-- https://image.tmdb.org/t/p/w185//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg -->
-                        <a href="#" class="movie-link">
-                            <img src="https://image.tmdb.org/t/p/w185//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg" alt="">
-                        </a>
-                        <div class="movie-box">
-                            <a href="movie/fast-furious-presents-hobbs-shaw-2019.html" class="movie-title">Joker</a>
-                            <div class="movie-year">2019</div>
-                        </div>
-                    </div>
-                    <div class="movie">
-                        <!-- https://image.tmdb.org/t/p/w185//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg -->
-                        <a href="#" class="movie-link">
-                            <img src="https://image.tmdb.org/t/p/w185//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg" alt="">
-                        </a>
-                        <div class="movie-box">
-                            <a href="movie/fast-furious-presents-hobbs-shaw-2019.html" class="movie-title">Joker</a>
-                            <div class="movie-year">2019</div>
-                        </div>
-                    </div>
-                    <div class="movie">
-                        <!-- https://image.tmdb.org/t/p/w185//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg -->
-                        <a href="#" class="movie-link">
-                            <img src="https://image.tmdb.org/t/p/w185//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg" alt="">
-                        </a>
-                        <div class="movie-box">
-                            <a href="movie/fast-furious-presents-hobbs-shaw-2019.html" class="movie-title">Joker</a>
-                            <div class="movie-year">2019</div>
-                        </div>
-                    </div>
-                    <div class="movie">
-                        <!-- https://image.tmdb.org/t/p/w185//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg -->
-                        <a href="#" class="movie-link">
-                            <img src="https://image.tmdb.org/t/p/w185//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg" alt="">
-                        </a>
-                        <div class="movie-box">
-                            <a href="movie/fast-furious-presents-hobbs-shaw-2019.html" class="movie-title">Joker</a>
-                            <div class="movie-year">2019</div>
-                        </div>
-                    </div>
-                    <div class="movie">
-                        <!-- https://image.tmdb.org/t/p/w185//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg -->
-                        <a href="#" class="movie-link">
-                            <img src="https://image.tmdb.org/t/p/w185//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg" alt="">
-                        </a>
-                        <div class="movie-box">
-                            <a href="movie/fast-furious-presents-hobbs-shaw-2019.html" class="movie-title">Joker</a>
-                            <div class="movie-year">2019</div>
-                        </div>
-                    </div>
+                    @foreach ($search as $movie)
 
+                    <div class="movie">
+                        <!-- https://image.tmdb.org/t/p/w185//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg -->
+                        <a href="/movie/{{$movie['id']}}" class="movie-link">
+                            <img src="https://image.tmdb.org/t/p/w185{{$movie['poster_path']}}" alt="">
+                        </a>
+                        <div class="movie-box">
+                            <a href="movie/fast-furious-presents-hobbs-shaw-2019.html" class="movie-title">{{$movie['original_title']}}</a>
+                            <div class="movie-year">{{substr($movie['release_date'],0,4)}}</div>
+                        </div>
+                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>
