@@ -1,15 +1,16 @@
 <?php
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
-    
-});
+}); */
+
+Route::get('', 'WelcomeController@getRemoteData');
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/procura', 'ProcuraController@index');
+Route::get('/search', 'ProcuraController@index');
 
-Route::get('/movie', 'FilmeController@index');
+Route::get('/movie/{id}', 'FilmeController@index');
 
 Auth::routes();
 

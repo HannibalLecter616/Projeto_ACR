@@ -1,3 +1,6 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+
 body {
     font-family: 'Poppins', sans-serif;
 }
@@ -153,14 +156,23 @@ div.movie-text {
 }
 
 .avatar-thumb {
-    width: 40px;
-    height: 40px;
+    /* width: 40px;
+    height: 40px; */
+    border-radius: 50%;
+}
+
+.photo {
     border-radius: 50%;
 }
 
 .list-cast {
     display: flex;
     align-items: center;
+    max-width: 300px;
+}
+
+.list-cast-info {
+    margin-left: 10px;
 }
 
 
@@ -220,6 +232,7 @@ label {
     background-color: #333;
     border-radius: 20px;
   }
+
   /* Style the links inside the navigation bar */
   .topnav a {
     display:flex; /*added*/
@@ -230,12 +243,13 @@ label {
     text-decoration: none;
     font-size: 15px;
   }
-  
+
   /* Change the color of links on hover */
   .topnav a:hover{
     background-color: #ddd;
     color: black;
   }
+
   .topnav a.principal:hover{
     opacity:0.9;
     background-color: orange;
@@ -280,12 +294,12 @@ label {
     border: none;
     background: #f1f1f1;
   }
-  
+
   input[type=text]:focus, input[type=password]:focus {
     background-color: #ddd;
     outline: none;
   }
-  
+
   /* Overwrite default styles of hr */
   hr {
     border: 2px solid #f1f1f1;
@@ -302,16 +316,16 @@ label {
     width: 100%;
     opacity: 0.9;
   }
-  
+
   .registerbtn:hover {
     opacity:1;
   }
-  
+
   /* Add a blue text color to links */
   a {
     color: dodgerblue;
   }
-  
+
   /* Set a grey background color and center the text of the "sign in" section */
   .signin {
     background-color: #f1f1f1;
@@ -319,11 +333,11 @@ label {
   }
 
   .avatar-container{
-    text-align: center; 
-    margin: 24px 0 12px 0; 
+    text-align: center;
+    margin: 24px 0 12px 0;
   }
-  img.avatar { 
-    width: 50%; 
+  img.avatar {
+    width: 50%;
 }
 .loginbtn, .reset_password{
     background-color: rgb(221, 55, 55);
@@ -333,7 +347,7 @@ label {
     cursor: pointer;
     width: 105%;
     opacity: 0.9;
-} 
+}
 .login-container, .reset-container{
     max-width: 600px;
     margin: auto;
@@ -359,7 +373,7 @@ label {
     box-shadow: 1px 1px 5px grey;
     background:  #ddd;
     width: 220px;
- 
+
 }
 
 .campos-procura select{
@@ -372,7 +386,7 @@ label {
     text-align: center;
     text-align-last: center;
  }
- 
+
  .campos-procura .searchbtn{
     background:rgb(221, 55, 55);
     font-size: 15px;
