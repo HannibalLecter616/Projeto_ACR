@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>RottenTabaibos</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="\RottenTabaibos\public\favicon-16x16.png">
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.11.1/css/all.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="/../css/style.css">
 </head>
 
 <body>
@@ -21,10 +21,10 @@
         </div>
         <form method="GET" action="https://" accept-charset="UTF-8" id="quick-search" name="quick-search">
             <div id="quick-search-container">
-                <input id="quick-search-input" name="query" autocomplete="off" type="search" value="Quick search">
+                <input id="quick-search-input" name="query" placeholder="Pesquisar" autocomplete="off" type="search" >
             </div>
         </form>
-        <div class="topnav">
+            <div class="topnav">
 
                 @if (Route::has('login'))
                 <div class="nav-link">
@@ -46,6 +46,7 @@
             @endif
         </div>
     </header>
+    <hr>
     <main>
         <section class="presentation">
             <div class="row">
@@ -57,7 +58,7 @@
                 <div class="movie-text">
                     <h1>{{$movie['original_title']}}</h1>
                     <h4>{{substr($movie['release_date'],0,4)}}</h4>
-                    {{-- <h4>{{$movie['genres'][0]}}</h4> --}}
+                    <h4>{{$movie['genres'][0]['name']}}</h4>
                     <div class="info">
                         <div class="likes">
                             <i class="fas fa-heart " style="color:red"></i> {{$movie['vote_count']}}
@@ -66,16 +67,17 @@
                             <i class="fab fa-imdb " style="color: red;"></i> {{$movie['vote_average']}}
                         </div>
                         <div class="runtime">
-                            <i class="far fa-clock" style="color: red;"></i> {{$movie['runtime']}}
+                            <i class="far fa-clock" style="color: red;"></i> {{$movie['runtime']}} minutes
                         </div>
                         <i class="fas fa-calendar-alt" style="color: red;"></i> {{$movie['release_date']}}
                         <div class="website">
-                            <a target="blank" href="http://www.foxmovies.com/movies/fight-club"><i
-                                    class="fas fa-globe-africa" style="color: red;"> </i> {{$movie['homepage']}}</a>
+                            <a target="blank" href={{$movie['homepage']}}>
+                                <i class="fas fa-globe-africa" style="color: red;">  </i>{{$movie['original_title']}} Website</a>
                         </div>
                     </div>
                     <h4>Synopsis</h4>
-                    <h5>{{$movie['overview']}}</h5>
+                    <h5>{{str_limit($movie['overview'],170)}}</h5>
+                     <h4>Your Review</h4>
                     <div class=" rating-star">
                         <fieldset class="rating">
                             <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5"
@@ -104,60 +106,20 @@
                 <div class="crew">
                     <div class="actors">
                         <h4>Cast</h4>
+                        @for ($i = 0; $i < 4; $i++)
                         <div class="list-cast">
                             <div class="tableCell">
                                 <a class="avatar-thumb" href="https://www.imdb.com/name/nm0000158/" target="_blank"
-                                    title="IMDb Profile"> <img src="actors/thumb/nm0000158.jpg" alt="Tom Hanks Picture">
+                            title="IMDb Profile"> <img class="photo" src="https://image.tmdb.org/t/p/w185{{$crew[$i]['profile_path']}}" alt="" height="60" width="60">
                                 </a>
                             </div>
                             <div class="list-cast-info tableCell">
                                 <a class="name-cast" href="../browse-movies/Tom%20Hanks.html"><span itemprop="actor"
-                                        itemscope itemtype="http://schema.org/Person"><span itemprop="name">Tom
-                                            Hanks</span></span></a> as Woody
+                                itemscope itemtype="http://schema.org/Person"><span itemprop="name"><strong>{{$crew[$i]['name']}}</strong></span></span></a> as {{$crew[$i]['character']}}
                             </div>
                         </div>
                         <div class="line"></div>
-                        <div class="list-cast">
-                            <div class="tableCell">
-                                <a class="avatar-thumb" href="https://www.imdb.com/name/nm0000206/" target="_blank"
-                                    title="IMDb Profile"> <img src="actors/thumb/nm0000206.jpg"
-                                        alt="Keanu Reeves Picture"> </a>
-                            </div>
-                            <div class="list-cast-info tableCell">
-                                <a class="name-cast" href="../browse-movies/Keanu%20Reeves.html"><span itemprop="actor"
-                                        itemscope itemtype="http://schema.org/Person"><span itemprop="name">Keanu
-                                            Reeves</span></span></a> as Duke
-                                Caboom
-                            </div>
-                        </div>
-                        <div class="line"></div>
-                        <div class="list-cast">
-                            <div class="tableCell">
-                                <a class="avatar-thumb" href="https://www.imdb.com/name/nm0376716/" target="_blank"
-                                    title="IMDb Profile"> <img src="actors/thumb/nm0376716.jpg"
-                                        alt="Christina Hendricks Picture"> </a>
-                            </div>
-                            <div class="list-cast-info tableCell">
-                                <a class="name-cast" href="../browse-movies/Christina%20Hendricks.html"><span
-                                        itemprop="actor" itemscope itemtype="http://schema.org/Person"><span
-                                            itemprop="name">Christina Hendricks</span></span></a>
-                                as Gabby Gabby
-                            </div>
-                        </div>
-                        <div class="line"></div>
-                        <div class="list-cast">
-                            <div class="tableCell">
-                                <a class="avatar-thumb" href="https://www.imdb.com/name/nm0001835/" target="_blank"
-                                    title="IMDb Profile"> <img src="actors/thumb/nm0001835.jpg"
-                                        alt="Carl Weathers Picture"> </a>
-                            </div>
-                            <div class="list-cast-info tableCell">
-                                <a class="name-cast" href="../browse-movies/Carl%20Weathers.html"><span itemprop="actor"
-                                        itemscope itemtype="http://schema.org/Person"><span itemprop="name">Carl
-                                            Weathers</span></span></a> as
-                                Combat Carls
-                            </div>
-                        </div>
+                        @endfor
                     </div>
                 </div>
             </div>
@@ -165,58 +127,33 @@
             <div class="row">
                 <div class="trailer">
                     <h3>Trailer</h3>
-                    <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                    <iframe width="420" height="315" src="https://www.youtube.com/embed/{{$trailer[0]['key']}}">
                     </iframe>
                 </div>
+                @if (count($comment) != 0)
                 <div class="reviews">
                     <h3>Reviews</h3>
                     <div class="review-properties">
-                        Reviewed by <span class="review-author">DJKwa</span>
+
+                        Reviewed by <span class="review-author">{{$comment[0]['author']}}</span>
                         <span class="icon-star"></span>
                         <span class="review-rating">9 / 10</span>
                     </div>
                     <h4>A sequel that didn't need to be made...but I'm glad it was!</h4>
                     <article>
-                        <p>As far as conclusions to beloved franchises go, Toy Story 3 is hard to beat. The film tugs at
-                            the heartstrings,
-                            as we learn that Andy&#39;s toys are no longer his, and cuts deep with the realisation that
-                            growing up means
-                            letting go.<br /><br />Naturally, I had a lot of trepidation heading into Toy Story 4. It
-                            wasn&#39;t so much
+                        <p>{{str_limit($comment[0]['content'],20)}}</p>
                     </article>
                     <div class="line"></div>
                     <br>
-                    <div class="review-properties">
-                        Reviewed by <span class="review-author">DJKwa</span>
-                        <span class="icon-star"></span>
-                        <span class="review-rating">9 / 10</span>
-                    </div>
-                    <h4>A sequel that didn't need to be made...but I'm glad it was!</h4>
-                    <article>
-                        <p>As far as conclusions to beloved franchises go, Toy Story 3 is hard to beat. The film tugs at
-                            the heartstrings,
-                            as we learn that Andy&#39;s toys are no longer his, and cuts deep with the realisation that
-                            growing up means
-                            letting go.<br /><br />Naturally, I had a lot of trepidation heading into Toy Story 4. It
-                            wasn&#39;t so much
-                    </article>
-                    <div class="line"></div>
-                    <br>
-                    <div class="review-properties">
-                        Reviewed by <span class="review-author">DJKwa</span>
-                        <span class="icon-star"></span>
-                        <span class="review-rating">9 / 10</span>
-                    </div>
-                    <h4>A sequel that didn't need to be made...but I'm glad it was!</h4>
-                    <article>
-                        <p>As far as conclusions to beloved franchises go, Toy Story 3 is hard to beat. The film tugs at
-                            the heartstrings,
-                            as we learn that Andy&#39;s toys are no longer his, and cuts deep with the realisation that
-                            growing up means
-                            letting go.<br /><br />Naturally, I had a lot of trepidation heading into Toy Story 4. It
-                            wasn&#39;t so much
-                    </article>
                 </div>
+                @else
+                <div class="reviews">
+                    <h3>Reviews</h3>
+                    <div class="line"></div>
+                    <h4>No reviews yet!</h4>
+                    <br>
+                </div>
+                @endif
 
             </div>
             </div>

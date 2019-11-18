@@ -20,7 +20,19 @@ class FilmeController extends Controller
         $movie = $response->getBody();
         $movie = json_decode($movie, true);
 
-        return view('movie', ['movie' => $movie]);
+        $response = $client->request('GET', 'https://api.themoviedb.org/3/movie/' . $id . '/credits?api_key=684b8c6e53471a5a6fc82a6c144fa9a0');
+        $crew = $response->getBody();
+        $crew = json_decode($crew, true);
+
+        $response = $client->request('GET', 'https://api.themoviedb.org/3/movie/' . $id . '/videos?api_key=684b8c6e53471a5a6fc82a6c144fa9a0');
+        $trailer = $response->getBody();
+        $trailer = json_decode($trailer, true);
+
+        $response = $client->request('GET', 'https://api.themoviedb.org/3/movie/' . $id . '/reviews?api_key=684b8c6e53471a5a6fc82a6c144fa9a0');
+        $comment = $response->getBody();
+        $comment = json_decode($comment, true);
+
+        return view('movie', ['movie' => $movie,'crew'=>$crew['cast'],'trailer'=>$trailer['results'], 'comment' => $comment['results']]);
     }
 }
 
