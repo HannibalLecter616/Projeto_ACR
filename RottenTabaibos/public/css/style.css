@@ -128,6 +128,7 @@ div.movie-text {
 .list-cast {
     display: flex;
     align-items: center;
+    max-width: 300px;
 }
 
 .list-cast-info {
