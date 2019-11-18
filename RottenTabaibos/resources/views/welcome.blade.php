@@ -2,6 +2,7 @@
 
     @section('content')
 
+
     <main>
         <section class="home">
             <div class="popular">
@@ -26,6 +27,7 @@
                         </div>
                     </div>
                     @endfor
+
                 </div>
             </div>
             <div class="recent">
