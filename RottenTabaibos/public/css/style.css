@@ -7,9 +7,9 @@ body {
 
 header {
     display: flex;
-    width: 90%;
+    width: 100%;
     margin: auto;
-    height: 60px;
+    height: auto;
     align-items: center;
 }
 
@@ -21,6 +21,7 @@ header {
 
 #quick-search-container{
     margin-right: 20px;
+    margin-left: 20px;
 }
 
 #quick-search-input {
@@ -60,6 +61,7 @@ form {
     flex: 1;
 }
 
+/*
 .row {
     display: flex;
     width: 80%;
@@ -69,12 +71,50 @@ form {
 .movie {
     width: 250px;
 }
+*/
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    width: 80%;
+  }
+
+.movie{
+    flex: 20%;
+    width: 25%;
+    padding: 0 20px;
+}
+.movie:hover{
+    opacity: 0.9;
+}
+.movie img{
+    margin-top: 8px;
+    vertical-align: middle;
+    width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+    .movie {
+      flex: 40%;
+      max-width: 40%;
+    }
+  }
+
+@media screen and (max-width: 1080px) {
+    .movie {
+      flex: 40%;
+      max-width: 40%;
+    }
+  }
 
 .movie-row{
-    display: inline-flex;
-    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
     margin: auto;
+    width: 80%;
 }
+
 .movie-main {
     width: 350px;
 }
@@ -183,17 +223,19 @@ label {
     flex: 1;
 }
 
-
 /* Start Navbar */
+
 .topnav {
     justify-content: space-around;
-    background-color: #333;
     overflow: hidden;
+
+    background-color: #333;
     border-radius: 20px;
   }
 
   /* Style the links inside the navigation bar */
   .topnav a {
+    display:flex; /*added*/
     float: left;
     color: #f2f2f2;
     text-align: center;
@@ -203,9 +245,14 @@ label {
   }
 
   /* Change the color of links on hover */
-  .topnav a:hover {
+  .topnav a:hover{
     background-color: #ddd;
     color: black;
+  }
+
+  .topnav a.principal:hover{
+    opacity:0.9;
+    background-color: orange;
   }
 
   /* Add a color to the active/current link */
@@ -213,6 +260,14 @@ label {
     background-color: rgb(221, 55, 55);
     color: white;
   }
+
+
+  @media screen and (max-width: 600px) {
+    
+    .topnav a.principal, 
+    .topnav a {float: none;}
+  }
+
   /* End Navbar */
 
   .container {
