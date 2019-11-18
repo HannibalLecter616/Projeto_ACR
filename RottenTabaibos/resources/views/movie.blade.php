@@ -137,7 +137,8 @@
         @endif
 
         </div>
-        </div>  
+        </div>
+
     </section>
 </main>
 </body>
