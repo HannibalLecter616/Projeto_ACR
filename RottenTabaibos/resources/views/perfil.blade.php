@@ -14,6 +14,7 @@
                 <h1>{{$pessoa_detalhes['name']}}</h1>
                 <h4>Biografia</h4>
                 <h5>{{$pessoa_detalhes['biography']}}</h5>
+                <br><br>
                 <h4>Born at:</h4>
                 @php
                     $date = new DateTime($pessoa_detalhes['birthday']);
@@ -21,7 +22,12 @@
                     $interval = $now->diff($date);
                     $age = $interval->y;
                 @endphp
-                <i class="fas fa-birthday-cake"></i> {{$pessoa_detalhes['birthday']}} - {{$pessoa_detalhes['deathday']}} ({{$age}} years old)
+
+                @if(empty($pessoa_detalhes['deathday']))
+                    <i class="fas fa-birthday-cake"></i> {{$pessoa_detalhes['birthday']}} ({{$age}} years old)
+                @else
+                    <i class="fas fa-birthday-cake"></i> {{$pessoa_detalhes['birthday']}} - {{$pessoa_detalhes['deathday']}} ({{$age}} years old)
+                @endif
                 <br>
                 <i class="fas fa-location-arrow"></i> {{$pessoa_detalhes['place_of_birth']}}
 
