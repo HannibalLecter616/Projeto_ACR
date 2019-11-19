@@ -31,7 +31,7 @@
                     @for($j = 0; $j < count($conhecido[$i]['known_for']); $j++)
                     <div class="movie">
                         <a href="/movie/{{$conhecido[$i]['known_for'][$j]['id']}}" class="movie-link">
-                            <img src="https://image.tmdb.org/t/p/w185/{{$conhecido[$i]['known_for'][$j]['poster_path']}}" alt="" width="200px" height="auto">
+                            <img src="https://image.tmdb.org/t/p/w500/{{$conhecido[$i]['known_for'][$j]['poster_path']}}" alt="" width="200px" height="auto">
                         </a>
                         
                     </div>
