@@ -15,9 +15,16 @@
                 <h4>Biografia</h4>
                 <h5>{{$pessoa_detalhes['biography']}}</h5>
                 <h4>Born at:</h4>
-                <h5>{{$pessoa_detalhes['birthday']}} - {{$pessoa_detalhes['deathday']}}</h5>
-                <h5>{{$pessoa_detalhes['place_of_birth']}}</h5>
-                
+                @php
+                    $date = new DateTime($pessoa_detalhes['birthday']);
+                    $now = new DateTime();
+                    $interval = $now->diff($date);
+                    $age = $interval->y;
+                @endphp
+                <i class="fas fa-birthday-cake"></i> {{$pessoa_detalhes['birthday']}} - {{$pessoa_detalhes['deathday']}} ({{$age}} years old)
+                <br>
+                <i class="fas fa-location-arrow"></i> {{$pessoa_detalhes['place_of_birth']}}
+
             </div>
             <div class="line"></div>
         </div>
@@ -25,7 +32,6 @@
         <h2>Known for:</h3>
         </div>
             <div class="row">
-            
                     @for ($i = 0; $i < count($known_for); $i++)
                         @if($known_for[$i]['popularity'] >= 15.000)
 
@@ -33,11 +39,10 @@
                         <a href="/movie/{{$known_for[$i]['id']}}" class="movie-link">
                             <img src="https://image.tmdb.org/t/p/w500/{{$known_for[$i]['poster_path']}}" alt="" width="200px" height="auto">
                         </a>
-                        
+
                     </div>
                         @endif
                     @endfor 
-
             </div>
     </section>
 </main>

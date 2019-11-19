@@ -19,7 +19,7 @@
                     <div class="movie">
                         <!-- https://image.tmdb.org/t/p/w185//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg -->
                         <a href="/movie/{{$popular[$i]['id']}}" class="movie-link">
-                            <img src="https://image.tmdb.org/t/p/w185/.{{$popular[$i]['poster_path']}}" alt="">
+                            <img src="https://image.tmdb.org/t/p/w500/.{{$popular[$i]['poster_path']}}" alt="">
                         </a>
                         <div class="movie-box">
                             <a href="/movie/{{$popular[$i]['id']}}" class="movie-title">{{$popular[$i]['original_title']}}</a>
@@ -44,7 +44,7 @@
                     <div class="movie">
                         <!-- https://image.tmdb.org/t/p/w185//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg -->
                         <a href="/movie/{{$upcoming[$i]['id']}}" class="movie-link">
-                            <img src="https://image.tmdb.org/t/p/w185/.{{$upcoming[$i]['poster_path']}}" alt="">
+                            <img src="https://image.tmdb.org/t/p/w500/.{{$upcoming[$i]['poster_path']}}" alt="">
                         </a>
                         <div class="movie-box">
                             <a href="/movie/{{$upcoming[$i]['id']}}" class="movie-title">{{$upcoming[$i]['original_title']}}</a>

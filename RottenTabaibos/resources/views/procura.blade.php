@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
     @section('content')
-    
+
     <div class="procura-principal">
 
             <label><b>Procurar Filmes / Series / Atores</b></label>
