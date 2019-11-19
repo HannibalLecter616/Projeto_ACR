@@ -32,18 +32,17 @@
         <h2>Known for:</h3>
         </div>
             <div class="row">
+                    @for ($i = 0; $i < count($known_for); $i++)
+                        @if($known_for[$i]['popularity'] >= 15.000)
 
-                    @for ($i = 0; $i < count($conhecido); $i++)
-
-                    @for($j = 0; $j < count($conhecido[$i]['known_for']); $j++)
                     <div class="movie">
-                        <a href="/movie/{{$conhecido[$i]['known_for'][$j]['id']}}" class="movie-link">
-                            <img src="https://image.tmdb.org/t/p/w500/{{$conhecido[$i]['known_for'][$j]['poster_path']}}" alt="" width="200px" height="auto">
+                        <a href="/movie/{{$known_for[$i]['id']}}" class="movie-link">
+                            <img src="https://image.tmdb.org/t/p/w500/{{$known_for[$i]['poster_path']}}" alt="" width="200px" height="auto">
                         </a>
 
                     </div>
-                        @endfor
-                    @endfor
+                        @endif
+                    @endfor 
             </div>
     </section>
 </main>

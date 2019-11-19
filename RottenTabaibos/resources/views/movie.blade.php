@@ -62,31 +62,55 @@
             <div class="crew">
                 <div class="actors">
                     <h4>Cast</h4>
-                    @for ($i = 0; $i < 4; $i++) <div class="list-cast">
-                        <div class="tableCell">
-                            <a class="avatar-thumb" href="/search/people/{{$crew[$i]['id']}}/{{$crew[$i]['name']}}" target="_blank"
-                                > <img class="photo"
-                                    src="https://image.tmdb.org/t/p/w185{{$crew[$i]['profile_path']}}" alt="">
-                            </a>
+
+                    @if(count($crew) < 5)
+
+                    @foreach($crew as $cast)
+                    <div class="tableCell">
+                                <a class="avatar-thumb" href="/search/people/{{$cast['id']}}/{{$cast['name']}}" target="_blank"
+                                    title="IMDb Profile"> <img class="photo"
+                                        src="https://image.tmdb.org/t/p/w185{{$cast['profile_path']}}" alt=""
+                                        height="60" width="60">
+                                </a>
+                            </div>
+                            <div class="list-cast-info tableCell">
+                                <a class="name-cast" href="/search/people/{{$cast['id']}}/{{$cast['name']}}"><span itemprop="actor"
+                                        itemscope itemtype="http://schema.org/Person"><span
+                                            itemprop="name"><strong>{{$cast['name']}}</strong></span></span></a> as
+                                {{$cast['character']}}
+                            </div>
+                        
+                        <div class="line"></div>
+                    @endforeach
+                    @else
+                        @for ($i = 0; $i < 5; $i++) <div class="list-cast">
+                            <div class="tableCell">
+                                <a class="avatar-thumb" href="/search/people/{{$crew[$i]['id']}}/{{$crew[$i]['name']}}" target="_blank"
+                                    title="IMDb Profile"> <img class="photo"
+                                        src="https://image.tmdb.org/t/p/w185{{$crew[$i]['profile_path']}}" alt=""
+                                        height="60" width="60">
+                                </a>
+                            </div>
+                            <div class="list-cast-info tableCell">
+                                <a class="name-cast" href="/search/people/{{$crew[$i]['id']}}/{{$crew[$i]['name']}}"><span itemprop="actor"
+                                        itemscope itemtype="http://schema.org/Person"><span
+                                            itemprop="name"><strong>{{$crew[$i]['name']}}</strong></span></span></a> as
+                                {{$crew[$i]['character']}}
+                            </div>
                         </div>
-                        <div class="list-cast-info tableCell">
-                            <a class="name-cast" href="/search/people/{{$crew[$i]['id']}}/{{$crew[$i]['name']}}"><span itemprop="actor"
-                                    itemscope itemtype="http://schema.org/Person"><span
-                                        itemprop="name"><strong>{{$crew[$i]['name']}}</strong></span></span></a> as
-                            {{$crew[$i]['character']}}
-                        </div>
-                </div>
-                <div class="line"></div>
-                @endfor
-            </div>
-            <div class="actors">
+                        <div class="line"></div>
+                        @endfor
+                    @endif
+
                 <h4>Director</h4>
                 <div class="list-cast">
-                    @for ($i = 0; $i < count($director); $i++) @if ($director[$i]['department']=='Directing' ) <div
+                    @for ($i = 0; $i < count($director); $i++) 
+                    @if ($director[$i]['department']=='Directing' && $director[$i]['job'] == "Director"  ) 
+                    <div
                         class="tableCell">
                         <a class="avatar-thumb" href="https://www.imdb.com/name/nm0000158/" target="_blank"
                             title="IMDb Profile"> <img class="photo"
-                                src="https://image.tmdb.org/t/p/w185{{$director[$i]['id']}}" alt="" height="60"
+                                src="https://image.tmdb.org/t/p/w185{{$director[$i]['profile_path']}}" alt="" height="60"
                                 width="60">
                         </a>
                 </div>
@@ -96,10 +120,9 @@
                                 itemprop="name"><strong>{{$director[$i]['name']}}</strong></span></span></a>
                 </div>
 
-                @endif
+                    @endif
                 @endfor
             </div>
-            <div class="line"></div>
 
         </div>
         </div>
@@ -108,8 +131,15 @@
         <div class="row">
             <div class="trailer">
                 <h3>Trailer</h3>
+                @if(count($trailer) != 0)
                 <iframe width="420" height="315" src="https://www.youtube.com/embed/{{$trailer[0]['key']}}">
                 </iframe>
+                @else
+                <span>No trailer avaiable</span>
+                <br>
+                <iframe width="420" height="315" src="https://www.youtube.com/embed/Hu0KpdW4U0c">
+                </iframe>
+                @endif
             </div>
             @if (count($comment) != 0)
             <div class="reviews">
