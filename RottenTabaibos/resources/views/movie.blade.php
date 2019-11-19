@@ -83,11 +83,12 @@
             <div class="actors">
                 <h4>Director</h4>
                 <div class="list-cast">
-                    @for ($i = 0; $i < count($director); $i++) @if ($director[$i]['department']=='Directing' ) <div
+                    @for ($i = 0; $i < count($director); $i++) @if ($director[$i]['department']=='Directing' && $director[$i]['job'] == "Director"  ) 
+                    <div
                         class="tableCell">
                         <a class="avatar-thumb" href="https://www.imdb.com/name/nm0000158/" target="_blank"
                             title="IMDb Profile"> <img class="photo"
-                                src="https://image.tmdb.org/t/p/w185{{$director[$i]['id']}}" alt="" height="60"
+                                src="https://image.tmdb.org/t/p/w185{{$director[$i]['profile_path']}}" alt="" height="60"
                                 width="60">
                         </a>
                 </div>
