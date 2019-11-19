@@ -62,16 +62,16 @@
             <div class="crew">
                 <div class="actors">
                     <h4>Cast</h4>
-                    @for ($i = 0; $i < 4; $i++) <div class="list-cast">
+                    @for ($i = 0; $i < 5; $i++) <div class="list-cast">
                         <div class="tableCell">
-                            <a class="avatar-thumb" href="https://www.imdb.com/name/nm0000158/" target="_blank"
+                            <a class="avatar-thumb" href="/search/people/{{$crew[$i]['id']}}/{{$crew[$i]['name']}}" target="_blank"
                                 title="IMDb Profile"> <img class="photo"
                                     src="https://image.tmdb.org/t/p/w185{{$crew[$i]['profile_path']}}" alt=""
                                     >
                             </a>
                         </div>
                         <div class="list-cast-info tableCell">
-                            <a class="name-cast" href="../browse-movies/Tom%20Hanks.html"><span itemprop="actor"
+                            <a class="name-cast" href="/search/people/{{$crew[$i]['id']}}/{{$crew[$i]['name']}}"><span itemprop="actor"
                                     itemscope itemtype="http://schema.org/Person"><span
                                         itemprop="name"><strong>{{$crew[$i]['name']}}</strong></span></span></a> as
                             {{$crew[$i]['character']}}
@@ -92,7 +92,7 @@
                         </a>
                 </div>
                 <div class="list-cast-info tableCell">
-                    <a class="name-cast" href="../browse-movies/Tom%20Hanks.html"><span itemprop="actor" itemscope
+                    <a class="name-cast" href="/search/people/{{$director[$i]['id']}}/{{$director[$i]['name']}}"><span itemprop="actor" itemscope
                             itemtype="http://schema.org/Person"><span
                                 itemprop="name"><strong>{{$director[$i]['name']}}</strong></span></span></a>
                 </div>
@@ -115,11 +115,12 @@
             @if (count($comment) != 0)
             <div class="reviews">
                 <h3>Reviews</h3>
-                @for ($i = 0; $i < count($comment); $i++) <div class="review-properties">
+                @for ($i = 0; $i < count($comment); $i++) 
+                    <div class="review-properties">
 
                     Reviewed by <span class="review-author"><strong>{{$comment[$i]['author']}}</strong></span>
                     <span class="icon-star"></span>
-            </div>
+                </div>
             <article>
                 <p>{{str_limit($comment[$i]['content'],200)}}</p>
             </article>

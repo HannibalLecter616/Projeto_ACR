@@ -11,11 +11,11 @@
                         <h2>
                             <i class="fas fa-fire"  style="color:red;"></i> Popular Movies
                         </h2>
-                        <h4>Browse All</h4>
+                        <a href="/search/popular">Browse All</a>
                     </div>
                 </div>
                 <div class="row">
-                    @for ($i = 0; $i < 5; $i++)
+                    @for ($i = 0; $i < 8; $i++)
                     <div class="movie">
                         <!-- https://image.tmdb.org/t/p/w185//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg -->
                         <a href="/movie/{{$popular[$i]['id']}}" class="movie-link">
@@ -34,13 +34,13 @@
                 <div class="recent-text">
                     <div class="text-row">
                         <h2>
-                            <i class="fas fa-plus" style="color: red;"></i></i> Recent Movies
+                            <i class="fas fa-plus" style="color: red;"></i> Recent Movies
                         </h2>
-                        <h4>Browse All</h4>
+                        <a href="/browse">Browse All</a>
                     </div>
                 </div>
                 <div class="row">
-                    @for ($i = 0; $i < 5; $i++)
+                    @for ($i = 0; $i < 8; $i++)
                     <div class="movie">
                         <!-- https://image.tmdb.org/t/p/w185//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg -->
                         <a href="/movie/{{$upcoming[$i]['id']}}" class="movie-link">
