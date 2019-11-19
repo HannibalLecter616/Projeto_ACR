@@ -41,13 +41,17 @@
                     @foreach ($search as $movie)
 
                     <div class="movie">
-                        <!-- https://image.tmdb.org/t/p/w185//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg -->
                         <a href="/movie/{{$movie['id']}}" class="movie-link">
                             <img src="https://image.tmdb.org/t/p/w500{{$movie['poster_path']}}" alt="">
                         </a>
                         <div class="movie-box">
-                            <a href="movie/fast-furious-presents-hobbs-shaw-2019.html" class="movie-title">{{$movie['original_title']}}</a>
-                            <div class="movie-year">{{substr($movie['release_date'],0,4)}}</div>
+                            <a href="/movie/{{$movie['id']}}" class="movie-title">{{$movie['original_title']}}</a>
+                            @if( empty($movie['release_date']))
+                            <div class="movie-year">Undefined</div>
+                                
+                            @else
+                            <div class="movie-year">{{substr( $movie['release_date'],0,4)}}</div>
+                            @endif
                         </div>
                     </div>
                     @endforeach

@@ -21,7 +21,7 @@
                 <img src="/images/logo/1.png" alt="logo" height="38">
             </a>
         </div>
-        <form method="GET" action="/search/" accept-charset="UTF-8" id="quick-search" name="quick-search">
+        <form method="GET" action="/search" accept-charset="UTF-8" id="quick-search" name="quick-search">
             <div id="quick-search-container">
                 <input id="quick-search-input" name="query" placeholder="Pesquisar" autocomplete="off" type="search" >
             </div>
