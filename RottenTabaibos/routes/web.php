@@ -14,6 +14,8 @@ Route::get('/browse', 'ProcuraController@initial');
 
 Route::get('/search/people/{id}/{name}', 'ProcuraController@pessoa');
 
+Route::get('/search/popular', 'ProcuraController@popular');
+
 Route::get('/movie/{id}', 'FilmeController@index');
 
 Auth::routes();

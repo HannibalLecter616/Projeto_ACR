@@ -19,11 +19,20 @@ class ProcuraController extends Controller
         $search = $response->getBody();
         $search = json_decode($search, true);
 
-        $response = $client->request('GET', 'https://api.themoviedb.org/3/movie/popular?api_key=684b8c6e53471a5a6fc82a6c144fa9a0');
-        $popular = $response->getBody();
-        $popular = json_decode($popular, true);
+        return view('procura', ['search' => $search['results']]);
+    }
 
-        return view('procura', ['search' => $search['results'] ,'popular' =>$popular['results']]);
+    public function popular()
+    {
+        $client = new Client([
+        'headers' => ['content-type' => 'application/json', 'Accept' => 'application/json'],
+        ]);
+
+        $response = $client->request('GET', 'https://api.themoviedb.org/3/movie/popular?api_key=684b8c6e53471a5a6fc82a6c144fa9a0');
+        $search = $response->getBody();
+        $search = json_decode($search, true);
+
+        return view('procura', ['search' => $search['results']]);
     }
 
     public function index()

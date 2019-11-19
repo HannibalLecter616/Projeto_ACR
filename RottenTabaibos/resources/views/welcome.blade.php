@@ -11,7 +11,7 @@
                         <h2>
                             <i class="fas fa-fire"  style="color:red;"></i> Popular Movies
                         </h2>
-                        <h4>Browse All</h4>
+                        <a href="/search/popular">Browse All</a>
                     </div>
                 </div>
                 <div class="row">
@@ -36,7 +36,7 @@
                         <h2>
                             <i class="fas fa-plus" style="color: red;"></i> Recent Movies
                         </h2>
-                        <a href="/">Browse All</a>
+                        <a href="/browse">Browse All</a>
                     </div>
                 </div>
                 <div class="row">
