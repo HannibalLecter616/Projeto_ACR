@@ -72,6 +72,10 @@ form {
     width: 250px;
 }
 */
+#known_for{
+    margin:auto;
+    width: 80%;
+}
 
 .row {
     display: flex;

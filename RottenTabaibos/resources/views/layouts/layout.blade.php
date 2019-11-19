@@ -33,10 +33,10 @@
 
                     @auth
                         <a class="principal" href="/">Home</a>
-                        <a href="/procura">Browse</a>
+                        <a href="/browse">Browse</a>
                     @else
                         <a class="principal" href="/">Home</a>
-                        <a href="/procura">Browse</a>
+                        <a href="/browse">Browse</a>
 
                         <a href="{{ route('login') }}">Login</a>
 
