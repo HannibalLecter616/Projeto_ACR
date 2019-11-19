@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
     @section('content')
-    
+
     <div class="procura-principal">
 
             <label><b>Procurar Filmes / Series / Atores</b></label>
@@ -43,7 +43,7 @@
                     <div class="movie">
                         <!-- https://image.tmdb.org/t/p/w185//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg -->
                         <a href="/movie/{{$movie['id']}}" class="movie-link">
-                            <img src="https://image.tmdb.org/t/p/w185{{$movie['poster_path']}}" alt="">
+                            <img src="https://image.tmdb.org/t/p/w500{{$movie['poster_path']}}" alt="">
                         </a>
                         <div class="movie-box">
                             <a href="movie/fast-furious-presents-hobbs-shaw-2019.html" class="movie-title">{{$movie['original_title']}}</a>

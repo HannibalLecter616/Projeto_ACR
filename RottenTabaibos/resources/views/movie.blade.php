@@ -6,7 +6,7 @@
     <section class="presentation">
         <div class="row">
             <div class="movie-main">
-                <a href="#" class="movie-link">
+                <a href="" class="movie-link">
                     <img src="https://image.tmdb.org/t/p/w500/.{{$movie['poster_path']}}" alt="" width="300">
                 </a>
             </div>
@@ -62,12 +62,11 @@
             <div class="crew">
                 <div class="actors">
                     <h4>Cast</h4>
-                    @for ($i = 0; $i < 5; $i++) <div class="list-cast">
+                    @for ($i = 0; $i < 4; $i++) <div class="list-cast">
                         <div class="tableCell">
                             <a class="avatar-thumb" href="/search/people/{{$crew[$i]['id']}}/{{$crew[$i]['name']}}" target="_blank"
-                                title="IMDb Profile"> <img class="photo"
-                                    src="https://image.tmdb.org/t/p/w185{{$crew[$i]['profile_path']}}" alt=""
-                                    >
+                                > <img class="photo"
+                                    src="https://image.tmdb.org/t/p/w185{{$crew[$i]['profile_path']}}" alt="">
                             </a>
                         </div>
                         <div class="list-cast-info tableCell">
@@ -115,7 +114,7 @@
             @if (count($comment) != 0)
             <div class="reviews">
                 <h3>Reviews</h3>
-                @for ($i = 0; $i < count($comment); $i++) 
+                @for ($i = 0; $i < count($comment); $i++)
                     <div class="review-properties">
 
                     Reviewed by <span class="review-author"><strong>{{$comment[$i]['author']}}</strong></span>
@@ -136,9 +135,6 @@
             <br>
         </div>
         @endif
-
-        </div>
-        </div>
 
     </section>
 </main>

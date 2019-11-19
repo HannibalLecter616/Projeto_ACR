@@ -15,9 +15,16 @@
                 <h4>Biografia</h4>
                 <h5>{{$pessoa_detalhes['biography']}}</h5>
                 <h4>Born at:</h4>
-                <h5>{{$pessoa_detalhes['birthday']}} - {{$pessoa_detalhes['deathday']}}</h5>
-                <h5>{{$pessoa_detalhes['place_of_birth']}}</h5>
-                
+                @php
+                    $date = new DateTime($pessoa_detalhes['birthday']);
+                    $now = new DateTime();
+                    $interval = $now->diff($date);
+                    $age = $interval->y;
+                @endphp
+                <i class="fas fa-birthday-cake"></i> {{$pessoa_detalhes['birthday']}} - {{$pessoa_detalhes['deathday']}} ({{$age}} years old)
+                <br>
+                <i class="fas fa-location-arrow"></i> {{$pessoa_detalhes['place_of_birth']}}
+
             </div>
             <div class="line"></div>
         </div>
@@ -25,18 +32,18 @@
         <h2>Known for:</h3>
         </div>
             <div class="row">
-                    
+
                     @for ($i = 0; $i < count($conhecido); $i++)
-                    
+
                     @for($j = 0; $j < count($conhecido[$i]['known_for']); $j++)
                     <div class="movie">
                         <a href="/movie/{{$conhecido[$i]['known_for'][$j]['id']}}" class="movie-link">
-                            <img src="https://image.tmdb.org/t/p/w185/{{$conhecido[$i]['known_for'][$j]['poster_path']}}" alt="" width="200px" height="auto">
+                            <img src="https://image.tmdb.org/t/p/w500/{{$conhecido[$i]['known_for'][$j]['poster_path']}}" alt="" width="200px" height="auto">
                         </a>
-                        
+
                     </div>
                         @endfor
-                    @endfor 
+                    @endfor
             </div>
     </section>
 </main>

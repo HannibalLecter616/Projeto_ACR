@@ -59,6 +59,13 @@ form {
 
 .text-row h2 {
     flex: 1;
+    font-weight: 700;
+}
+
+.text-row a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
 }
 
 /*
