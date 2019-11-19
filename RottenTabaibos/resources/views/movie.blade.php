@@ -67,7 +67,7 @@
                             <a class="avatar-thumb" href="https://www.imdb.com/name/nm0000158/" target="_blank"
                                 title="IMDb Profile"> <img class="photo"
                                     src="https://image.tmdb.org/t/p/w185{{$crew[$i]['profile_path']}}" alt=""
-                                    height="60" width="60">
+                                    >
                             </a>
                         </div>
                         <div class="list-cast-info tableCell">

@@ -163,6 +163,9 @@ div.movie-text {
 
 .photo {
     border-radius: 50%;
+    height:60px;
+    width:60px;
+    object-fit:cover;
 }
 
 .list-cast {
@@ -263,8 +266,8 @@ label {
 
 
   @media screen and (max-width: 600px) {
-    
-    .topnav a.principal, 
+
+    .topnav a.principal,
     .topnav a {float: none;}
   }
 
