@@ -38,17 +38,57 @@
         <h2>Known for:</h3>
         </div>
             <div class="row">
-                    @for ($i = 0; $i < count($known_for); $i++)
-                        @if($known_for[$i]['popularity'] >= 15.000)
-
-                    <div class="movie">
-                        <a href="/movie/{{$known_for[$i]['id']}}" class="movie-link">
-                            <img src="https://image.tmdb.org/t/p/w500/{{$known_for[$i]['poster_path']}}" alt="" width="200px" height="auto">
-                        </a>
-
-                    </div>
+                    @php
+                    $numero = 0;    
+                    @endphp
+                    @for ($i = 0; $i < count($conhecido); $i++)
+                        @if ($conhecido[$i]['department'] == "Directing" || $conhecido[$i]['department'] == "Writing")
+                            @if ($numero < 8 )
+                                @if($conhecido[$i]['popularity'] >= 10.000)
+                                    <div class="movie">
+                                        <a href="/movie/{{$conhecido[$i]['id']}}" class="movie-link">
+                                            <img src="https://image.tmdb.org/t/p/w500/{{$conhecido[$i]['poster_path']}}" alt="" width="200px" height="auto">
+                                        </a>
+                                        <div class="movie-box">
+                                            <a href="/movie/{{$conhecido[$i]['id']}}" class="movie-title">{{$conhecido[$i]['title']}}</a>
+                                            @if( empty($conhecido[$i]['release_date']))
+                                            <div class="movie-year">Undefined</div>
+                                            @else
+                                            <div class="movie-year">{{substr($conhecido[$i]['release_date'],0,4)}}</div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    @php
+                                        $numero++;    
+                                    @endphp 
+                                @endif
+                            @endif
                         @endif
-                    @endfor 
+                    @endfor   
+                    
+                        @for ($i = 0; $i < count($known_for); $i++)
+                                @if ($numero < 8 )
+                                    @if($known_for[$i]['popularity'] >= 10.000)
+                                        <div class="movie">
+                                            <a href="/movie/{{$known_for[$i]['id']}}" class="movie-link">
+                                                <img src="https://image.tmdb.org/t/p/w500/{{$known_for[$i]['poster_path']}}" alt="" width="200px" height="auto">
+                                            </a>
+                                            <div class="movie-box">
+                                                <a href="/movie/{{$known_for[$i]['id']}}" class="movie-title">{{$known_for[$i]['title']}}</a>
+                                                @if( empty($known_for[$i]['release_date']))
+                                                <div class="movie-year">Undefined</div>
+                                                @else
+                                                <div class="movie-year">{{substr($known_for[$i]['release_date'],0,4)}}</div>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        @php
+                                            $numero++;    
+                                        @endphp 
+                                    @endif
+                                @endif
+                        @endfor 
+                
             </div>
     </section>
 </main>
