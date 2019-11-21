@@ -19,7 +19,11 @@ class ProcuraController extends Controller
         $search = $response->getBody();
         $search = json_decode($search, true);
 
-        return view('procura', ['search' => $search['results']]);
+        $response = $client->request('GET', 'https://api.themoviedb.org/3/genre/movie/list?api_key=684b8c6e53471a5a6fc82a6c144fa9a0&language=en-US');
+        $generos = $response->getBody();
+        $generos = json_decode($generos, true);
+
+        return view('procura', ['search' => $search['results'],'generos'=>$generos['genres']]);
     }
 
     public function popular()
@@ -32,7 +36,11 @@ class ProcuraController extends Controller
         $search = $response->getBody();
         $search = json_decode($search, true);
 
-        return view('procura', ['search' => $search['results']]);
+        $response = $client->request('GET', 'https://api.themoviedb.org/3/genre/movie/list?api_key=684b8c6e53471a5a6fc82a6c144fa9a0&language=en-US');
+        $generos = $response->getBody();
+        $generos = json_decode($generos, true);
+
+        return view('procura', ['search' => $search['results'],'generos'=>$generos['genres']]);
     }
 
     public function index()
@@ -46,7 +54,12 @@ class ProcuraController extends Controller
         $search = $response->getBody();
         $search = json_decode($search, true);
 
-        return view('procura', ['search' => $search['results']]);
+        
+        $response = $client->request('GET', 'https://api.themoviedb.org/3/genre/movie/list?api_key=684b8c6e53471a5a6fc82a6c144fa9a0&language=en-US');
+        $generos = $response->getBody();
+        $generos = json_decode($generos, true);
+
+        return view('procura', ['search' => $search['results'],'generos'=>$generos['genres']]);
 
     }
 

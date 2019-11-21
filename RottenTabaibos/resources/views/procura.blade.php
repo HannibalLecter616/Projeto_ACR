@@ -11,10 +11,11 @@
                 <label for="genero">Genero:</label>
 
                 <select name="procura-genero" id="genero">
-                    <option value="">----</option>
-                    <option value="dog">Dog</option>
-                    <option value="cat">Cat</option>
-                    <option value="hamster">Hamster</option>
+                        <option value="">----</option>
+                    @foreach($generos as $genero)
+                        
+                        <option value="{{$genero['id']}}">{{$genero['name']}}</option>
+                    @endforeach
                 </select>
         </div>
         <div class="campos-procura">
