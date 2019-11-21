@@ -41,31 +41,29 @@
                     @php
                     $numero = 0;    
                     @endphp
-                    @for ($i = 0; $i < count($conhecido); $i++)
-                        @if ($conhecido[$i]['department'] == "Directing" || $conhecido[$i]['department'] == "Writing")
+
+                    @if ($pessoa_detalhes['known_for_department'] == "Directing" || $pessoa_detalhes['known_for_department'] == "Writing")
+                        @for ($i = 0; $i < count($conhecido); $i++)
                             @if ($numero < 8 )
-                                @if($conhecido[$i]['popularity'] >= 10.000)
                                     <div class="movie">
                                         <a href="/movie/{{$conhecido[$i]['id']}}" class="movie-link">
                                             <img src="https://image.tmdb.org/t/p/w500/{{$conhecido[$i]['poster_path']}}" alt="" width="200px" height="auto">
                                         </a>
-                                        <div class="movie-box">
+                                    <div class="movie-box">
                                             <a href="/movie/{{$conhecido[$i]['id']}}" class="movie-title">{{$conhecido[$i]['title']}}</a>
-                                            @if( empty($conhecido[$i]['release_date']))
+                                        @if( empty($conhecido[$i]['release_date']))
                                             <div class="movie-year">Undefined</div>
-                                            @else
+                                        @else
                                             <div class="movie-year">{{substr($conhecido[$i]['release_date'],0,4)}}</div>
-                                            @endif
-                                        </div>
+                                        @endif
+                                    </div>
                                     </div>
                                     @php
                                         $numero++;    
                                     @endphp 
-                                @endif
                             @endif
-                        @endif
-                    @endfor   
-                    
+                        @endfor   
+                    @else
                         @for ($i = 0; $i < count($known_for); $i++)
                                 @if ($numero < 8 )
                                     @if($known_for[$i]['popularity'] >= 10.000)
@@ -88,7 +86,7 @@
                                     @endif
                                 @endif
                         @endfor 
-                
+                    @endif
             </div>
     </section>
 </main>
