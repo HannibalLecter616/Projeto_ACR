@@ -19,30 +19,30 @@
 
         <div class="topnav">
             <a class="principal" href="/">Home</a>
-            <a href="{{ route('register') }}">Register</a>
+            <a href="{{ route('register') }}">Registerr</a>
         </div>
 
     </header>
         <hr>
     <form method="POST" action="{{ route('login') }}">
-        @csrf 
-        <div class="avatar-container"> 
-            
-            <img src= "/images/logo/1.png" alt="Avatar" class="avatar"> 
-        </div> 
-  
-        <div class="login-container"> 
-            <label for="email"><b>{{ __('E-Mail Address') }}</b></label> 
-            <input type="text" placeholder="Inserir Nome do Utilizador / email" name="email" required> 
+        @csrf
+        <div class="avatar-container">
+
+            <img src= "/images/logo/1.png" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="login-container">
+            <label for="email"><b>{{ __('E-Mail Address') }}</b></label>
+            <input type="text" placeholder="Insert Email address" name="email" required>
 
             @error('email')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
-  
-            <label><b>Palavra Passe</b></label> 
-            <input type="password" placeholder="Inserir Palavra Passe" name="password" required> 
+
+            <label><b>Password</b></label>
+            <input type="password" placeholder="Insert Password" name="password" required>
 
             @error('password')
                 <span class="invalid-feedback" role="alert">
@@ -57,23 +57,23 @@
             <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                 <label class="form-check-label" for="remember">
-                    {{ __('Memorizar Palavra Passe') }}
+                    {{ __('Remember Password') }}
                 </label>
 
             @if (Route::has('password.request'))
-                <span class="psw">Esqueceu a 
+                <span class="psw">Forgot my
                     <a class="btn btn-link" href="{{ route('password.request') }}">
-                        {{ __('Palavra Passe') }}
+                        {{ __('Password') }}
                     </a>
                 </span>
             @endif
             <br>
             <br>
 
-            <span class="reg">Ainda não está registado? <a href="{{ route('register') }}">Registar</a></span>
-            
-        </div> 
-    </form> 
+            <span class="reg">Not registered yet? <a href="{{ route('register') }}">Register</a></span>
+
+        </div>
+    </form>
 </body>
 
 </html>
