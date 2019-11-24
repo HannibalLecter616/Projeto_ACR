@@ -79,7 +79,7 @@
                                             itemprop="name"><strong>{{$cast['name']}}</strong></span></span></a> as
                                 {{$cast['character']}}
                             </div>
-                        
+
                         <div class="line"></div>
                     @endforeach
                     @else
@@ -104,8 +104,8 @@
 
                 <h4>Director</h4>
                 <div class="list-cast">
-                    @for ($i = 0; $i < count($director); $i++) 
-                    @if ($director[$i]['department']=='Directing' && $director[$i]['job'] == "Director"  ) 
+                    @for ($i = 0; $i < count($director); $i++)
+                    @if ($director[$i]['department']=='Directing' && $director[$i]['job'] == "Director"  )
                     <div
                         class="tableCell">
                         <a class="avatar-thumb" href="https://www.imdb.com/name/nm0000158/" target="_blank"
@@ -165,7 +165,29 @@
             <br>
         </div>
         @endif
-
+            <div class="recent">
+                <div class="recent-text">
+                    <div class="text-row">
+                        <h2>
+                            <i class="fas fa-plus" style="color: red;"></i> Similar Movies
+                        </h2>
+                        <a href="/browse">Browse All</a>
+                    </div>
+                </div>
+                <div class="row">
+                    @for ($i = 0; $i < 8; $i++)
+                    <div class="movie">
+                        <!-- https://image.tmdb.org/t/p/w185//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg -->
+                        <a href="/movie/{{$recommendations[$i]['id']}}" class="movie-link">
+                            <img src="https://image.tmdb.org/t/p/w500/.{{$recommendations[$i]['poster_path']}}" alt="">
+                        </a>
+                        <div class="movie-box">
+                            <a href="/movie/{{$recommendations[$i]['id']}}" class="movie-title">{{$recommendations[$i]['original_title']}}</a>
+                            <div class="movie-year">{{substr($recommendations[$i]['release_date'],0,4)}}</div>
+                        </div>
+                    </div>
+                    @endfor
+                </div>
     </section>
 </main>
 </body>
