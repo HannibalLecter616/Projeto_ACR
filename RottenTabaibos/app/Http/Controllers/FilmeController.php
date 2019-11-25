@@ -32,7 +32,7 @@ class FilmeController extends Controller
         $comment = $response->getBody();
         $comment = json_decode($comment, true);
 
-        $response = $client->request('GET', 'https://api.themoviedb.org/3/movie/' . $id . '/recommendations?api_key=684b8c6e53471a5a6fc82a6c144fa9a0');
+        $response = $client->request('GET', 'https://api.themoviedb.org/3/movie/' . $id . '/similar?api_key=684b8c6e53471a5a6fc82a6c144fa9a0');
         $recommendations = $response->getBody();
         $recommendations = json_decode($recommendations, true);
 

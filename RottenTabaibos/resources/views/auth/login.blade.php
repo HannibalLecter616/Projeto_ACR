@@ -19,7 +19,7 @@
 
         <div class="topnav">
             <a class="principal" href="/">Home</a>
-            <a href="{{ route('register') }}">Registerr</a>
+            <a href="{{ route('register') }}">Register</a>
         </div>
 
     </header>

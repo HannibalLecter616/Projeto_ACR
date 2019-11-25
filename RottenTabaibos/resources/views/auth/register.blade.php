@@ -32,13 +32,13 @@
                 <hr>
 
                 {{-- <form>
-                    <label for="utilizador_tipo"><b>Tipo de Utilizador</b></label> <br>
+                    <label for="utilizador_tipo"><b>Type of User</b></label> <br>
                         <div class="utilizadores">
                             <label class="radio-inline">
-                              <input type="radio" name="utilizador">Comum
+                              <input type="radio" name="type" value="1">Common
                             </label>
                             <label class="radio-inline">
-                              <input type="radio" name="utilizador">Critico Profissional
+                              <input type="radio" name="type" value="2">Professional Critic
                             </label>
                         </div>
                 </form>
