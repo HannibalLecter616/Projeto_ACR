@@ -13,8 +13,7 @@
             <div class="movie-text">
                 <h1>{{$pessoa_detalhes['name']}}</h1>
                 <h4>Biografia</h4>
-                <h5>{{$pessoa_detalhes['biography']}}</h5>
-                <br><br>
+                <h5 class="bio-text">{{$pessoa_detalhes['biography']}}</h5>
                 <h4>Born at:</h4>
                 @php
                     $date = new DateTime($pessoa_detalhes['birthday']);

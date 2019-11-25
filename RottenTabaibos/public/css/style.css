@@ -1,6 +1,7 @@
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
 
+
 body {
     font-family: 'Poppins', sans-serif;
 }
@@ -250,6 +251,26 @@ label {
     text-decoration: none;
     font-size: 15px;
   }
+/**/
+
+.link {
+    display: flex;
+}
+
+.moretext span {
+  display: none;
+}
+
+.moretext a{
+    
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.bio-text{
+    display: block;
+}
 
   /* Change the color of links on hover */
   .topnav a:hover{
