@@ -19,7 +19,11 @@ class ProcuraController extends Controller
         $search = $response->getBody();
         $search = json_decode($search, true);
 
-        return view('procura', ['search' => $search['results']]);
+        $response = $client->request('GET', 'https://api.themoviedb.org/3/genre/movie/list?api_key=684b8c6e53471a5a6fc82a6c144fa9a0&language=en-US');
+        $generos = $response->getBody();
+        $generos = json_decode($generos, true);
+
+        return view('procura', ['search' => $search['results'],'generos'=>$generos['genres']]);
     }
 
     public function popular()
@@ -32,7 +36,11 @@ class ProcuraController extends Controller
         $search = $response->getBody();
         $search = json_decode($search, true);
 
-        return view('procura', ['search' => $search['results']]);
+        $response = $client->request('GET', 'https://api.themoviedb.org/3/genre/movie/list?api_key=684b8c6e53471a5a6fc82a6c144fa9a0&language=en-US');
+        $generos = $response->getBody();
+        $generos = json_decode($generos, true);
+
+        return view('procura', ['search' => $search['results'],'generos'=>$generos['genres']]);
     }
 
     public function index()
@@ -46,7 +54,12 @@ class ProcuraController extends Controller
         $search = $response->getBody();
         $search = json_decode($search, true);
 
-        return view('procura', ['search' => $search['results']]);
+        
+        $response = $client->request('GET', 'https://api.themoviedb.org/3/genre/movie/list?api_key=684b8c6e53471a5a6fc82a6c144fa9a0&language=en-US');
+        $generos = $response->getBody();
+        $generos = json_decode($generos, true);
+
+        return view('procura', ['search' => $search['results'],'generos'=>$generos['genres']]);
 
     }
 
@@ -62,15 +75,11 @@ class ProcuraController extends Controller
         $response = $client->request('GET', 'https://api.themoviedb.org/3/person/'.$id.'/images?api_key=684b8c6e53471a5a6fc82a6c144fa9a0');
         $pessoa_imagens = $response->getBody();
         $pessoa_imagens = json_decode($pessoa_imagens, true);
-
-        $response = $client->request('GET', 'https://api.themoviedb.org/3/search/person?api_key=684b8c6e53471a5a6fc82a6c144fa9a0&language=en-US&page=1&query='.$name);
-        $pessoa_conhecido = $response->getBody();
-        $pessoa_conhecido = json_decode($pessoa_conhecido, true);
         
         $response = $client->request('GET', 'https://api.themoviedb.org/3/person/'.$id.'/movie_credits?api_key=684b8c6e53471a5a6fc82a6c144fa9a0');
         $pessoa_conhecido_por = $response->getBody();
         $pessoa_conhecido_por = json_decode($pessoa_conhecido_por, true);
 
-        return view('perfil',['pessoa_detalhes' => $pessoa_detalhes, 'imagem' => $pessoa_imagens['profiles'], 'conhecido' => $pessoa_conhecido['results'], 'known_for' => $pessoa_conhecido_por['cast']]);
+        return view('perfil',['pessoa_detalhes' => $pessoa_detalhes, 'imagem' => $pessoa_imagens['profiles'], 'conhecido' => $pessoa_conhecido_por['crew'], 'known_for' => $pessoa_conhecido_por['cast']]);
     }
 }

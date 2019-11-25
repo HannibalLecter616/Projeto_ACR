@@ -36,8 +36,6 @@ class FilmeController extends Controller
         $recommendations = $response->getBody();
         $recommendations = json_decode($recommendations, true);
 
-
-
         return view('movie', ['movie' => $movie,'crew'=>$crew['cast'],'director'=>$crew['crew'],'trailer'=>$trailer['results'], 'comment' => $comment['results'], 'recommendations'=> $recommendations['results']]);
     }
 }

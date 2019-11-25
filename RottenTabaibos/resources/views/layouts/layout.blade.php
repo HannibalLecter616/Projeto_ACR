@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.11.1/css/all.css">
     <link rel="stylesheet" href="/../css/style.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 
 <body>
@@ -53,5 +54,6 @@
 
 
             @yield('content')
-
+            <script type="text/javascript" src="/../js/function.js"></script>
+            
 </html>
