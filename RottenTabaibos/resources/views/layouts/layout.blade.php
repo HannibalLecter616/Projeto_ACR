@@ -35,6 +35,7 @@
                     @auth
                         <a class="principal" href="/">Home</a>
                         <a href="/browse">Browse</a>
+                        <a href="/browse">Logout</a>
                     @else
                         <a class="principal" href="/">Home</a>
                         <a href="/browse">Browse</a>

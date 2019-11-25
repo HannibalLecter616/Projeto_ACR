@@ -25,50 +25,50 @@
         <hr>
         <form method="POST" action="{{ route('register') }}">
             @csrf
-            
+
             <div class="container">
-                <h1 style="text-align: center;">Registo</h1>
-                <p>Por favor insira os dados de modo a criar uma conta </p>
-                <hr>                
-               
-                <form>
-                    <label for="utilizador_tipo"><b>Tipo de Utilizador</b></label> <br>
+                <h1 style="text-align: center;">Register</h1>
+                <p>Please insert the following data </p>
+                <hr>
+
+                {{-- <form>
+                    <label for="utilizador_tipo"><b>Type of User</b></label> <br>
                         <div class="utilizadores">
                             <label class="radio-inline">
-                              <input type="radio" name="utilizador">Comum
+                              <input type="radio" name="type" value="1">Common
                             </label>
                             <label class="radio-inline">
-                              <input type="radio" name="utilizador">Critico Profissional
+                              <input type="radio" name="type" value="2">Professional Critic
                             </label>
                         </div>
-                </form>   
-                <hr>
-                
+                </form>
+                <hr> --}}
 
-                <label for="primmeiro_nome"><b>Primeiro Nome</b></label>
-                <input type="text" placeholder="Inserir Primeiro Nome" name="primeiro_nome" required>
 
-                <label for="ultimo_nome"><b>Ultimo Nome</b></label>
-                <input type="text" placeholder="Inserir Ultimo Nome" name="ultimo_nome" required>
+                <label for="first_name"><b>First Name</b></label>
+                <input type="text" placeholder="Insert First Name" name="first_name" required>
+
+                <label for="last_name"><b>Last Name</b></label>
+                <input type="text" placeholder="Insert Last Name" name="last_name" required>
 
                 <label for="email"><b>Email</b></label>
-                <input type="text" placeholder="Inserir Email" name="email" required>
+                <input type="text" placeholder="Insert Email" name="email" required>
 
 <!--Mostrar só se for selecionado o utilizador Critico-->
 
-                <label for="jornal"><b>Jornal/Revista/Entidade Crítica</b></label>
-                <input type="text" placeholder="Inserir Empresa que representa" name="jornal" required>
+                {{-- <label for="jornal"><b>Jornal/Revista/Entidade Crítica</b></label>
+                <input type="text" placeholder="Inserir Empresa que representa" name="jornal" required> --}}
 <!------------------------------------------------------>
                 <label for="password"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="password" required>
 
-                <label for="password_confirmation"><b>Repetir a Password</b></label>
-                <input type="password" placeholder="Repetir Password" name="password_confirmation" required>
-                
-                
+                <label for="password_confirmation"><b>Repeat Password</b></label>
+                <input type="password" placeholder="Repeat Password" name="password_confirmation" required>
+
+
                 <hr>
 
-                <p>Ao criar a conta, concorda com os nossos <a href="#">Termos e Privacidade</a>.</p>
+                <p>By creating an account you are agreeing with our <a href="#">Terms and Privacy</a>.</p>
                 <button type="submit" class="registerbtn">{{ __('Register') }}</button>
             </div>
 
