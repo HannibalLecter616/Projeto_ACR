@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <h4>Synopsis</h4>
-                <h5>{{str_limit($movie['overview'],170)}}</h5>
+                <h5 class="bio-text">{{$movie['overview']}}</h5>
                 <h4>Your Review</h4>
                 <div class=" rating-star">
                     <fieldset class="rating">

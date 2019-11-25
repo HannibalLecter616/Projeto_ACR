@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  var nInitialCount = 400; //Intial characters to display
+  var nInitialCount = 300; //Intial characters to display
   var moretext = "Read more";
   var lesstext = "Read less";
   var ellipsestext = "...";
