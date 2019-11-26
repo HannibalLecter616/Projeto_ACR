@@ -24,7 +24,7 @@
         </div>
         <form method="GET" action="/search" accept-charset="UTF-8" id="quick-search" name="quick-search">
             <div id="quick-search-container">
-                <input id="quick-search-input" name="query" placeholder="Pesquisar" autocomplete="off" type="search" >
+                <input id="quick-search-input" name="query" placeholder="Search" autocomplete="off" type="search" >
             </div>
         </form>
             <div class="topnav">

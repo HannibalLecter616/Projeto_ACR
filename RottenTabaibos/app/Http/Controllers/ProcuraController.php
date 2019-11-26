@@ -19,11 +19,15 @@ class ProcuraController extends Controller
         $search = $response->getBody();
         $search = json_decode($search, true);
 
+        $response = $client->request('GET', 'https://api.themoviedb.org/3/person/popular?api_key=684b8c6e53471a5a6fc82a6c144fa9a0');
+        $search_person = $response->getBody();
+        $search_person = json_decode($search_person, true);
+
         $response = $client->request('GET', 'https://api.themoviedb.org/3/genre/movie/list?api_key=684b8c6e53471a5a6fc82a6c144fa9a0&language=en-US');
         $generos = $response->getBody();
         $generos = json_decode($generos, true);
 
-        return view('procura', ['search' => $search['results'],'generos'=>$generos['genres']]);
+        return view('procura', ['search' => $search['results'],'generos'=>$generos['genres'],'search_p' => $search_person['results']]);
     }
 
     public function popular()
@@ -35,12 +39,16 @@ class ProcuraController extends Controller
         $response = $client->request('GET', 'https://api.themoviedb.org/3/movie/popular?api_key=684b8c6e53471a5a6fc82a6c144fa9a0');
         $search = $response->getBody();
         $search = json_decode($search, true);
+        
+        $response = $client->request('GET', 'https://api.themoviedb.org/3/person/popular?api_key=684b8c6e53471a5a6fc82a6c144fa9a0');
+        $search_person = $response->getBody();
+        $search_person = json_decode($search_person, true);
 
         $response = $client->request('GET', 'https://api.themoviedb.org/3/genre/movie/list?api_key=684b8c6e53471a5a6fc82a6c144fa9a0&language=en-US');
         $generos = $response->getBody();
         $generos = json_decode($generos, true);
 
-        return view('procura', ['search' => $search['results'],'generos'=>$generos['genres']]);
+        return view('procura', ['search' => $search['results'],'generos'=>$generos['genres'],'search_p' => $search_person['results']]);
     }
 
     public function index()
@@ -54,12 +62,15 @@ class ProcuraController extends Controller
         $search = $response->getBody();
         $search = json_decode($search, true);
 
-        
+        $response = $client->request('GET', 'https://api.themoviedb.org/3/search/person?api_key=684b8c6e53471a5a6fc82a6c144fa9a0&query=' . $query);
+        $search_person = $response->getBody();
+        $search_person = json_decode($search_person, true);
+
         $response = $client->request('GET', 'https://api.themoviedb.org/3/genre/movie/list?api_key=684b8c6e53471a5a6fc82a6c144fa9a0&language=en-US');
         $generos = $response->getBody();
         $generos = json_decode($generos, true);
 
-        return view('procura', ['search' => $search['results'],'generos'=>$generos['genres']]);
+        return view('procura', ['search' => $search['results'],'generos'=>$generos['genres'],'search_p' => $search_person['results']]);
 
     }
 
