@@ -157,6 +157,7 @@
                 <iframe width="420" height="315" src="https://www.youtube.com/embed/Hu0KpdW4U0c">
                 </iframe>
                 @endif
+                <br><br>
             </div>
             @if (count($comment) != 0)
             <div class="reviews">
@@ -186,6 +187,7 @@
                     <br>
                 </div>
             @endif
+            
         </div>
         <div class="row">
             <div class="recent-text">
