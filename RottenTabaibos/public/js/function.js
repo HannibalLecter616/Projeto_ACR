@@ -86,4 +86,9 @@ $(document).ready(function() {
     $('.few').hide();
 });
 
+var pessoas = $(this).find('div.people').length;
+var numero = 8;
+
+$('div.people:gt(7)').hide();
+
 });
