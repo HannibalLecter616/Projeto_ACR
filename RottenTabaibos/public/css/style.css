@@ -16,9 +16,11 @@ header {
 
 .logo-container,
 .nav-links,
+.usernav,
 .quick-search {
     display: flex;
 }
+
 
 #quick-search-container{
     margin-right: 20px;
@@ -82,6 +84,20 @@ form {
     width: 80%;
   }
 
+.people{
+    flex: 20%;
+    width: 25%;
+    padding: 0 20px;
+}
+.people:hover{
+    opacity: 0.9;
+}
+.people img{
+    margin-top: 8px;
+    vertical-align: middle;
+    max-width: 100%;
+}
+
 .movie{
     flex: 20%;
     width: 25%;
@@ -91,6 +107,22 @@ form {
     opacity: 0.9;
 }
 .movie img{
+    margin-top: 8px;
+    vertical-align: middle;
+    max-width: 100%;
+}
+
+.movie_more{
+    flex: 20%;
+    width: 25%;
+    padding: 0 20px;
+}
+
+.movie_more:hover{
+    opacity: 0.9;
+}
+
+.movie_more img{
     margin-top: 8px;
     vertical-align: middle;
     max-width: 100%;
@@ -163,6 +195,18 @@ div.movie-text {
     /* width: 40px;
     height: 40px; */
     border-radius: 50%;
+}
+
+.user-thumb{
+    border-radius: 50%;
+    object-fit:cover;
+}
+
+.user-thumb img{
+    border-radius: 50%;
+    margin-top: 4px;
+    margin-right: 10px;
+    margin-left: 3px;
 }
 
 .photo {
@@ -239,6 +283,25 @@ label {
 
     background-color: #333;
     border-radius: 20px;
+    margin-right: 20px;
+  }
+
+  .usernav{
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #333;
+    margin-right: 20px;
+  }
+
+  .usernav a.user-thumb-name{
+    display:flex; /*added*/
+    float: left;
+    color: #f2f2f2;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px 10px;
+    text-decoration: none;
+    font-size: 15px;
   }
 
   /* Style the links inside the navigation bar */
@@ -246,12 +309,25 @@ label {
     display:flex; /*added*/
     float: left;
     color: #f2f2f2;
-    text-align: center;
     padding: 10px 10px;
     text-decoration: none;
     font-size: 15px;
   }
 /**/
+.more, .less, .all, .few {
+    background-color: #000;
+    clear: both;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-size: 14px;
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 6px 0;
+    text-align: center;
+    text-transform: uppercase;
+    width: 320px;
+  }
 
 .link {
     display: flex;
@@ -273,7 +349,7 @@ label {
 }
 
   /* Change the color of links on hover */
-  .topnav a:hover{
+  .topnav a:hover, .usernav a:hover{
     background-color: #ddd;
     color: black;
   }

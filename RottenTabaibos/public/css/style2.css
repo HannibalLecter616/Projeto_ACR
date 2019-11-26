@@ -1,4 +1,5 @@
-@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);@charset "UTF-8";
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+@charset "UTF-8";
 
 body {
   font-family: "Poppins", sans-serif;
@@ -74,18 +75,6 @@ form {
   color: black;
   font-weight: bold;
 }
-
-/*
-.row {
-    display: flex;
-    width: 80%;
-    margin: auto;
-}
-
-.movie {
-    width: 250px;
-}
-*/
 
 #known_for {
   margin: auto;
