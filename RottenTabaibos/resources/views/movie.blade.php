@@ -161,26 +161,31 @@
             @if (count($comment) != 0)
             <div class="reviews">
                 <h3>Reviews</h3>
-                @for ($i = 0; $i < count($comment); $i++) <div class="review-properties">
+                @for ($i = 0; $i < count($comment); $i++) 
+                    <div class="review-properties">
 
-                    Reviewed by <span class="review-author"><strong>{{$comment[$i]['author']}}</strong></span>
-                    <span class="icon-star"></span>
+                        Reviewed by <span class="review-author"><strong>{{$comment[$i]['author']}}</strong></span>
+                        <span class="icon-star"></span>
+                    
+                        <article>
+                            <p>{{str_limit($comment[$i]['content'],200)}}</p>
+                        </article>
+                        <div class="line"></div>
+                        <br>
+                    </div>
+                @endfor
+
+                <div class="all">Show All</div>
+                <div class="few">Show Few</div>
             </div>
-            <article>
-                <p>{{str_limit($comment[$i]['content'],200)}}</p>
-            </article>
-            <div class="line"></div>
-            <br>
-            @endfor
-        </div>
-        @else
-        <div class="reviews">
-            <h3>Reviews</h3>
-            <div class="line"></div>
-            <h4>No reviews yet!</h4>
-            <br>
-        </div>
-        @endif
+            @else
+                <div class="reviews">
+                    <h3>Reviews</h3>
+                    <div class="line"></div>
+                    <h4>No reviews yet!</h4>
+                    <br>
+                </div>
+            @endif
         </div>
         <div class="row">
             <div class="recent-text">
@@ -193,7 +198,7 @@
             </div>
             
                 @for ($i = 0; $i < count($recommendations); $i++) 
-                    <div class="movie_recommended">
+                    <div class="movie_more">
                         <!-- https://image.tmdb.org/t/p/w185//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg -->
                         <a href="/movie/{{$recommendations[$i]['id']}}" class="movie-link">
                                 <img src="https://image.tmdb.org/t/p/w500/.{{$recommendations[$i]['poster_path']}}" alt="">

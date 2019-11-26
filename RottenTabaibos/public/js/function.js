@@ -37,29 +37,53 @@ $(document).ready(function() {
     //e.preventDefault();
   });
 
-  var filmes = $(this).find('div.movie_recommended').length;
+  var filmes = $(this).find('div.movie_more').length;
   var mostrar = 8;
 
-  $('div.movie_recommended:gt(7)').hide();
+  $('div.movie_more:gt(7)').hide();
   $('.less').hide();
 
   $('.more').click(function() {
     $('.less').show();
     mostrar = 16;
     if(mostrar < filmes){
-      $('div.movie_recommended:lt('+ mostrar +')').show(300);
+      $('div.movie_more:lt('+ mostrar +')').show(300);
     }
     else{
-      $('div.movie_recommended:lt('+ filmes +')').show(300);
+      $('div.movie_more:lt('+ filmes +')').show(300);
       
     }
     $('.more').hide();
   });
 
   $('.less').click(function () {
-    $('div.movie_recommended').not(':lt(8)').hide(300);
+    $('div.movie_more').not(':lt(8)').hide(300);
     $('.more').show();
     $('.less').hide();
+});
+
+  var criticas = $(this).find('div.review-properties').length;
+  var teste = 3;
+
+  $('div.review-properties:gt(2)').hide();
+  $('.few').hide();
+
+  $('.all').click(function() {
+    $('.few').show();
+    if(teste < criticas){
+      $('div.review-properties:gt('+ teste +')').show(300);
+    }
+    else{
+      $('div.review-properties:gt('+ criticas +')').show(300);
+      
+    }
+    $('.all').hide();
+  });
+
+  $('.few').click(function () {
+    $('div.review-properties').not(':lt('+teste+')').hide(300);
+    $('.all').show();
+    $('.few').hide();
 });
 
 });

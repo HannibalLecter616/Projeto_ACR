@@ -42,14 +42,14 @@
         <h2>Known for:</h3>
         </div>
             <div class="row">
-                    @php
+                    {{-- @php
                     $numero = 0;    
-                    @endphp
+                    @endphp --}}
 
                     @if ($pessoa_detalhes['known_for_department'] == "Directing" || $pessoa_detalhes['known_for_department'] == "Writing")
                         @for ($i = 0; $i < count($conhecido); $i++)
-                            @if ($numero < 8 )
-                                    <div class="movie">
+                            {{-- @if ($numero < 8 ) --}}
+                                    <div class="movie_more">
                                         <a href="/movie/{{$conhecido[$i]['id']}}" class="movie-link">
 
                                             @if (empty($conhecido[$i]['poster_path']))
@@ -59,25 +59,25 @@
                                             @endif
                                              
                                         </a>
-                                    <div class="movie-box">
-                                            <a href="/movie/{{$conhecido[$i]['id']}}" class="movie-title">{{$conhecido[$i]['title']}}</a>
-                                        @if( empty($conhecido[$i]['release_date']))
-                                            <div class="movie-year">Undefined</div>
-                                        @else
-                                            <div class="movie-year">{{substr($conhecido[$i]['release_date'],0,4)}}</div>
-                                        @endif
+                                        <div class="movie-box">
+                                                <a href="/movie/{{$conhecido[$i]['id']}}" class="movie-title">{{$conhecido[$i]['title']}}</a>
+                                            @if( empty($conhecido[$i]['release_date']))
+                                                <div class="movie-year">Undefined</div>
+                                            @else
+                                                <div class="movie-year">{{substr($conhecido[$i]['release_date'],0,4)}}</div>
+                                            @endif
+                                        </div>
                                     </div>
-                                    </div>
-                                    @php
+                                    {{-- @php
                                         $numero++;    
-                                    @endphp 
-                            @endif
+                                    @endphp  --}}
+                            {{-- @endif --}}
                         @endfor   
                     @else
                         @for ($i = 0; $i < count($known_for); $i++)
-                                @if ($numero < 8 )
+                               {{--  @if ($numero < 8 ) --}}
                                     @if($known_for[$i]['popularity'] >= 10.000)
-                                        <div class="movie">
+                                        <div class="movie_more">
                                             <a href="/movie/{{$known_for[$i]['id']}}" class="movie-link">
 
                                                 @if (empty($known_for[$i]['poster_path']))
@@ -96,13 +96,16 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        @php
+                                        {{-- @php
                                             $numero++;    
-                                        @endphp 
-                                    @endif
+                                        @endphp  --}}
+                                    {{-- @endif --}}
                                 @endif
                         @endfor 
                     @endif
+
+                    <div class="more">Show more</div>
+                    <div class="less">Show less</div>
             </div>
     </section>
 </main>
