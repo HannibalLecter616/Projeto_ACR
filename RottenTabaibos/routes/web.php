@@ -18,6 +18,8 @@ Route::get('/search/popular', 'ProcuraController@popular');
 
 Route::get('/movie/{id}', 'FilmeController@index');
 
+Route::get('/user/{id}', 'UserController@index');
+
 Auth::routes();
 
 

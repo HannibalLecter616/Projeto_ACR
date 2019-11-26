@@ -103,10 +103,10 @@
                                 @endif
                         @endfor 
                     @endif
-
-                    <div class="more">Show more</div>
-                    <div class="less">Show less</div>
             </div>
+            <br>
+                <div class="more">Show more</div>
+                <div class="less">Show less</div>
     </section>
 </main>
 @endsection

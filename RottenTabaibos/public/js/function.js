@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+  var $target = $('html,body'); 
+  
   var nInitialCount = 300; //Intial characters to display
   var moretext = "Read more";
   var lesstext = "Read less";
@@ -48,11 +50,13 @@ $(document).ready(function() {
     mostrar = 16;
     if(mostrar < filmes){
       $('div.movie_more:lt('+ mostrar +')').show(300);
+      $target.animate({scrollTop: $target.height()}, 1000);
     }
     else{
       $('div.movie_more:lt('+ filmes +')').show(300);
-      
+      $target.animate({scrollTop: $target.height()}, 1000);
     }
+    
     $('.more').hide();
   });
 
