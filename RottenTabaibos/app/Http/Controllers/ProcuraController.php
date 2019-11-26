@@ -70,7 +70,9 @@ class ProcuraController extends Controller
         $generos = $response->getBody();
         $generos = json_decode($generos, true);
 
-        return view('procura', ['search' => $search['results'],'generos'=>$generos['genres'],'search_p' => $search_person['results']]);
+        return view('procura', ['search' => $search['results'],
+                                'generos'=>$generos['genres'],
+                                'search_p' => $search_person['results']]);
 
     }
 
@@ -79,6 +81,7 @@ class ProcuraController extends Controller
         $client = new Client([
             'headers' => ['content-type' => 'application/json', 'Accept' => 'application/json'],
         ]);
+        
         $response = $client->request('GET', 'https://api.themoviedb.org/3/person/'.$id.'/?api_key=684b8c6e53471a5a6fc82a6c144fa9a0');
         $pessoa_detalhes = $response->getBody();
         $pessoa_detalhes = json_decode($pessoa_detalhes, true);
@@ -91,6 +94,9 @@ class ProcuraController extends Controller
         $pessoa_conhecido_por = $response->getBody();
         $pessoa_conhecido_por = json_decode($pessoa_conhecido_por, true);
 
-        return view('perfil',['pessoa_detalhes' => $pessoa_detalhes, 'imagem' => $pessoa_imagens['profiles'], 'conhecido' => $pessoa_conhecido_por['crew'], 'known_for' => $pessoa_conhecido_por['cast']]);
+        return view('perfil',[  'pessoa_detalhes' => $pessoa_detalhes, 
+                                'imagem' => $pessoa_imagens['profiles'], 
+                                'conhecido' => $pessoa_conhecido_por['crew'], 
+                                'known_for' => $pessoa_conhecido_por['cast']]);
     }
 }

@@ -77,7 +77,7 @@
                         </div>
                     @foreach ($search_p as $pessoa)
                         <div class="people">
-                            <a href="/search/people/{{$pessoa['id']}}/{{$pessoa['name']}}" class="movie-link">
+                            <a class="user_photo" href="/search/people/{{$pessoa['id']}}/{{$pessoa['name']}}" class="movie-link">
 
                                 @if (empty($pessoa['profile_path']))
                                     <img src="/images/default_icon.png" alt="" width="300px">
