@@ -71,11 +71,16 @@
                 <div class="actors">
                     <h4>Cast <i class="fas fa-user-friends" style="color:red"></i></h4>
 
-                    @if(count($crew) < 5) @foreach($crew as $cast) <div class="tableCell">
+                    @if(count($crew) < 5)
+                     @foreach($crew as $cast) <div class="tableCell">
                         <a class="avatar-thumb" href="/search/people/{{$cast['id']}}/{{$cast['name']}}" target="_blank"
-                            title="IMDb Profile"> <img class="photo"
-                                src="https://image.tmdb.org/t/p/w185{{$cast['profile_path']}}" alt="" height="60"
-                                width="60">
+                            title="IMDb Profile"> 
+                            @if (empty($cast['profile_path']))
+                                <img class="photo" src="/images/default_icon.png" alt="" height="60" width="60">
+                            @else
+                                <img class="photo" src="https://image.tmdb.org/t/p/w185{{$cast['profile_path']}}" alt="" height="60" width="60">
+                            @endif
+                            
                         </a>
                 </div>
                 <div class="list-cast-info tableCell">
@@ -91,9 +96,13 @@
                 @for ($i = 0; $i < 5; $i++) <div class="list-cast">
                     <div class="tableCell">
                         <a class="avatar-thumb" href="/search/people/{{$crew[$i]['id']}}/{{$crew[$i]['name']}}"
-                            target="_blank" title="IMDb Profile"> <img class="photo"
-                                src="https://image.tmdb.org/t/p/w185{{$crew[$i]['profile_path']}}" alt="" height="60"
-                                width="60">
+                            target="_blank" title="IMDb Profile"> 
+                        
+                            @if (empty($crew[$i]['profile_path']))
+                                <img class="photo" src="/images/default_icon.png" alt="" height="60" width="60">
+                            @else
+                            <img class="photo" src="https://image.tmdb.org/t/p/w185{{$crew[$i]['profile_path']}}" alt="" height="60" width="60">
+                            @endif
                         </a>
                     </div>
                     <div class="list-cast-info tableCell">
@@ -112,9 +121,14 @@
                 @for ($i = 0; $i < count($director); $i++) @if ($director[$i]['department']=='Directing' &&
                     $director[$i]['job']=="Director" ) <div class="tableCell">
                     <a class="avatar-thumb" href="https://www.imdb.com/name/nm0000158/" target="_blank"
-                        title="IMDb Profile"> <img class="photo"
-                            src="https://image.tmdb.org/t/p/w185{{$director[$i]['profile_path']}}" alt="" height="60"
-                            width="60">
+                        title="IMDb Profile"> 
+                        
+                        @if (empty($director[$i]['profile_path']))
+                            <img class="photo" src="/images/default_icon.png" alt="" height="60" width="60">
+                        @else
+                            <img class="photo" src="https://image.tmdb.org/t/p/w185{{$director[$i]['profile_path']}}" alt="" height="60" width="60">
+                        @endif
+
                     </a>
             </div>
             <div class="list-cast-info tableCell">
@@ -167,7 +181,8 @@
             <br>
         </div>
         @endif
-        <div class="recent">
+        </div>
+        <div class="row">
             <div class="recent-text">
                 <div class="text-row">
                     <h2>
@@ -176,20 +191,25 @@
                     <a href="/browse">Browse All</a>
                 </div>
             </div>
-            <div class="row">
-                @for ($i = 0; $i < 8; $i++) <div class="movie">
-                    <!-- https://image.tmdb.org/t/p/w185//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg -->
-                    <a href="/movie/{{$recommendations[$i]['id']}}" class="movie-link">
-                        <img src="https://image.tmdb.org/t/p/w500/.{{$recommendations[$i]['poster_path']}}" alt="">
-                    </a>
-                    <div class="movie-box">
-                        <a href="/movie/{{$recommendations[$i]['id']}}"
-                            class="movie-title">{{$recommendations[$i]['original_title']}}</a>
-                        <div class="movie-year">{{substr($recommendations[$i]['release_date'],0,4)}}</div>
+            
+                @for ($i = 0; $i < count($recommendations); $i++) 
+                    <div class="movie_recommended">
+                        <!-- https://image.tmdb.org/t/p/w185//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg -->
+                        <a href="/movie/{{$recommendations[$i]['id']}}" class="movie-link">
+                                <img src="https://image.tmdb.org/t/p/w500/.{{$recommendations[$i]['poster_path']}}" alt="">
+                            
+                        </a>
+                        <div class="movie-box">
+                            <a href="/movie/{{$recommendations[$i]['id']}}"
+                                class="movie-title">{{$recommendations[$i]['original_title']}}</a>
+                            <div class="movie-year">{{substr($recommendations[$i]['release_date'],0,4)}}</div>
+                        </div>
                     </div>
-            </div>
-            @endfor
-        </div>
+                @endfor 
+
+                <div class="more">Show more</div>
+                <div class="less">Show less</div>
+        </div> 
     </section>
 </main>
 </body>

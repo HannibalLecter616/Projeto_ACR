@@ -7,7 +7,12 @@
         <div class="row">
             <div class="movie-main">
                 <a href="#" class="movie-link">
-                    <img src="https://image.tmdb.org/t/p/w500{{$pessoa_detalhes['profile_path']}}" alt="" width="300px">
+
+                    @if (empty($pessoa_detalhes['profile_path']))
+                        <img src="/images/default_icon.png" alt="" width="300px">
+                    @else
+                        <img src="https://image.tmdb.org/t/p/w500{{$pessoa_detalhes['profile_path']}}" alt="" width="300px">
+                    @endif
                 </a>
             </div>
             <div class="movie-text">
@@ -46,7 +51,13 @@
                             @if ($numero < 8 )
                                     <div class="movie">
                                         <a href="/movie/{{$conhecido[$i]['id']}}" class="movie-link">
+
+                                            @if (empty($conhecido[$i]['poster_path']))
+                                                <img src="/images/no_image.png" alt="" width="200px" height="auto">
+                                            @else
                                             <img src="https://image.tmdb.org/t/p/w500/{{$conhecido[$i]['poster_path']}}" alt="" width="200px" height="auto">
+                                            @endif
+                                             
                                         </a>
                                     <div class="movie-box">
                                             <a href="/movie/{{$conhecido[$i]['id']}}" class="movie-title">{{$conhecido[$i]['title']}}</a>
@@ -68,7 +79,13 @@
                                     @if($known_for[$i]['popularity'] >= 10.000)
                                         <div class="movie">
                                             <a href="/movie/{{$known_for[$i]['id']}}" class="movie-link">
-                                                <img src="https://image.tmdb.org/t/p/w500/{{$known_for[$i]['poster_path']}}" alt="" width="200px" height="auto">
+
+                                                @if (empty($known_for[$i]['poster_path']))
+                                                    <img src="/images/no_image.png" alt="" width="200px" height="auto">
+                                                @else
+                                                    <img src="https://image.tmdb.org/t/p/w500/{{$known_for[$i]['poster_path']}}" alt="" width="200px" height="auto">
+                                                @endif 
+                                                
                                             </a>
                                             <div class="movie-box">
                                                 <a href="/movie/{{$known_for[$i]['id']}}" class="movie-title">{{$known_for[$i]['title']}}</a>

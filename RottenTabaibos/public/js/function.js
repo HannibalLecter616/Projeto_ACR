@@ -36,4 +36,30 @@ $(document).ready(function() {
     return false;
     //e.preventDefault();
   });
+
+  var filmes = $(this).find('div.movie_recommended').length;
+  var mostrar = 8;
+
+  $('div.movie_recommended:gt(7)').hide();
+  $('.less').hide();
+
+  $('.more').click(function() {
+    $('.less').show();
+    mostrar = 16;
+    if(mostrar < filmes){
+      $('div.movie_recommended:lt('+ mostrar +')').show(300);
+    }
+    else{
+      $('div.movie_recommended:lt('+ filmes +')').show(300);
+      
+    }
+    $('.more').hide();
+  });
+
+  $('.less').click(function () {
+    $('div.movie_recommended').not(':lt(8)').hide(300);
+    $('.more').show();
+    $('.less').hide();
+});
+
 });
