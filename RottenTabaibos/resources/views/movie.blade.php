@@ -33,54 +33,51 @@
                 </div>
                 <h4>Synopsis</h4>
 
-                
+
                 <h5 class="bio-text">{{$movie['overview']}}</h5>
                 @auth
-                
+
                 <h4>Your Review</h4>
                 <div class=" rating-star">
                     <fieldset class="rating">
                         <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5"
                             title="Awesome - 5 stars"></label>
-                        <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half"
-                            for="star4half" title="Pretty good - 4.5 stars"></label>
                         <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4"
                             title="Pretty good - 4 stars"></label>
-                        <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half"
-                            for="star3half" title="Meh - 3.5 stars"></label>
                         <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3"
                             title="Meh - 3 stars"></label>
-                        <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half"
-                            for="star2half" title="Kinda bad - 2.5 stars"></label>
                         <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2"
                             title="Kinda bad - 2 stars"></label>
-                        <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half"
-                            for="star1half" title="Meh - 1.5 stars"></label>
                         <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1"
                             title="Sucks big time - 1 star"></label>
-                        <input type="radio" id="starhalf" name="rating" value="half" /><label class="half"
-                            for="starhalf" title="Sucks big time - 0.5 stars"></label>
                     </fieldset>
                 </div>
-                <div class="tex-box">
-                    <input type="text" name="review" placeholder="What did you think of this movie?">
-                </div>
+                {{-- <form method="post" action={{route('comments.store')}}>
+                <input type="text" name="review" placeholder="What did you think of this movie?">
+                {{ csrf_field() }}
+                <input type="submit" value="Submit">
+                </form>--}}
+                {{ Form::open(['route' => ['comments.store'], 'method' => 'POST']) }}
+                <p>{{ Form::textarea('body', old('body')) }}</p>
+                {{ Form::hidden('movie_id', $movie['id']) }}
+                <p>{{ Form::submit('Send') }}</p>
+                {{ Form::close() }}
                 @endauth
             </div>
             <div class="crew">
                 <div class="actors">
                     <h4>Cast <i class="fas fa-user-friends" style="color:red"></i></h4>
 
-                    @if(count($crew) < 5)
-                     @foreach($crew as $cast) <div class="tableCell">
+                    @if(count($crew) < 5) @foreach($crew as $cast) <div class="tableCell">
                         <a class="avatar-thumb" href="/search/people/{{$cast['id']}}/{{$cast['name']}}" target="_blank"
-                            title="IMDb Profile"> 
+                            title="IMDb Profile">
                             @if (empty($cast['profile_path']))
-                                <img class="photo" src="/images/default_icon.png" alt="" height="60" width="60">
+                            <img class="photo" src="/images/default_icon.png" alt="" height="60" width="60">
                             @else
-                                <img class="photo" src="https://image.tmdb.org/t/p/w185{{$cast['profile_path']}}" alt="" height="60" width="60">
+                            <img class="photo" src="https://image.tmdb.org/t/p/w185{{$cast['profile_path']}}" alt=""
+                                height="60" width="60">
                             @endif
-                            
+
                         </a>
                 </div>
                 <div class="list-cast-info tableCell">
@@ -96,12 +93,13 @@
                 @for ($i = 0; $i < 5; $i++) <div class="list-cast">
                     <div class="tableCell">
                         <a class="avatar-thumb" href="/search/people/{{$crew[$i]['id']}}/{{$crew[$i]['name']}}"
-                            target="_blank" title="IMDb Profile"> 
-                        
+                            target="_blank" title="IMDb Profile">
+
                             @if (empty($crew[$i]['profile_path']))
-                                <img class="photo" src="/images/default_icon.png" alt="" height="60" width="60">
+                            <img class="photo" src="/images/default_icon.png" alt="" height="60" width="60">
                             @else
-                            <img class="photo" src="https://image.tmdb.org/t/p/w185{{$crew[$i]['profile_path']}}" alt="" height="60" width="60">
+                            <img class="photo" src="https://image.tmdb.org/t/p/w185{{$crew[$i]['profile_path']}}" alt=""
+                                height="60" width="60">
                             @endif
                         </a>
                     </div>
@@ -121,12 +119,13 @@
                 @for ($i = 0; $i < count($director); $i++) @if ($director[$i]['department']=='Directing' &&
                     $director[$i]['job']=="Director" ) <div class="tableCell">
                     <a class="avatar-thumb" href="https://www.imdb.com/name/nm0000158/" target="_blank"
-                        title="IMDb Profile"> 
-                        
+                        title="IMDb Profile">
+
                         @if (empty($director[$i]['profile_path']))
-                            <img class="photo" src="/images/default_icon.png" alt="" height="60" width="60">
+                        <img class="photo" src="/images/default_icon.png" alt="" height="60" width="60">
                         @else
-                            <img class="photo" src="https://image.tmdb.org/t/p/w185{{$director[$i]['profile_path']}}" alt="" height="60" width="60">
+                        <img class="photo" src="https://image.tmdb.org/t/p/w185{{$director[$i]['profile_path']}}" alt=""
+                            height="60" width="60">
                         @endif
 
                     </a>
@@ -146,6 +145,68 @@
         </div>
         <div class="line"></div>
         <div class="row">
+
+            @if (count($comment) != 0)
+            <div class="reviews">
+                <h3>Reviews</h3>
+                @for ($i = 0; $i < count($comment); $i++) <div class="review-properties">
+
+                    Reviewed by <span class="review-author"><strong>{{$comment[$i]['author']}}</strong></span>
+                    <span class="icon-star"></span>
+
+                    <article>
+                        <p>{{str_limit($comment[$i]['content'],200)}}</p>
+                    </article>
+                    <div class="line"></div>
+                    <br>
+            </div>
+            @endfor
+
+            <div class="all">Show All</div>
+            <div class="few">Show Few</div>
+        </div>
+        @else
+        <div class="reviews">
+            <h3>Reviews</h3>
+            <div class="line"></div>
+            <h4>No reviews yet!</h4>
+            <br>
+        </div>
+        @endif
+        @if (count($comments) != 0)
+        <div class="reviews">
+            <h3>Reviews</h3>
+
+            @foreach ($comments as $item)
+            <div class="review-properties">
+
+                Reviewed by <span class="review-author"><strong>{{$item -> user_id}}</strong></span>
+                <span class="icon-star"></span>
+
+                <article>
+                    <p>{{str_limit($item->body,200)}}</p>
+
+                </article>
+                <div class="line"></div>
+                <br>
+            </div>
+            @endforeach
+
+            <div class="all">Show All</div>
+            <div class="few">Show Few</div>
+        </div>
+        @else
+        <div class="reviews">
+            <h3>Reviews</h3>
+            <div class="line"></div>
+            <h4>No reviews yet!</h4>
+            <br>
+        </div>
+        @endif
+
+        </div>
+        <div class="line"></div>
+        <div class="row">
             <div class="trailer">
                 <h3>Trailer <i class="fas fa-video" style="color:red"></i> </h3>
                 @if(count($trailer) != 0)
@@ -159,64 +220,64 @@
                 @endif
                 <br><br>
             </div>
-            @if (count($comment) != 0)
-            <div class="reviews">
-                <h3>Reviews</h3>
-                @for ($i = 0; $i < count($comment); $i++) 
-                    <div class="review-properties">
-
-                        Reviewed by <span class="review-author"><strong>{{$comment[$i]['author']}}</strong></span>
-                        <span class="icon-star"></span>
-                    
-                        <article>
-                            <p>{{str_limit($comment[$i]['content'],200)}}</p>
-                        </article>
-                        <div class="line"></div>
-                        <br>
+            <div class="images">
+                <h3>Images <i class="fas fa-images" style="color:red"></i></h3>
+                @foreach ($images as $image)
+                <div class="slideshow-container">
+                    <div class="mySlides fade">
+                        <img src="https://image.tmdb.org/t/p/w500{{$image['file_path']}}">
                     </div>
-                @endfor
-
-                <div class="all">Show All</div>
-                <div class="few">Show Few</div>
-            </div>
-            @else
-                <div class="reviews">
-                    <h3>Reviews</h3>
-                    <div class="line"></div>
-                    <h4>No reviews yet!</h4>
-                    <br>
                 </div>
-            @endif
-            
+                @endforeach
+
+                <br>
+                <script>
+                    var slideIndex = 0;
+                    showSlides();
+
+                    function showSlides() {
+                        var i;
+                        var slides = document.getElementsByClassName("mySlides");
+                        for (i = 0; i < slides.length; i++) {
+                            slides[i].style.display = "none";
+                        }
+                        slideIndex++;
+                        if (slideIndex > slides.length) {
+                            slideIndex = 1
+                        }
+                        slides[slideIndex - 1].style.display = "block";
+                        setTimeout(showSlides, 4000); // Change image every 2 seconds
+                    }
+
+                </script>
+            </div>
+
+            <div class="row">
+                <div class="recent-text">
+                    <div class="text-row">
+                        <h2>
+                            Similar Movies
+                        </h2>
+                    </div>
+                </div>
+
+                @for ($i = 0; $i < count($recommendations); $i++) <div class="movie_more">
+                    <!-- https://image.tmdb.org/t/p/w185//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg -->
+                    <a href="/movie/{{$recommendations[$i]['id']}}" class="movie-link">
+                        <img src="https://image.tmdb.org/t/p/w500/.{{$recommendations[$i]['poster_path']}}" alt="">
+
+                    </a>
+                    <div class="movie-box">
+                        <a href="/movie/{{$recommendations[$i]['id']}}"
+                            class="movie-title">{{$recommendations[$i]['original_title']}}</a>
+                        <div class="movie-year">{{substr($recommendations[$i]['release_date'],0,4)}}</div>
+                    </div>
+            </div>
+            @endfor
+
+            <div class="more">Show more</div>
+            <div class="less">Show less</div>
         </div>
-        <div class="row">
-            <div class="recent-text">
-                <div class="text-row">
-                    <h2>
-                        <i class="fas fa-plus" style="color: red;"></i> Similar Movies
-                    </h2>
-                    <a href="/browse">Browse All</a>
-                </div>
-            </div>
-            
-                @for ($i = 0; $i < count($recommendations); $i++) 
-                    <div class="movie_more">
-                        <!-- https://image.tmdb.org/t/p/w185//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg -->
-                        <a href="/movie/{{$recommendations[$i]['id']}}" class="movie-link">
-                                <img src="https://image.tmdb.org/t/p/w500/.{{$recommendations[$i]['poster_path']}}" alt="">
-                            
-                        </a>
-                        <div class="movie-box">
-                            <a href="/movie/{{$recommendations[$i]['id']}}"
-                                class="movie-title">{{$recommendations[$i]['original_title']}}</a>
-                            <div class="movie-year">{{substr($recommendations[$i]['release_date'],0,4)}}</div>
-                        </div>
-                    </div>
-                @endfor 
-
-                <div class="more">Show more</div>
-                <div class="less">Show less</div>
-        </div> 
     </section>
 </main>
 </body>

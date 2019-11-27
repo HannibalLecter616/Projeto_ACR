@@ -33,7 +33,8 @@
                         @auth
                             <a class="principal" href="/">Home</a>
                             <a href="/browse">Browse</a>
-                            
+                            <a href="/logout">Logout</a>
+
                         @else
                             <a class="principal" href="/">Home</a>
                             <a href="/browse">Browse</a>
@@ -57,8 +58,8 @@
 
                             <a class="user-thumb" href="/user/{{$id}}">
                                 <img src="/images/default_icon.png" alt="logo" height="38">
-                            </a> 
-                            
+                            </a>
+
                             <div class="dropdown">
                                     <a class="user-thumb-name" href="/user/{{$id}}">
                                         {{$fname}} {{$lname}}
@@ -77,5 +78,5 @@
 
             @yield('content')
             <script type="text/javascript" src="/../js/function.js"></script>
-            
+
 </html>
