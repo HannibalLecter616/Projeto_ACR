@@ -67,7 +67,7 @@
                                     <div class="dropdown-content">
                                         <a href="/user/{{$id}}">View Reviews</a>
                                         <a href="/user/{{$id}}">Posts</a> {{-- ir para o forum --}}
-                                        <a href="/browse">Logout</a>
+                                        <a href="/logout">Logout</a>
                                     </div>  
                                 </div>
 
