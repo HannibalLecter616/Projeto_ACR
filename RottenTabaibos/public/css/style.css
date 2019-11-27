@@ -132,15 +132,29 @@ form {
     .movie {
       flex: 40%;
     }
+
+    .movie_more{
+        flex: 40%;
+    }
+
     .movie img {
         width: 100%;
       }
+
+    .movie_more img{
+        width: 100%;
+    }
   }
 
 @media screen and (max-width: 1080px) {
     .movie {
      flex:40%;
     }
+    
+    .movie_more{
+        flex: 40%;
+    }
+
   }
 
 .movie-row{
@@ -267,14 +281,14 @@ label {
     color: black;
 }
 
-.trailer {
-    flex: 1;
-}
-
 .reviews {
     flex: 1;
+    margin-left:5%;
 }
 
+.critic-review{
+    text-align: justify;
+}
 /* Start Navbar */
 
 .topnav {
@@ -562,7 +576,7 @@ label {
     -webkit-animation-name: fade;
     -webkit-animation-duration: 1.5s;
     animation-name: fade;
-    animation-duration: 1.5s;
+    animation-duration: 4s;
 }
 
 @-webkit-keyframes fade {

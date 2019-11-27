@@ -11,7 +11,36 @@
                     @if (empty($pessoa_detalhes['profile_path']))
                         <img src="/images/default_icon.png" alt="" width="300px">
                     @else
-                        <img src="https://image.tmdb.org/t/p/w500{{$pessoa_detalhes['profile_path']}}" alt="" width="300px">
+                        @foreach ($imagem as $image)
+                            <div class="slideshow-container">
+                                <div class="mySlides fade">
+                                    <img src="https://image.tmdb.org/t/p/w500{{$image['file_path']}}" width="300px">
+                                </div>
+                            </div>
+                        @endforeach
+
+                        <br>
+                       <script>
+                            var slideIndex = 0;
+                            showSlides();
+
+                            function showSlides() {
+                                var i;
+                                var slides = document.getElementsByClassName("mySlides");
+                                for (i = 0; i < slides.length; i++) {
+                                    slides[i].style.display = "none";
+                                }
+                                slideIndex++;
+                                if (slideIndex > slides.length) {
+                                    slideIndex = 1
+                                }
+                                slides[slideIndex - 1].style.display = "block";
+                                setTimeout(showSlides, 4000); // Change image every 2 seconds
+                            }
+
+                        </script>
+
+                        {{-- <img src="https://image.tmdb.org/t/p/w500{{$pessoa_detalhes['profile_path']}}" alt="" width="300px"> --}}
                     @endif
                 </a>
             </div>

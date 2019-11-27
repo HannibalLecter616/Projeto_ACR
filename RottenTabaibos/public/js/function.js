@@ -7,7 +7,7 @@ $(document).ready(function() {
   var lesstext = "Read less";
   var ellipsestext = "...";
 
-  $('.bio-text').each(function() {
+  $('.bio-text, .critic-review').each(function() {
     var paraText = $(this).html();
     var sText = paraText.substr(0, nInitialCount);
     var eText = paraText.substr(nInitialCount, paraText.length - nInitialCount);
@@ -17,9 +17,18 @@ $(document).ready(function() {
         var newHtml = sText + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="moretext"><span>' + eText + '</span>&nbsp;&nbsp;<a href="" class="link">' + moretext + '</a></span>';
       $(this).html(newHtml);
     }
-
-    
   });
+/*
+  $('.critic-review').each(function(){
+    var reviewText = $(this).html();
+    var shorReview = reviewText.substr(0, nInitialCount);
+    var longReview = reviewText.substr(nInitialCount, reviewText.length - nInitialCount);
+
+    if(reviewText.length > nInitialCount){
+      var review = shorReview + ellipsestext + longReview;
+      $(this).html(review);
+    }
+  });*/
 
   $(".link").on('click', function(e) {
     var lnkHTML = $(this).html();
