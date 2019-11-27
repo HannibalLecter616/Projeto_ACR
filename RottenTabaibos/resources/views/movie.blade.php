@@ -231,34 +231,19 @@
             </div>
             <div class="images">
                 <h3>Images <i class="fas fa-images" style="color:red"></i></h3>
-                @foreach ($images as $image)
-                    <div class="slideshow-container">
-                        <div class="mySlides fade">
-                            <img src="https://image.tmdb.org/t/p/w500{{$image['file_path']}}">
+
+                @if (empty($images))
+                    <img src="/images/no_image.png" alt="" width="300px">
+                @else
+                    @foreach ($images as $image)
+                        <div class="slideshow-container">
+                            <div class="mySlides fade">
+                                <img src="https://image.tmdb.org/t/p/w500{{$image['file_path']}}">
+                            </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                @endif
 
-                <br>
-                <script>
-                    var slideIndex = 0;
-                    showSlides();
-
-                    function showSlides() {
-                        var i;
-                        var slides = document.getElementsByClassName("mySlides");
-                        for (i = 0; i < slides.length; i++) {
-                            slides[i].style.display = "none";
-                        }
-                        slideIndex++;
-                        if (slideIndex > slides.length) {
-                            slideIndex = 1
-                        }
-                        slides[slideIndex - 1].style.display = "block";
-                        setTimeout(showSlides, 4000); // Change image every 2 seconds
-                    }
-
-                </script>
             </div>
         </div>
             <div class="row">

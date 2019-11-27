@@ -33,7 +33,6 @@
                         @auth
                             <a class="principal" href="/">Home</a>
                             <a href="/browse">Browse</a>
-                            <a href="/logout">Logout</a>
 
                         @else
                             <a class="principal" href="/">Home</a>
@@ -64,11 +63,13 @@
                                     <a class="user-thumb-name" href="/user/{{$id}}">
                                         {{$fname}} {{$lname}}
                                     </a>
-                                    {{-- <div class="dropdown-content">
-                                        <p><a href="/user/{{$id}}">View Profile</a></p>
-                                        <p><a href="/browse">Logout</a></p>
-                                    </div> --}}
-                                  </div>
+                                
+                                    <div class="dropdown-content">
+                                        <a href="/user/{{$id}}">View Reviews</a>
+                                        <a href="/user/{{$id}}">Posts</a> {{-- ir para o forum --}}
+                                        <a href="/browse">Logout</a>
+                                    </div>  
+                                </div>
 
                 </div>
             @endauth

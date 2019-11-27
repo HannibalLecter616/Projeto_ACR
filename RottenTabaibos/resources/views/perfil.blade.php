@@ -19,27 +19,6 @@
                             </div>
                         @endforeach
 
-                        <br>
-                       <script>
-                            var slideIndex = 0;
-                            showSlides();
-
-                            function showSlides() {
-                                var i;
-                                var slides = document.getElementsByClassName("mySlides");
-                                for (i = 0; i < slides.length; i++) {
-                                    slides[i].style.display = "none";
-                                }
-                                slideIndex++;
-                                if (slideIndex > slides.length) {
-                                    slideIndex = 1
-                                }
-                                slides[slideIndex - 1].style.display = "block";
-                                setTimeout(showSlides, 4000); // Change image every 2 seconds
-                            }
-
-                        </script>
-
                         {{-- <img src="https://image.tmdb.org/t/p/w500{{$pessoa_detalhes['profile_path']}}" alt="" width="300px"> --}}
                     @endif
                 </a>
@@ -67,10 +46,12 @@
             </div>
             <div class="line"></div>
         </div>
-        <div id="known_for">
+        <div class="row">
+
+        
+        <div class="known_for">
         <h2>Known for:</h3>
         </div>
-            <div class="row">
                     {{-- @php
                     $numero = 0;    
                     @endphp --}}
@@ -82,9 +63,9 @@
                                         <a href="/movie/{{$conhecido[$i]['id']}}" class="movie-link">
 
                                             @if (empty($conhecido[$i]['poster_path']))
-                                                <img src="/images/no_image.png" alt="" width="200px" height="auto">
+                                                <img src="/images/no_image.png" alt="">
                                             @else
-                                            <img src="https://image.tmdb.org/t/p/w500/{{$conhecido[$i]['poster_path']}}" alt="" width="200px" height="auto">
+                                            <img src="https://image.tmdb.org/t/p/w500/{{$conhecido[$i]['poster_path']}}" alt="">
                                             @endif
                                              
                                         </a>
@@ -110,9 +91,9 @@
                                             <a href="/movie/{{$known_for[$i]['id']}}" class="movie-link">
 
                                                 @if (empty($known_for[$i]['poster_path']))
-                                                    <img src="/images/no_image.png" alt="" width="200px" height="auto">
+                                                    <img src="/images/no_image.png" alt="">
                                                 @else
-                                                    <img src="https://image.tmdb.org/t/p/w500/{{$known_for[$i]['poster_path']}}" alt="" width="200px" height="auto">
+                                                    <img src="https://image.tmdb.org/t/p/w500/{{$known_for[$i]['poster_path']}}" alt="" >
                                                 @endif 
                                                 
                                             </a>

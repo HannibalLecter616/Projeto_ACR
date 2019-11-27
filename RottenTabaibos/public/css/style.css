@@ -50,7 +50,8 @@ form {
 }
 
 .popular-text,
-.recent-text {
+.recent-text,
+.known_for {
     width: 90%;
     margin: auto;
 }
@@ -71,10 +72,6 @@ form {
     font-weight: bold;
 }
 
-#known_for{
-    margin:auto;
-    width: 80%;
-}
 
 .row {
     display: flex;
@@ -116,6 +113,7 @@ form {
     flex: 20%;
     width: 25%;
     padding: 0 20px;
+    margin-bottom: 20px;
 }
 
 .movie_more:hover{
@@ -185,7 +183,7 @@ div.movie-text {
 
 }
 
-.recent-text {
+.recent-text,.known_for {
     border-top-width: 1px;
     border-top-style: solid;
     border-top-color: rgb(180, 156, 156);
@@ -213,14 +211,11 @@ div.movie-text {
 
 .user-thumb{
     border-radius: 50%;
-    object-fit:cover;
 }
 
 .user-thumb img{
     border-radius: 50%;
-    margin-top: 4px;
-    margin-right: 10px;
-    margin-left: 3px;
+    position: relative;
 }
 
 .photo {
@@ -293,8 +288,7 @@ label {
 
 .topnav {
     justify-content: space-around;
-    overflow: hidden;
-
+    overflow: hidden; 
     background-color: #333;
     border-radius: 20px;
     margin-right: 20px;
@@ -302,7 +296,6 @@ label {
 
   .usernav{
     border-radius: 20px;
-    overflow: hidden;
     background-color: #333;
     margin-right: 20px;
   }
@@ -569,7 +562,7 @@ label {
 .slideshow-container {
     max-width: 1000px;
     position: relative;
-    margin: auto;
+    margin-bottom: 20px;
 }
 
 .fade {
@@ -605,3 +598,29 @@ label {
         font-size: 11px
     }
 }
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    top: 100%;
+    display: none;
+    position: absolute;
+    background-color: #333;
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    float: none;
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover > .dropdown-content {display: block;}
