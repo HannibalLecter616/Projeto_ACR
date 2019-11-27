@@ -185,21 +185,34 @@
         @if (count($comments) != 0)
             <div class="reviews">
                 <h3>Users Reviews</h3>
+                    @php
+                       $num = 0;
+                    @endphp
 
                     @foreach ($comments as $item)
-                        <div class="review-properties">
+                        @if ($movie['id'] == $item->movie_id)
+                            <div class="review-properties">
 
-                            Reviewed by <span class="review-author"><strong>{{$item -> user_id}}</strong></span>
-                            <span class="icon-star"></span>
+                                    Reviewed by <span class="review-author"><strong>{{$item -> user_id}}</strong></span>
+                                    <span class="icon-star"></span>
 
-                            <article>
-                                <p>{{str_limit($item->body,200)}}</p>
+                                    <article>
+                                        <p>{{str_limit($item->body,200)}}</p>
 
-                            </article>
-                            <div class="line"></div>
-                            <br>
-                        </div>
+                                    </article>
+                                    <div class="line"></div>
+                                    <br>
+                            </div>
+                                @php
+                                $num++;
+                            @endphp
+                        @endif
                     @endforeach
+                        @if ($num == 0)
+                            <div class="line"></div>    
+                            <h4>No reviews yet!</h4>
+                            <br>
+                        @endif
 
                 <div class="all">Show All</div>
                 <div class="few">Show Few</div>
