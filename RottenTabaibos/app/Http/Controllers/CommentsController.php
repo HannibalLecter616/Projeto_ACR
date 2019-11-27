@@ -21,7 +21,8 @@ class CommentsController extends Controller
         Comment::create([
             'body' => $request->body,
             'user_id' => Auth::id(),
-            'movie_id' => $request->movie_id
+            'movie_id' => $request->movie_id,
+            'stars' => '3'
         ]);
         // return redirect()->route('posts.show', $movie->id);
     }
