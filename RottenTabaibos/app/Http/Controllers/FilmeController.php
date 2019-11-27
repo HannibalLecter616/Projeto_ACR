@@ -6,12 +6,16 @@ use GuzzleHttp\Client;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class FilmeController extends Controller
 {
 
     public function index($id)
     {
+        $comments = DB::table('comments')->get();
+
+
         $client = new Client([
             'headers' => ['content-type' => 'application/json', 'Accept' => 'application/json'],
         ]);
@@ -36,7 +40,7 @@ class FilmeController extends Controller
         $recommendations = $response->getBody();
         $recommendations = json_decode($recommendations, true);
 
-        return view('movie', ['movie' => $movie,'crew'=>$crew['cast'],'director'=>$crew['crew'],'trailer'=>$trailer['results'], 'comment' => $comment['results'], 'recommendations'=> $recommendations['results']]);
+        return view('movie', ['movie' => $movie,'crew'=>$crew['cast'],'director'=>$crew['crew'],'trailer'=>$trailer['results'], 'comment' => $comment['results'], 'recommendations'=> $recommendations['results'],'comments'=>$comments]);
     }
 }
 
