@@ -33,10 +33,10 @@
                 </div>
                 <h4>Synopsis</h4>
 
-                
+
                 <h5 class="bio-text">{{$movie['overview']}}</h5>
                 @auth
-                
+
                 <h4>Your Review</h4>
                 <div class=" rating-star">
                     <fieldset class="rating">
@@ -62,9 +62,16 @@
                             for="starhalf" title="Sucks big time - 0.5 stars"></label>
                     </fieldset>
                 </div>
-                <div class="tex-box">
-                    <input type="text" name="review" placeholder="What did you think of this movie?">
-                </div>
+                <form action="{{ route('comments.store') }}" method="post">
+                    <input type="text" name="body" placeholder="What did you think of this movie?">
+                    <input type="hidden" name="movie_id" value= $movie['id'] >
+                    <input type="submit" value="Submit">
+                </form>
+                {{-- {{ Form::open(['route' => ['comments.store'], 'method' => 'POST']) }}
+                 <p>{{ Form::input('body', old('body')) }}</p>
+                 {{ Form::hidden('movie_id', $movie['id']) }}
+                  <p>{{ Form::submit('Send') }}</p>
+                  {{ Form::close() }} --}}
                 @endauth
             </div>
             <div class="crew">
@@ -74,13 +81,13 @@
                     @if(count($crew) < 5)
                      @foreach($crew as $cast) <div class="tableCell">
                         <a class="avatar-thumb" href="/search/people/{{$cast['id']}}/{{$cast['name']}}" target="_blank"
-                            title="IMDb Profile"> 
+                            title="IMDb Profile">
                             @if (empty($cast['profile_path']))
                                 <img class="photo" src="/images/default_icon.png" alt="" height="60" width="60">
                             @else
                                 <img class="photo" src="https://image.tmdb.org/t/p/w185{{$cast['profile_path']}}" alt="" height="60" width="60">
                             @endif
-                            
+
                         </a>
                 </div>
                 <div class="list-cast-info tableCell">
@@ -96,8 +103,8 @@
                 @for ($i = 0; $i < 5; $i++) <div class="list-cast">
                     <div class="tableCell">
                         <a class="avatar-thumb" href="/search/people/{{$crew[$i]['id']}}/{{$crew[$i]['name']}}"
-                            target="_blank" title="IMDb Profile"> 
-                        
+                            target="_blank" title="IMDb Profile">
+
                             @if (empty($crew[$i]['profile_path']))
                                 <img class="photo" src="/images/default_icon.png" alt="" height="60" width="60">
                             @else
@@ -121,8 +128,8 @@
                 @for ($i = 0; $i < count($director); $i++) @if ($director[$i]['department']=='Directing' &&
                     $director[$i]['job']=="Director" ) <div class="tableCell">
                     <a class="avatar-thumb" href="https://www.imdb.com/name/nm0000158/" target="_blank"
-                        title="IMDb Profile"> 
-                        
+                        title="IMDb Profile">
+
                         @if (empty($director[$i]['profile_path']))
                             <img class="photo" src="/images/default_icon.png" alt="" height="60" width="60">
                         @else
@@ -162,12 +169,12 @@
             @if (count($comment) != 0)
             <div class="reviews">
                 <h3>Reviews</h3>
-                @for ($i = 0; $i < count($comment); $i++) 
+                @for ($i = 0; $i < count($comment); $i++)
                     <div class="review-properties">
 
                         Reviewed by <span class="review-author"><strong>{{$comment[$i]['author']}}</strong></span>
                         <span class="icon-star"></span>
-                    
+
                         <article>
                             <p>{{str_limit($comment[$i]['content'],200)}}</p>
                         </article>
@@ -187,24 +194,23 @@
                     <br>
                 </div>
             @endif
-            
+
         </div>
         <div class="row">
             <div class="recent-text">
                 <div class="text-row">
                     <h2>
-                        <i class="fas fa-plus" style="color: red;"></i> Similar Movies
+                        Similar Movies
                     </h2>
-                    <a href="/browse">Browse All</a>
                 </div>
             </div>
-            
-                @for ($i = 0; $i < count($recommendations); $i++) 
+
+                @for ($i = 0; $i < count($recommendations); $i++)
                     <div class="movie_more">
                         <!-- https://image.tmdb.org/t/p/w185//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg -->
                         <a href="/movie/{{$recommendations[$i]['id']}}" class="movie-link">
                                 <img src="https://image.tmdb.org/t/p/w500/.{{$recommendations[$i]['poster_path']}}" alt="">
-                            
+
                         </a>
                         <div class="movie-box">
                             <a href="/movie/{{$recommendations[$i]['id']}}"
@@ -212,11 +218,11 @@
                             <div class="movie-year">{{substr($recommendations[$i]['release_date'],0,4)}}</div>
                         </div>
                     </div>
-                @endfor 
+                @endfor
 
                 <div class="more">Show more</div>
                 <div class="less">Show less</div>
-        </div> 
+        </div>
     </section>
 </main>
 </body>

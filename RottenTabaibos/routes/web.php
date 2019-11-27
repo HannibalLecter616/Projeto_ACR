@@ -20,6 +20,10 @@ Route::get('/movie/{id}', 'FilmeController@index');
 
 Route::get('/user/{id}', 'UserController@index');
 
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+Route::resource('comments', 'CommentsController');
+
 Auth::routes();
 
 
