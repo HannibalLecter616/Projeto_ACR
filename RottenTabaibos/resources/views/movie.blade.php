@@ -188,7 +188,7 @@
             <h3>Reviews</h3>
 
             @foreach ($comments as $item)
-                <div class="review-properties">
+            <div class="review-properties">
 
                 Reviewed by <span class="review-author"><strong>{{$item -> user_id}}</strong></span>
                 <span class="icon-star"></span>
@@ -202,8 +202,8 @@
             </div>
             @endforeach
 
-        <div class="all">Show All</div>
-        <div class="few">Show Few</div>
+            <div class="all">Show All</div>
+            <div class="few">Show Few</div>
         </div>
         @else
         <div class="reviews">
@@ -230,6 +230,36 @@
                 @endif
                 <br><br>
             </div>
+            @foreach ($images as $image)
+            <div class="slideshow-container">
+                <div class="mySlides fade">
+                    <img src="https://image.tmdb.org/t/p/w500{{$image['file_path']}}">
+                </div>
+            </div>
+            @endforeach
+
+            <br>
+            <script>
+                var slideIndex = 0;
+                showSlides();
+
+                function showSlides() {
+                    var i;
+                    var slides = document.getElementsByClassName("mySlides");
+                    for (i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";
+                    }
+                    slideIndex++;
+                    if (slideIndex > slides.length) {
+                        slideIndex = 1
+                    }
+                    slides[slideIndex - 1].style.display = "block";
+                    dots[slideIndex - 1].className += " active";
+                    setTimeout(showSlides, 2000); // Change image every 2 seconds
+                }
+
+            </script>
+
             <div class="row">
                 <div class="recent-text">
                     <div class="text-row">
