@@ -142,10 +142,22 @@ form {
     .movie img {
         width: 100%;
     }
+
+    .movie_more{
+
+        flex: 40%;
+    }
+    .movie_more img {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 1080px) {
     .movie {
+        flex: 40%;
+    }
+    .movie_more{
+
         flex: 40%;
     }
 }
