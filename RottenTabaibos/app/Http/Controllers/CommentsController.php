@@ -27,8 +27,8 @@ class CommentsController extends Controller
             'movie_id' => $request->movie_id,
             'first_name' => $first_name,
             'last_name' => $last_name,
-            'star' => '3'
+            'star' => $request->rating
         ]);
-        // return redirect()->route('posts.show', $movie->id);
+        return redirect()->action('FilmeController@index',['id'=>$request->movie_id]);
     }
 }
