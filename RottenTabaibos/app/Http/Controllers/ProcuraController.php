@@ -39,7 +39,7 @@ class ProcuraController extends Controller
         $response = $client->request('GET', 'https://api.themoviedb.org/3/movie/popular?api_key=684b8c6e53471a5a6fc82a6c144fa9a0');
         $search = $response->getBody();
         $search = json_decode($search, true);
-        
+
         $response = $client->request('GET', 'https://api.themoviedb.org/3/person/popular?api_key=684b8c6e53471a5a6fc82a6c144fa9a0');
         $search_person = $response->getBody();
         $search_person = json_decode($search_person, true);
@@ -81,7 +81,7 @@ class ProcuraController extends Controller
         $client = new Client([
             'headers' => ['content-type' => 'application/json', 'Accept' => 'application/json'],
         ]);
-        
+
         $response = $client->request('GET', 'https://api.themoviedb.org/3/person/'.$id.'/?api_key=684b8c6e53471a5a6fc82a6c144fa9a0');
         $pessoa_detalhes = $response->getBody();
         $pessoa_detalhes = json_decode($pessoa_detalhes, true);
@@ -89,7 +89,7 @@ class ProcuraController extends Controller
         $response = $client->request('GET', 'https://api.themoviedb.org/3/person/'.$id.'/images?api_key=684b8c6e53471a5a6fc82a6c144fa9a0');
         $pessoa_imagens = $response->getBody();
         $pessoa_imagens = json_decode($pessoa_imagens, true);
-        
+
         $response = $client->request('GET', 'https://api.themoviedb.org/3/person/'.$id.'/movie_credits?api_key=684b8c6e53471a5a6fc82a6c144fa9a0');
         $pessoa_conhecido_por = $response->getBody();
         $pessoa_conhecido_por = json_decode($pessoa_conhecido_por, true);

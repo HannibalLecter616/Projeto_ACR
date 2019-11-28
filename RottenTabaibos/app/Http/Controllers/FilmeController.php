@@ -47,4 +47,3 @@ class FilmeController extends Controller
         return view('movie', ['movie' => $movie,'crew'=>$crew['cast'],'director'=>$crew['crew'],'trailer'=>$trailer['results'], 'comment' => $comment['results'], 'recommendations'=> $recommendations['results'], 'images'=>$images['backdrops'] ,'comments'=>$comments]);
     }
 }
-

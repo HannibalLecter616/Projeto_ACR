@@ -55,15 +55,15 @@
                 {{-- <form method="post" action={{route('comments.store')}}>
                 <input type="text" name="review" placeholder="What did you think of this movie?">
                 {{ csrf_field() }}
-                <input type="submit" value="Submit">
-                </form>--}}
+                <input type="submit" class="submit-bttn" value="Submit">
+                </form> --}}
 
-{{-- 
+
                 {{ Form::open(['route' => ['comments.store'], 'method' => 'POST']) }}
                 <p>{{ Form::textarea('body', old('body')) }}</p>
                 {{ Form::hidden('movie_id', $movie['id']) }}
                 <p>{{ Form::submit('Send') }}</p>
-                {{ Form::close() }} --}}
+                {{ Form::close() }}
 
 
                 @endauth
@@ -72,8 +72,8 @@
                 <div class="actors">
                     <h4>Cast <i class="fas fa-user-friends" style="color:red"></i></h4>
 
-                    @if(count($crew) < 5) 
-                        @foreach($crew as $cast) 
+                    @if(count($crew) < 5)
+                        @foreach($crew as $cast)
                         <div class="list-cast">
                             <div class="tableCell">
                                 <a class="avatar-thumb" href="/search/people/{{$cast['id']}}/{{$cast['name']}}" target="_blank"
@@ -96,7 +96,7 @@
                         <div class="line"></div>
                         @endforeach
                 @else
-                @for ($i = 0; $i < 5; $i++) 
+                @for ($i = 0; $i < 5; $i++)
                     <div class="list-cast">
                         <div class="tableCell">
                             <a class="avatar-thumb" href="/search/people/{{$crew[$i]['id']}}/{{$crew[$i]['name']}}"
@@ -124,7 +124,7 @@
             <h4>Director</h4>
             <div class="list-cast">
                 @for ($i = 0; $i < count($director); $i++) @if ($director[$i]['department']=='Directing' &&
-                    $director[$i]['job']=="Director" ) 
+                    $director[$i]['job']=="Director" )
                     <div class="tableCell">
                         <a class="avatar-thumb" href="https://www.imdb.com/name/nm0000158/" target="_blank"
                             title="IMDb Profile">
@@ -159,7 +159,7 @@
                 <h3>Critics Reviews</h3>
                 @for ($i = 0; $i < count($comment); $i++) <div class="review-properties">
 
-                    Reviewed by 
+                    Reviewed by
                     <span class="review-author"><strong>{{$comment[$i]['author']}}</strong></span>
                     <span class="icon-star"></span>
 
@@ -193,7 +193,7 @@
                         @if ($movie['id'] == $item->movie_id)
                             <div class="review-properties">
 
-                                    Reviewed by <span class="review-author"><strong>{{$item -> user_id}}</strong></span>
+                                    Reviewed by <span class="review-author"><strong>{{$item -> first_name}} {{$item -> last_name}}</strong></span>
                                     <span class="icon-star"></span>
 
                                     <article>
@@ -209,7 +209,7 @@
                         @endif
                     @endforeach
                         @if ($num == 0)
-                            <div class="line"></div>    
+                            <div class="line"></div>
                             <h4>No reviews yet!</h4>
                             <br>
                         @endif
