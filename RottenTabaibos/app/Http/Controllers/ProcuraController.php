@@ -93,7 +93,7 @@ class ProcuraController extends Controller
         $response = $client->request('GET', 'https://api.themoviedb.org/3/person/'.$id.'/movie_credits?api_key=684b8c6e53471a5a6fc82a6c144fa9a0');
         $pessoa_conhecido_por = $response->getBody();
         $pessoa_conhecido_por = json_decode($pessoa_conhecido_por, true);
-
+        
         return view('perfil',[  'pessoa_detalhes' => $pessoa_detalhes, 
                                 'imagem' => $pessoa_imagens['profiles'], 
                                 'conhecido' => $pessoa_conhecido_por['crew'], 

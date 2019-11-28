@@ -11,7 +11,15 @@
                     @if (empty($pessoa_detalhes['profile_path']))
                         <img src="/images/default_icon.png" alt="" width="300px">
                     @else
-                        <img src="https://image.tmdb.org/t/p/w500{{$pessoa_detalhes['profile_path']}}" alt="" width="300px">
+                        @foreach ($imagem as $image)
+                            <div class="slideshow-container">
+                                <div class="mySlides fade">
+                                    <img src="https://image.tmdb.org/t/p/w500{{$image['file_path']}}" width="300px">
+                                </div>
+                            </div>
+                        @endforeach
+
+                        {{-- <img src="https://image.tmdb.org/t/p/w500{{$pessoa_detalhes['profile_path']}}" alt="" width="300px"> --}}
                     @endif
                 </a>
             </div>
@@ -38,10 +46,12 @@
             </div>
             <div class="line"></div>
         </div>
-        <div id="known_for">
+        <div class="row">
+
+        
+        <div class="known_for">
         <h2>Known for:</h3>
         </div>
-            <div class="row">
                     {{-- @php
                     $numero = 0;    
                     @endphp --}}
@@ -53,9 +63,9 @@
                                         <a href="/movie/{{$conhecido[$i]['id']}}" class="movie-link">
 
                                             @if (empty($conhecido[$i]['poster_path']))
-                                                <img src="/images/no_image.png" alt="" width="200px" height="auto">
+                                                <img src="/images/no_image.png" alt="">
                                             @else
-                                            <img src="https://image.tmdb.org/t/p/w500/{{$conhecido[$i]['poster_path']}}" alt="" width="200px" height="auto">
+                                            <img src="https://image.tmdb.org/t/p/w500/{{$conhecido[$i]['poster_path']}}" alt="">
                                             @endif
                                              
                                         </a>
@@ -81,9 +91,9 @@
                                             <a href="/movie/{{$known_for[$i]['id']}}" class="movie-link">
 
                                                 @if (empty($known_for[$i]['poster_path']))
-                                                    <img src="/images/no_image.png" alt="" width="200px" height="auto">
+                                                    <img src="/images/no_image.png" alt="">
                                                 @else
-                                                    <img src="https://image.tmdb.org/t/p/w500/{{$known_for[$i]['poster_path']}}" alt="" width="200px" height="auto">
+                                                    <img src="https://image.tmdb.org/t/p/w500/{{$known_for[$i]['poster_path']}}" alt="" >
                                                 @endif 
                                                 
                                             </a>

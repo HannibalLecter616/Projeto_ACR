@@ -57,59 +57,66 @@
                 {{ csrf_field() }}
                 <input type="submit" value="Submit">
                 </form>--}}
+
+{{-- 
                 {{ Form::open(['route' => ['comments.store'], 'method' => 'POST']) }}
                 <p>{{ Form::textarea('body', old('body')) }}</p>
                 {{ Form::hidden('movie_id', $movie['id']) }}
                 <p>{{ Form::submit('Send') }}</p>
-                {{ Form::close() }}
+                {{ Form::close() }} --}}
+
+
                 @endauth
             </div>
             <div class="crew">
                 <div class="actors">
                     <h4>Cast <i class="fas fa-user-friends" style="color:red"></i></h4>
 
-                    @if(count($crew) < 5) @foreach($crew as $cast) <div class="tableCell">
-                        <a class="avatar-thumb" href="/search/people/{{$cast['id']}}/{{$cast['name']}}" target="_blank"
-                            title="IMDb Profile">
-                            @if (empty($cast['profile_path']))
-                            <img class="photo" src="/images/default_icon.png" alt="" height="60" width="60">
-                            @else
-                            <img class="photo" src="https://image.tmdb.org/t/p/w185{{$cast['profile_path']}}" alt=""
-                                height="60" width="60">
-                            @endif
-
-                        </a>
-                </div>
-                <div class="list-cast-info tableCell">
-                    <a class="name-cast" href="/search/people/{{$cast['id']}}/{{$cast['name']}}"><span itemprop="actor"
-                            itemscope itemtype="http://schema.org/Person"><span
-                                itemprop="name"><strong>{{$cast['name']}}</strong></span></span></a> as
-                    {{$cast['character']}}
-                </div>
-
-                <div class="line"></div>
-                @endforeach
+                    @if(count($crew) < 5) 
+                        @foreach($crew as $cast) 
+                        <div class="list-cast">
+                            <div class="tableCell">
+                                <a class="avatar-thumb" href="/search/people/{{$cast['id']}}/{{$cast['name']}}" target="_blank"
+                                    title="IMDb Profile">
+                                    @if (empty($cast['profile_path']))
+                                    <img class="photo" src="/images/default_icon.png" alt="" height="60" width="60">
+                                    @else
+                                    <img class="photo" src="https://image.tmdb.org/t/p/w185{{$cast['profile_path']}}" alt=""
+                                        height="60" width="60">
+                                    @endif
+                                </a>
+                            </div>
+                            <div class="list-cast-info tableCell">
+                                <a class="name-cast" href="/search/people/{{$cast['id']}}/{{$cast['name']}}">
+                                    <span itemprop="actor" itemscope itemtype="http://schema.org/Person">
+                                    <span itemprop="name"><strong>{{$cast['name']}}</strong></span></span></a> as
+                                {{$cast['character']}}
+                            </div>
+                        </div>
+                        <div class="line"></div>
+                        @endforeach
                 @else
-                @for ($i = 0; $i < 5; $i++) <div class="list-cast">
-                    <div class="tableCell">
-                        <a class="avatar-thumb" href="/search/people/{{$crew[$i]['id']}}/{{$crew[$i]['name']}}"
-                            target="_blank" title="IMDb Profile">
+                @for ($i = 0; $i < 5; $i++) 
+                    <div class="list-cast">
+                        <div class="tableCell">
+                            <a class="avatar-thumb" href="/search/people/{{$crew[$i]['id']}}/{{$crew[$i]['name']}}"
+                                target="_blank" title="IMDb Profile">
 
-                            @if (empty($crew[$i]['profile_path']))
-                            <img class="photo" src="/images/default_icon.png" alt="" height="60" width="60">
-                            @else
-                            <img class="photo" src="https://image.tmdb.org/t/p/w185{{$crew[$i]['profile_path']}}" alt=""
-                                height="60" width="60">
-                            @endif
-                        </a>
+                                @if (empty($crew[$i]['profile_path']))
+                                <img class="photo" src="/images/default_icon.png" alt="" height="60" width="60">
+                                @else
+                                <img class="photo" src="https://image.tmdb.org/t/p/w185{{$crew[$i]['profile_path']}}" alt=""
+                                    height="60" width="60">
+                                @endif
+                            </a>
+                        </div>
+                        <div class="list-cast-info tableCell">
+                            <a class="name-cast" href="/search/people/{{$crew[$i]['id']}}/{{$crew[$i]['name']}}"><span
+                                    itemprop="actor" itemscope itemtype="http://schema.org/Person"><span
+                                        itemprop="name"><strong>{{$crew[$i]['name']}}</strong></span></span></a> as
+                            {{$crew[$i]['character']}}
+                        </div>
                     </div>
-                    <div class="list-cast-info tableCell">
-                        <a class="name-cast" href="/search/people/{{$crew[$i]['id']}}/{{$crew[$i]['name']}}"><span
-                                itemprop="actor" itemscope itemtype="http://schema.org/Person"><span
-                                    itemprop="name"><strong>{{$crew[$i]['name']}}</strong></span></span></a> as
-                        {{$crew[$i]['character']}}
-                    </div>
-            </div>
             <div class="line"></div>
             @endfor
             @endif
@@ -117,19 +124,20 @@
             <h4>Director</h4>
             <div class="list-cast">
                 @for ($i = 0; $i < count($director); $i++) @if ($director[$i]['department']=='Directing' &&
-                    $director[$i]['job']=="Director" ) <div class="tableCell">
-                    <a class="avatar-thumb" href="https://www.imdb.com/name/nm0000158/" target="_blank"
-                        title="IMDb Profile">
+                    $director[$i]['job']=="Director" ) 
+                    <div class="tableCell">
+                        <a class="avatar-thumb" href="https://www.imdb.com/name/nm0000158/" target="_blank"
+                            title="IMDb Profile">
 
-                        @if (empty($director[$i]['profile_path']))
-                        <img class="photo" src="/images/default_icon.png" alt="" height="60" width="60">
-                        @else
-                        <img class="photo" src="https://image.tmdb.org/t/p/w185{{$director[$i]['profile_path']}}" alt=""
-                            height="60" width="60">
-                        @endif
+                            @if (empty($director[$i]['profile_path']))
+                            <img class="photo" src="/images/default_icon.png" alt="" height="60" width="60">
+                            @else
+                            <img class="photo" src="https://image.tmdb.org/t/p/w185{{$director[$i]['profile_path']}}" alt=""
+                                height="60" width="60">
+                            @endif
 
-                    </a>
-            </div>
+                        </a>
+                    </div>
             <div class="list-cast-info tableCell">
                 <a class="name-cast" href="/search/people/{{$director[$i]['id']}}/{{$director[$i]['name']}}"><span
                         itemprop="actor" itemscope itemtype="http://schema.org/Person"><span
@@ -148,14 +156,15 @@
 
             @if (count($comment) != 0)
             <div class="reviews">
-                <h3>Reviews</h3>
+                <h3>Critics Reviews</h3>
                 @for ($i = 0; $i < count($comment); $i++) <div class="review-properties">
 
-                    Reviewed by <span class="review-author"><strong>{{$comment[$i]['author']}}</strong></span>
+                    Reviewed by 
+                    <span class="review-author"><strong>{{$comment[$i]['author']}}</strong></span>
                     <span class="icon-star"></span>
 
                     <article>
-                        <p>{{str_limit($comment[$i]['content'],200)}}</p>
+                        <p  class="critic-review">{{$comment[$i]['content']}}</p>
                     </article>
                     <div class="line"></div>
                     <br>
@@ -167,41 +176,54 @@
         </div>
         @else
         <div class="reviews">
-            <h3>Reviews</h3>
+            <h3> Critics Reviews</h3>
             <div class="line"></div>
             <h4>No reviews yet!</h4>
             <br>
         </div>
         @endif
         @if (count($comments) != 0)
-        <div class="reviews">
-            <h3>Reviews</h3>
+            <div class="reviews">
+                <h3>Users Reviews</h3>
+                    @php
+                       $num = 0;
+                    @endphp
 
-            @foreach ($comments as $item)
-            <div class="review-properties">
+                    @foreach ($comments as $item)
+                        @if ($movie['id'] == $item->movie_id)
+                            <div class="review-properties">
 
-                Reviewed by <span class="review-author"><strong>{{$item -> user_id}}</strong></span>
-                <span class="icon-star"></span>
+                                    Reviewed by <span class="review-author"><strong>{{$item -> user_id}}</strong></span>
+                                    <span class="icon-star"></span>
 
-                <article>
-                    <p>{{str_limit($item->body,200)}}</p>
+                                    <article>
+                                        <p>{{str_limit($item->body,200)}}</p>
 
-                </article>
+                                    </article>
+                                    <div class="line"></div>
+                                    <br>
+                            </div>
+                                @php
+                                $num++;
+                            @endphp
+                        @endif
+                    @endforeach
+                        @if ($num == 0)
+                            <div class="line"></div>    
+                            <h4>No reviews yet!</h4>
+                            <br>
+                        @endif
+
+                <div class="all">Show All</div>
+                <div class="few">Show Few</div>
+            </div>
+        @else
+            <div class="reviews">
+                <h3>User Reviews</h3>
                 <div class="line"></div>
+                <h4>No reviews yet!</h4>
                 <br>
             </div>
-            @endforeach
-
-            <div class="all">Show All</div>
-            <div class="few">Show Few</div>
-        </div>
-        @else
-        <div class="reviews">
-            <h3>Reviews</h3>
-            <div class="line"></div>
-            <h4>No reviews yet!</h4>
-            <br>
-        </div>
         @endif
 
         </div>
@@ -222,36 +244,21 @@
             </div>
             <div class="images">
                 <h3>Images <i class="fas fa-images" style="color:red"></i></h3>
-                @foreach ($images as $image)
-                <div class="slideshow-container">
-                    <div class="mySlides fade">
-                        <img src="https://image.tmdb.org/t/p/w500{{$image['file_path']}}">
-                    </div>
-                </div>
-                @endforeach
 
-                <br>
-                <script>
-                    var slideIndex = 0;
-                    showSlides();
+                @if (empty($images))
+                    <img src="/images/no_image.png" alt="" width="300px">
+                @else
+                    @foreach ($images as $image)
+                        <div class="slideshow-container">
+                            <div class="mySlides fade">
+                                <img src="https://image.tmdb.org/t/p/w500{{$image['file_path']}}">
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
 
-                    function showSlides() {
-                        var i;
-                        var slides = document.getElementsByClassName("mySlides");
-                        for (i = 0; i < slides.length; i++) {
-                            slides[i].style.display = "none";
-                        }
-                        slideIndex++;
-                        if (slideIndex > slides.length) {
-                            slideIndex = 1
-                        }
-                        slides[slideIndex - 1].style.display = "block";
-                        setTimeout(showSlides, 4000); // Change image every 2 seconds
-                    }
-
-                </script>
             </div>
-
+        </div>
             <div class="row">
                 <div class="recent-text">
                     <div class="text-row">
@@ -277,7 +284,6 @@
 
             <div class="more">Show more</div>
             <div class="less">Show less</div>
-        </div>
     </section>
 </main>
 </body>

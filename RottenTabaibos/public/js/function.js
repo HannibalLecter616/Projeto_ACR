@@ -7,7 +7,7 @@ $(document).ready(function() {
   var lesstext = "Read less";
   var ellipsestext = "...";
 
-  $('.bio-text').each(function() {
+  $('.bio-text, .critic-review').each(function() {
     var paraText = $(this).html();
     var sText = paraText.substr(0, nInitialCount);
     var eText = paraText.substr(nInitialCount, paraText.length - nInitialCount);
@@ -17,9 +17,18 @@ $(document).ready(function() {
         var newHtml = sText + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="moretext"><span>' + eText + '</span>&nbsp;&nbsp;<a href="" class="link">' + moretext + '</a></span>';
       $(this).html(newHtml);
     }
-
-    
   });
+/*
+  $('.critic-review').each(function(){
+    var reviewText = $(this).html();
+    var shorReview = reviewText.substr(0, nInitialCount);
+    var longReview = reviewText.substr(nInitialCount, reviewText.length - nInitialCount);
+
+    if(reviewText.length > nInitialCount){
+      var review = shorReview + ellipsestext + longReview;
+      $(this).html(review);
+    }
+  });*/
 
   $(".link").on('click', function(e) {
     var lnkHTML = $(this).html();
@@ -94,5 +103,22 @@ var pessoas = $(this).find('div.people').length;
 var numero = 8;
 
 $('div.people:gt(7)').hide();
+
+var slideIndex = 0;
+  function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {
+        slideIndex = 1
+    }
+    slides[slideIndex - 1].style.display = "block";
+    setTimeout(showSlides, 4000); // Change image every 2 seconds
+  };
+
+$(document).ready(showSlides);
 
 });
