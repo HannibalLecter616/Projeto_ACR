@@ -194,7 +194,9 @@
                             <div class="review-properties">
 
                                     Reviewed by <span class="review-author"><strong>{{$item -> first_name}} {{$item -> last_name}}</strong></span>
+                                    @for ($i = 0; $i < $item->star; $i++)
                                     <span class="icon-star"></span>
+                                    @endfor
 
                                     <article>
                                         <p>{{str_limit($item->body,200)}}</p>

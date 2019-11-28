@@ -20,6 +20,7 @@ class CreateCommentsTable extends Migration
             $table->integer('movie_id');
             $table->string('first_name');
             $table->string('last_name');
+            $table->integer('star');
             $table->integer('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

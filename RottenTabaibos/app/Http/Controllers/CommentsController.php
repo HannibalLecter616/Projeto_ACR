@@ -26,8 +26,8 @@ class CommentsController extends Controller
             'user_id' => Auth::id(),
             'movie_id' => $request->movie_id,
             'first_name' => $first_name,
-            'last_name' => $last_name
-            // 'stars' => '3'
+            'last_name' => $last_name,
+            'star' => '3'
         ]);
         // return redirect()->route('posts.show', $movie->id);
     }
