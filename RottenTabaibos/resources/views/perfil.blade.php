@@ -48,12 +48,12 @@
         </div>
         <div class="row">
 
-        
+
         <div class="known_for">
         <h2>Known for:</h3>
         </div>
                     {{-- @php
-                    $numero = 0;    
+                    $numero = 0;
                     @endphp --}}
 
                     @if ($pessoa_detalhes['known_for_department'] == "Directing" || $pessoa_detalhes['known_for_department'] == "Writing")
@@ -67,7 +67,7 @@
                                             @else
                                             <img src="https://image.tmdb.org/t/p/w500/{{$conhecido[$i]['poster_path']}}" alt="">
                                             @endif
-                                             
+
                                         </a>
                                         <div class="movie-box">
                                                 <a href="/movie/{{$conhecido[$i]['id']}}" class="movie-title">{{$conhecido[$i]['title']}}</a>
@@ -79,10 +79,10 @@
                                         </div>
                                     </div>
                                     {{-- @php
-                                        $numero++;    
+                                        $numero++;
                                     @endphp  --}}
                             {{-- @endif --}}
-                        @endfor   
+                        @endfor
                     @else
                         @for ($i = 0; $i < count($known_for); $i++)
                                {{--  @if ($numero < 8 ) --}}
@@ -94,8 +94,8 @@
                                                     <img src="/images/no_image.png" alt="">
                                                 @else
                                                     <img src="https://image.tmdb.org/t/p/w500/{{$known_for[$i]['poster_path']}}" alt="" >
-                                                @endif 
-                                                
+                                                @endif
+
                                             </a>
                                             <div class="movie-box">
                                                 <a href="/movie/{{$known_for[$i]['id']}}" class="movie-title">{{$known_for[$i]['title']}}</a>
@@ -107,11 +107,11 @@
                                             </div>
                                         </div>
                                         {{-- @php
-                                            $numero++;    
+                                            $numero++;
                                         @endphp  --}}
                                     {{-- @endif --}}
                                 @endif
-                        @endfor 
+                        @endfor
                     @endif
             </div>
             <br>

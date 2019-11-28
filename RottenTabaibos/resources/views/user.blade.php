@@ -6,7 +6,7 @@
                 <div class="row">
                         <div class="movie-main">
                             <a href="#" class="movie-link">
-            
+
                                 {{-- @if (empty($pessoa_detalhes['profile_path'])) --}}
                                     <img src="/images/default_icon.png" alt="" width="300px">
                                {{--  @else
@@ -26,7 +26,7 @@
                             <h4>Account created at:</h4>
                             <h5>{{Auth::user()->created_at}}</h5>
                         </div>
-                        <div class="line"></div>
+                        {{-- <div class="line"></div> --}}
                     </div>
 
                     <div class="row">
@@ -35,6 +35,9 @@
                                 <h2>
                                     Movies Reviewed
                                 </h2>
+
+                                <img src="https://image.tmdb.org/t/p/w500/.{{$images['poster_path']}}" alt="" width="300">
+
                             </div>
                         </div>
                     </div>

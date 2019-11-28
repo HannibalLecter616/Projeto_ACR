@@ -6,6 +6,7 @@ use App\Comment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\CommentRequest;
+use DB;
 
 class CommentsController extends Controller
 {
@@ -16,14 +17,18 @@ class CommentsController extends Controller
 
     public function store(CommentRequest $request)
     {
-        // $movie = Post::findOrFail($request->movie_id);
+
+        $first_name = DB::table('users')->where('id', Auth::id())->value('first_name');
+        $last_name = DB::table('users')->where('id', Auth::id())->value('last_name');
 
         Comment::create([
             'body' => $request->body,
             'user_id' => Auth::id(),
             'movie_id' => $request->movie_id,
-            'stars' => '3'
+            'first_name' => $first_name,
+            'last_name' => $last_name,
+            'star' => $request->rating
         ]);
-        // return redirect()->route('posts.show', $movie->id);
+        return redirect()->action('FilmeController@index',['id'=>$request->movie_id]);
     }
 }
