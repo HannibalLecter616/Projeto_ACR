@@ -12,6 +12,8 @@ Route::get('/search', 'ProcuraController@index');
 
 Route::get('/browse', 'ProcuraController@initial');
 
+Route::get('/browse/all', 'ProcuraController@all');
+
 Route::get('/search/people/{id}/{name}', 'ProcuraController@pessoa');
 
 Route::get('/search/popular', 'ProcuraController@popular');
