@@ -4,8 +4,9 @@
 
     <div class="procura-principal">
 
-            <label><b>Procurar Filmes / Series / Atores</b></label>
-            <input type="text" placeholder="Inserir item de procura" name="nome_procura" >
+        <form method="GET" action="/browse/all" accept-charset="UTF-8" id="quick-search" name="quick-search">
+            <label><b>Search Movies / Actors</b></label>
+            <input type="text" placeholder="Insert name" name="nome_procura" >
 
         <div class="campos-procura">
                 <label for="genero">Genero:</label>
@@ -19,21 +20,20 @@
                 </select>
         </div>
         <div class="campos-procura">
-                <label for="ordem_por">Ordenar por:</label>
+                <label for="ordem_por">Order by:</label>
 
                 <select name="ordem" id="ordem_por">
                     <option value="">----</option>
-                    <option value="dog">Dog</option>
-                    <option value="cat">Cat</option>
-                    <option value="hamster">Hamster</option>
-                    <option value="parrot">Parrot</option>
-                    <option value="spider">Spider</option>
-                    <option value="goldfish">Goldfish</option>
+                    <option value="top">Top Rated</option>
+                    <option value="popular">Popular</option>
+                    <option value="recent">Recent</option>
                 </select>
-        </div>
+        </div> 
         <div class="campos-procura">
             <button type="submit" class="searchbtn">Search</button>
         </div>
+    </form>
+
     </div>
     <hr>
         <section class="home">
