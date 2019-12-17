@@ -154,7 +154,8 @@
             @if (count($comment) != 0)
             <div class="reviews">
                 <h3>Critics Reviews</h3>
-                @for ($i = 0; $i < count($comment); $i++) <div class="review-properties">
+                @for ($i = 0; $i < count($comment); $i++) 
+                <div class="review-properties">
 
                     Reviewed by
                     <span class="review-author"><strong>{{$comment[$i]['author']}}</strong></span>
@@ -165,7 +166,7 @@
                     </article>
                     <div class="line"></div>
                     <br>
-            </div>
+                </div>
             @endfor
 
             <div class="all">Show All</div>
@@ -188,7 +189,7 @@
 
             @foreach ($comments as $item)
             @if ($movie['id'] == $item->movie_id)
-            <div class="review-properties">
+            <div class="user-review-properties">
 
                 Reviewed by <span class="review-author"><strong>{{$item -> first_name}}
                         {{$item -> last_name}}</strong></span>
@@ -203,9 +204,11 @@
                     <div class="line"></div>
                     <br>
             </div>
-            @php
-            $num++;
-            @endphp
+                @php
+                $num++;
+                @endphp
+            <div class="all_u_rev">Show All</div>
+            <div class="few_u_rev">Show Few</div>
             @endif
             @endforeach
             @if ($num == 0)
@@ -214,8 +217,7 @@
             <br>
             @endif
 
-            <div class="all">Show All</div>
-            <div class="few">Show Few</div>
+            
         </div>
         @else
         <div class="reviews">

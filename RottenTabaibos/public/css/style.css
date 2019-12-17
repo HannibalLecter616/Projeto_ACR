@@ -335,7 +335,9 @@ label {
 .more,
 .less,
 .all,
-.few {
+.few,
+.all_u_rev,
+.few_u_rev{
     background-color: #000;
     clear: both;
     color: #fff;

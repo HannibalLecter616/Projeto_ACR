@@ -104,6 +104,30 @@ $(document).ready(function() {
     $('.few').hide();
 });
 
+var criticas_user = $(this).find('div.user-review-properties').length;
+var teste_user = 3;
+
+$('div.user-review-properties:gt(2)').hide();
+$('.few_u_rev').hide();
+
+$('.all_u_rev').click(function() {
+  $('.few_u_rev').show();
+  if(teste_user < criticas_user){
+    $('div.user-review-properties:gt('+ teste_user +')').show(300);
+  }
+  else{
+    $('div.user-review-properties:gt('+ criticas_user +')').show(300);
+    
+  }
+  $('.all_u_rev').hide();
+});
+
+$('.few_u_rev').click(function () {
+  $('div.user-review-properties').not(':lt('+teste_user+')').hide(300);
+  $('.all_u_rev').show();
+  $('.few_u_rev').hide();
+});
+
 var pessoas = $(this).find('div.people').length;
 var numero = 8;
 
