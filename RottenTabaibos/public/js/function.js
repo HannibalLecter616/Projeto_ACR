@@ -36,23 +36,7 @@ $(document).ready(function() {
     return false;
     //e.preventDefault();
   });
-
-/*   var more_comment = "Read more";
-  var less_comment = "Read less"; */
-
- /*  $('.critic-review').each(function(){
-    var reviewText = $(this).html();
-    var shorReview = reviewText.substr(0, nInitialCount);
-    var longReview = reviewText.substr(nInitialCount, reviewText.length - nInitialCount);
-
-    if(reviewText.length > nInitialCount){
-      var review = shorReview + '<span class="moreellipses">' +ellipsestext + '&nbsp;</span><span class="moretext"><span>' + longReview+ '</span>&nbsp;&nbsp;<a href="" class="new_link">' + more_comment + '</a></span>';
-      $(this).html(review);
-    }
-  }); */
-
-
-
+  
   var filmes = $(this).find('div.movie_more').length;
   var mostrar = 8;
 
@@ -111,6 +95,7 @@ $('div.user-review-properties:gt(2)').hide();
 $('.few_u_rev').hide();
 
 $('.all_u_rev').click(function() {
+  teste_user -= 1;
   $('.few_u_rev').show();
   if(teste_user < criticas_user){
     $('div.user-review-properties:gt('+ teste_user +')').show(300);
@@ -123,7 +108,8 @@ $('.all_u_rev').click(function() {
 });
 
 $('.few_u_rev').click(function () {
-  $('div.user-review-properties').not(':lt('+teste_user+')').hide(300);
+  teste_user += 1; //
+  $('div.user-review-properties').not(':lt('+teste_user +')').hide(300);
   $('.all_u_rev').show();
   $('.few_u_rev').hide();
 });

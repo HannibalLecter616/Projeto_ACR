@@ -25,7 +25,9 @@
                             {{-- adicionar campo para idade da pessoa --}}
                             <h4>Account created at:</h4>
                             <h5>{{Auth::user()->created_at}}</h5>
+                            <a href="/uptd_profile">Edit Profile</a>
                         </div>
+                        
                         {{-- <div class="line"></div> --}}
                     </div>
 
@@ -35,8 +37,11 @@
                                 <h2>
                                     Movies Reviewed
                                 </h2>
-
+                                @if(empty($images))
+                                    No movies reviewed yet
+                                @else
                                 <img src="https://image.tmdb.org/t/p/w500/.{{$images['poster_path']}}" alt="" width="300">
+                                @endif
 
                             </div>
                         </div>

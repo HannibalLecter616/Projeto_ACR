@@ -1,9 +1,5 @@
 <?php
 
-/* Route::get('/', function () {
-    return view('welcome');
-}); */
-
 Route::get('', 'WelcomeController@getRemoteData');
 
 Route::get('/home', 'HomeController@index');
@@ -23,6 +19,10 @@ Route::get('/movie/{id}', 'FilmeController@index');
 Route::get('/user/{id}', 'UserController@index');
 
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+Route::get('/uptd_profile', 'UserController@edit');
+
+Route::post('users/update', 'UserController@update');
 
 Route::resource('comments', 'CommentsController');
 

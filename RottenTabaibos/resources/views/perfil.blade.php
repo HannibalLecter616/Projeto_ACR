@@ -52,11 +52,7 @@
         <div class="known_for">
         <h2>Known for:</h3>
         </div>
-                    {{-- @php
-                    $numero = 0;
-                    @endphp --}}
-
-                    @if ($pessoa_detalhes['known_for_department'] == "Directing" || $pessoa_detalhes['known_for_department'] == "Writing")
+                     @if ($pessoa_detalhes['known_for_department'] == "Directing" || $pessoa_detalhes['known_for_department'] == "Writing")
                         @for ($i = 0; $i < count($conhecido); $i++)
                             {{-- @if ($numero < 8 ) --}}
                                     <div class="movie_more">
@@ -78,10 +74,6 @@
                                             @endif
                                         </div>
                                     </div>
-                                    {{-- @php
-                                        $numero++;
-                                    @endphp  --}}
-                            {{-- @endif --}}
                         @endfor
                     @else
                         @for ($i = 0; $i < count($known_for); $i++)
@@ -106,10 +98,6 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        {{-- @php
-                                            $numero++;
-                                        @endphp  --}}
-                                    {{-- @endif --}}
                                 @endif
                         @endfor
                     @endif

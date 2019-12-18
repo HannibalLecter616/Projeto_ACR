@@ -25,24 +25,32 @@
         <hr>
         <form method="POST" action="{{ route('register') }}">
             @csrf
+            <script>
+              function showMagazine(){
+                    if(document.getElementById('pro_critic').checked){
 
+                    document.getElementById('magazine').style.display = "block";
+                    }else{
+                    document.getElementById('magazine').style.display = "none";
+                    }
+                }
+            </script>
             <div class="container">
                 <h1 style="text-align: center;">Register</h1>
                 <p>Please insert the following data </p>
                 <hr>
-
-                {{-- <form>
+                <form>
                     <label for="utilizador_tipo"><b>Type of User</b></label> <br>
                         <div class="utilizadores">
                             <label class="radio-inline">
-                              <input type="radio" name="type" value="1">Common
+                              <input type="radio" onclick="showMagazine()" name="type" id="common" value="1">Common
                             </label>
                             <label class="radio-inline">
-                              <input type="radio" name="type" value="2">Professional Critic
+                              <input type="radio" onclick="showMagazine()" name="type" id="pro_critic" value="2">Professional Critic
                             </label>
                         </div>
                 </form>
-                <hr> --}}
+                <hr> 
 
 
                 <label for="first_name"><b>First Name</b></label>
@@ -53,12 +61,11 @@
 
                 <label for="email"><b>Email</b></label>
                 <input type="text" placeholder="Insert Email" name="email" required>
-
-<!--Mostrar só se for selecionado o utilizador Critico-->
-
-                {{-- <label for="jornal"><b>Jornal/Revista/Entidade Crítica</b></label>
-                <input type="text" placeholder="Inserir Empresa que representa" name="jornal" required> --}}
-<!------------------------------------------------------>
+                
+                <div id="magazine" style="display:none;">
+                    <label for="journal"><b>Magazine/Company</b></label>
+                    <input type="text" placeholder="Insert Magazine" name="journal"> 
+                </div>
                 <label for="password"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="password" required>
 
@@ -77,7 +84,7 @@
             </div>
         </form>
 </body>
-
+    <script type="text/javascript" src="/../js/function.js"></script>
 </html>
 <!--
 <div class="container">

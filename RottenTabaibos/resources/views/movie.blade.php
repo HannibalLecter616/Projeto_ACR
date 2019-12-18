@@ -207,14 +207,17 @@
                 @php
                 $num++;
                 @endphp
-            <div class="all_u_rev">Show All</div>
-            <div class="few_u_rev">Show Few</div>
             @endif
             @endforeach
+            
             @if ($num == 0)
-            <div class="line"></div>
-            <h4>No reviews yet!</h4>
-            <br>
+                <div class="line"></div>
+                <h4>No reviews yet!</h4>
+                <br>
+            @endif
+            @if ($num >= 3)
+                <div class="all_u_rev">Show All</div>
+                <div class="few_u_rev">Show Few</div>
             @endif
 
             

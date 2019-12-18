@@ -434,13 +434,19 @@ input[type=password]:focus {
     outline: none;
 }
 
+textarea {
+    resize: none;
+    background-color: #f1f1f1;
+ }
+
 /* Overwrite default styles of hr */
 hr {
     border: 2px solid #f1f1f1;
     margin-bottom: 25px;
+    border: none;
 }
 
-.registerbtn {
+.registerbtn, .updatebtn {
     background-color: rgb(221, 55, 55);
     color: white;
     padding: 16px 20px;
