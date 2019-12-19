@@ -154,6 +154,11 @@
             @if (count($comment) != 0)
             <div class="reviews">
                 <h3>Critics Reviews</h3>
+
+                @php
+                $num = 0;
+                @endphp
+
                 @for ($i = 0; $i < count($comment); $i++) 
                 <div class="review-properties">
 
@@ -167,10 +172,15 @@
                     <div class="line"></div>
                     <br>
                 </div>
+                @php
+                $num++;
+                @endphp
             @endfor
-
-            <div class="all">Show All</div>
-            <div class="few">Show Few</div>
+            @if ($num >= 3)
+                <div class="all">Show All</div>
+                <div class="few">Show Few</div>
+            @endif
+            
         </div>
         @else
         <div class="reviews">
@@ -231,6 +241,11 @@
         </div>
         @endif
 
+        </div>
+        <div class="line"></div>
+        <div class="row">
+            {{-- <button type="button" class="forum_btn">See Forum Discussion</button> --}}
+            <a href="/forum" class="forum_btn">Forum</a>
         </div>
         <div class="line"></div>
         <div class="row">

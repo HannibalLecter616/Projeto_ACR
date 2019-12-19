@@ -18,13 +18,29 @@ header {
 
 .logo-container,
 .nav-links,
-.quick-search {
+.usernav,
+.quick-search{
     display: flex;
 }
 
+@mixin border-radius($radius) {
+    border-radius: $radius;
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+}
+
+@mixin margin-side($margin) {
+    margin-right: $margin;
+    margin-left: $margin;
+}
+
+@mixin margin-tops($margin-top,$margin-bottom) {
+    margin-bottom: $margin-bottom;
+    margin-top: $margin-top;
+}
+
 #quick-search-container {
-    margin-right: 20px;
-    margin-left: 20px;
+    @include margin-side(20px);
 }
 
 #quick-search-input {
@@ -33,10 +49,10 @@ header {
     font-size: .85em;
     font-weight: 700;
     color: #424242;
-    border: 2px solid #2b2a2a;
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
+    border: 2px solid rgb(43, 42, 42);
+
+    @include border-radius(20px);
+
     padding: 10px 30px;
     background: #ffffff url("/images/icon-search.svg") no-repeat 9px 8px;
 }
@@ -50,7 +66,8 @@ form {
 }
 
 .popular-text,
-.recent-text {
+.recent-text,
+.known_for {
     width: 90%;
     margin: auto;
 }
@@ -71,49 +88,76 @@ form {
     }
 }
 
-/*
 .row {
     display: flex;
-    width: 80%;
+    flex-flow: row wrap;
     margin: auto;
-}
-
-.movie {
-    width: 250px;
-}
-*/
-#known_for {
-    margin: auto;
+    justify-content: space-around;
     width: 80%;
 }
 
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    margin: auto;
-    width: 80%;
+
+.people {
+    flex: 20%;
+    width: 25%;
+    padding: 0 20px;
+
+    img {
+        margin-top: 8px;
+        vertical-align: middle;
+        max-width: 100%;
+    }
+    &:hover {
+        opacity: $def_opacity;
+    }
 }
 
 .movie {
     flex: 20%;
     width: 25%;
     padding: 0 20px;
+
+    img {
+        margin-top: 8px;
+        vertical-align: middle;
+        width: 100%;
+    }
+
+    &:hover {
+        opacity: $def_opacity;
+    }
 }
 
-.movie:hover {
-    opacity: 0.9;
-}
+.movie_more {
+    flex: 20%;
+    width: 25%;
+    padding: 0 20px;
+    margin-bottom: 20px;
 
-.movie img {
-    margin-top: 8px;
-    vertical-align: middle;
-    width: 100%;
-}
+    img {
+        margin-top: 8px;
+        vertical-align: middle;
+        max-width: 100%;
+    }
+    &:hover {
+        opacity: $def_opacity;
+    }    
+} 
 
 @media screen and (max-width: 600px) {
     .movie {
         flex: 40%;
-        max-width: 40%;
+
+        img {
+            width: 100%;
+        }
+    }
+    .movie_more{
+        flex: 40%;
+
+        img {
+            width: 100%;
+        }
     }
 }
 
@@ -121,6 +165,11 @@ form {
     .movie {
         flex: 40%;
         max-width: 40%;
+    }
+
+    .movie_more{
+
+        flex: 40%;
     }
 }
 
@@ -147,8 +196,9 @@ form {
 }
 
 div.movie-text {
+    @include margin-tops(0, 20px);
     flex: 0.8;
-
+    margin-right: 50px;
 }
 
 @mixin name ($borderWidth, $borderStyle, $borderColor) {
@@ -165,18 +215,25 @@ div.movie-text {
     @include name(1px, solid, $grey);
     width: 80%;
     margin: auto;
-    margin-top: 15px;
+    @include margin-tops(15px, 0px);
 }
 
 .actors div {
-    margin-top: 3px;
-    margin-bottom: 3px;
+    @include margin-tops(3px,3px);
 }
 
 .avatar-thumb {
-    /* width: 40px;
-    height: 40px; */
     border-radius: 50%;
+}
+
+.user-thumb {
+    border-radius: 50%;
+    object-fit: cover;
+
+    img {
+        border-radius: 50%;
+        position: relative;
+    }
 }
 
 .photo {
@@ -196,7 +253,6 @@ div.movie-text {
     margin-left: 10px;
 }
 
-
 fieldset,
 label {
     margin: 0;
@@ -204,7 +260,7 @@ label {
 }
 
 .movie-main {
-    margin-top: 20px;
+    @include margin-tops(20px, 0px);
 }
 
 .movie-text {
@@ -213,24 +269,23 @@ label {
     }
 
     h4 {
-        margin-bottom: 0px;
-        margin-top: 0px;
+        @include margin-tops(0px, 0px);
     }
 
     h5 {
+        text-align: justify;
+        text-justify: inter-word;
         font-weight: 400;
         margin-top: 5px;
     }
 }
 
 .info {
-    margin-bottom: 20px;
-    margin-top: 20px;
+    @include margin-tops(20px,20px);
 }
 
 .crew {
-    margin-top: 20px;
-    margin-left: 70px;
+    margin-left: 10px;
 }
 
 .tableCell a {
@@ -244,47 +299,111 @@ label {
 
 .reviews {
     flex: 1;
+    margin-left:5%;
+}
+
+.critic-review{
+    text-align: justify;
 }
 
 /* Start Navbar */
 
+.usernav {
+    border-radius: 20px;
+    background-color: #333;
+    margin-right: 20px;
+
+    a.user-thumb-name {
+        display: flex;
+        float: left;
+        color: #f2f2f2;
+        margin: 0 auto;
+        text-align: center;
+        padding: 10px 10px;
+        text-decoration: none;
+        font-size: 15px;
+    }
+
+    a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+}
+
 .topnav {
     justify-content: space-around;
     overflow: hidden;
-
     background-color: #333;
     border-radius: 20px;
+    margin-right: 20px;
+
+    a {
+        display: flex;
+        /*added*/
+        float: left;
+        color: #f2f2f2;
+        padding: 10px 10px;
+        text-decoration: none;
+        font-size: 15px;
+    }
+
+    a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+
+    a.principal:hover {
+        opacity: $def_opacity;
+        background-color: orange;
+    }
+
+    a.principal {
+        background-color: rgb(221, 55, 55);
+        color: white;
+    }
 }
 
-/* Style the links inside the navigation bar */
-.topnav a {
-    display: flex;
-    /*added*/
-    float: left;
-    color: #f2f2f2;
+.more,
+.less,
+.all,
+.few,
+.all_u_rev,
+.few_u_rev{
+    border-radius: 15px 15px 15px 15px;
+    background-color: rgb(221, 55, 55);;
+    clear: both;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-size: 14px;
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 6px 0;
     text-align: center;
-    padding: 10px 10px;
-    text-decoration: none;
-    font-size: 15px;
+    text-transform: uppercase;
+    width: 320px;
 }
 
-/* Change the color of links on hover */
-.topnav a:hover {
-    background-color: #ddd;
-    color: black;
+.link {
+    display: flex;
 }
 
-.topnav a.principal:hover {
-    opacity: 0.9;
-    background-color: orange;
-}
+.moretext{
 
-/* Add a color to the active/current link */
-.topnav a.principal {
-    background-color: rgb(221, 55, 55);
-    color: white;
-}
+    span {
+        display: none;
+    }
 
+    a {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+    }
+} 
+
+.bio-text {
+    display: block;
+}
 
 @media screen and (max-width: 600px) {
 
@@ -304,13 +423,11 @@ label {
 
 .utilizadores {
     text-align: center;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    @include margin-tops(15px,15px);
 }
 
 .radio-inline {
-    margin-right: 30px;
-    margin-left: 30px;
+    @include margin-side(30px);
 }
 
 /* Full-width input fields */
@@ -330,13 +447,21 @@ input[type=password]:focus {
     outline: none;
 }
 
+textarea {
+    @include margin-tops(10px, 0);
+    border: none;
+    resize: none;
+    background-color: #f1f1f1;
+ }
+
+
 /* Overwrite default styles of hr */
 hr {
     border: 2px solid #f1f1f1;
     margin-bottom: 25px;
 }
 
-.registerbtn {
+.registerbtn, .updatebtn{
     background-color: rgb(221, 55, 55);
     color: white;
     padding: 16px 20px;
@@ -344,7 +469,9 @@ hr {
     border: none;
     cursor: pointer;
     width: 100%;
-    opacity: 0.9;
+    &:hover{
+        opacity: $def_opacity;
+    }
 }
 
 .registerbtn:hover {
@@ -386,8 +513,7 @@ img.avatar {
 .reset-container {
     max-width: 600px;
     margin: auto;
-    margin-top: 60px;
-    margin-bottom: 60px;
+    @include margin-tops(60px, 60px);
 }
 
 .psw {
@@ -410,30 +536,55 @@ img.avatar {
     background: #ddd;
     width: 220px;
 
+    select {
+        border: 0;
+        color: rgb(8, 6, 6);
+        background: #ddd;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 2px 10px;
+        text-align: center;
+        text-align-last: center;
+    }
+    .searchbtn {
+        background: rgb(221, 55, 55);
+        font-size: 15px;
+        color: white;
+        padding: 4px 50px;
+        border: none;
+        cursor: pointer;
+        opacity: $def_opacity;
+        width: 100%;
+    }
 }
 
-.campos-procura select {
-    border: 0;
-    color: rgb(8, 6, 6);
-    background: #ddd;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 2px 10px;
-    text-align: center;
-    text-align-last: center;
-}
-
-.campos-procura .searchbtn {
+.submit-bttn {
     background: rgb(221, 55, 55);
     font-size: 15px;
     color: white;
-    padding: 4px 50px;
+    padding: 12px 50px;
     border: none;
     cursor: pointer;
-    opacity: 0.9;
     width: 100%;
+    border-radius: 10px 10px 10px 10px;
+    &:hover{
+        opacity: $def_opacity;
+    }
 }
 
+.updt_button{
+    background: rgb(221, 55, 55);
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+    padding: 12px 50px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px 10px 10px 10px;
+    &:hover{
+        opacity: $def_opacity;
+    }
+}
 /****** Style Star Rating Widget *****/
 
 .rating {
@@ -483,3 +634,112 @@ img.avatar {
 .rating>input:checked~label:hover~label {
     color: #FFED85;
 }
+
+.slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    @include margin-tops(0px, 20px);
+}
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 4s;
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+    .text {
+        font-size: 11px
+    }
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    top: 100%;
+    display: none;
+    position: absolute;
+    background-color: #333;
+    z-index: 1;
+
+    a {
+        float: none;
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+  }
+  /* Show the dropdown menu on hover */
+  .dropdown:hover > .dropdown-content {display: block;}
+
+    /*     .forum_btn{
+            
+            @include margin-tops(30px, 5px);
+            @include margin-side(10px);
+
+            border-radius: 20px 20px 20px 20px;
+            display: block;
+            width: 100%;
+            border: none;
+            background-color:rgb(221, 55, 55);
+            color: white;
+            padding: 40px 30px;
+            font-size: 30px;
+            cursor: pointer;
+            text-align: center;
+    } */
+
+@mixin appearance($appearance) {
+        -webkit-appearance: $appearance;
+        -moz-appearance: $appearance;
+        appearance: $appearance;
+}
+
+    .forum_btn{
+        width: 100%;
+        
+        @include appearance(button);
+        @include margin-tops(30px, 5px);
+        @include margin-side(10px);
+
+        border-radius: 20px 20px 20px 20px;
+        background-color:rgb(221, 55, 55);
+        color: white;
+        padding: 30px 30px;
+        font-size: 30px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+
+        &:hover{
+            opacity: $def_opacity;
+        }
+    }

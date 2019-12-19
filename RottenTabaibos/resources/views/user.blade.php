@@ -25,7 +25,7 @@
                             {{-- adicionar campo para idade da pessoa --}}
                             <h4>Account created at:</h4>
                             <h5>{{Auth::user()->created_at}}</h5>
-                            <a href="/uptd_profile">Edit Profile</a>
+                            <a href="/uptd_profile" class="updt_button">Edit Profile</a>
                         </div>
                         
                         {{-- <div class="line"></div> --}}

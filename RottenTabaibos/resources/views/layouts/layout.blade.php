@@ -11,7 +11,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/images/logo/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.11.1/css/all.css">
-    <link rel="stylesheet" href="/../css/style.css">
+    <link rel="stylesheet" href="/../css/style2.css">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 
