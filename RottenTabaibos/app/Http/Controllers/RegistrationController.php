@@ -16,10 +16,11 @@ public function store()
     $this->validate(request(), [
     'name' => 'required',
     'email' => 'required|email',
-    'password' => 'required'
+    'password' => 'required',
+   /* 'type' => 'required',*/
     ]);
 
-    $user = User::create(request(['name', 'email', 'password']));
+    $user = User::create(request(['name', 'email', 'password'/*,'type'*/ ]));
 
     auth()->login($user);
 
