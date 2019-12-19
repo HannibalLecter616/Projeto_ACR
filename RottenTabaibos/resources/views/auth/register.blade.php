@@ -42,10 +42,8 @@
                 <form>
                     <label for="utilizador_tipo"><b>Type of User</b></label> <br>
                         <div class="utilizadores">
-                            <label class="radio-inline">
+                            <label for="type" class="radio-inline">
                               <input type="radio" onclick="showMagazine()" name="type" id="common" value="1">Common
-                            </label>
-                            <label class="radio-inline">
                               <input type="radio" onclick="showMagazine()" name="type" id="pro_critic" value="2">Professional Critic
                             </label>
                         </div>

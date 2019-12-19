@@ -17,10 +17,9 @@ public function store()
     'name' => 'required',
     'email' => 'required|email',
     'password' => 'required',
-   /* 'type' => 'required',*/
     ]);
 
-    $user = User::create(request(['name', 'email', 'password'/*,'type'*/ ]));
+    $user = User::create(request(['name', 'email', 'password' ]));
 
     auth()->login($user);
 
