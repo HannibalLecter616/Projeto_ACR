@@ -173,7 +173,7 @@
                 @endphp
                 @if (count($comment) != 0)
 
-                <div class="reviews">
+                    <div class="reviews">
                     <h3>Critics Reviews</h3>
 
                     @for ($i = 0; $i < count($comment); $i++) 
@@ -200,11 +200,15 @@
                                 <div class="review-properties">
 
                                     Reviewed by <span class="review-author"><strong>{{$critic->first_name}}
-                                            {{$critic->last_name}}</strong></span>
+                                            {{$critic->last_name}}</strong></span> 
                                     @for ($i = 0; $i < $critic->star; $i++)
                                         <span class="icon-star"></span>
                                         @endfor
 
+                                        @if(Auth::user()->id == $critic->user_id)
+                                            <span class="trash"><a href="/remove/{{$critic->id}}" class="fas fa-trash" title="Edit/Remove Critic"></a></span>
+                                        @endif
+                                        
                                         <article>
                                             <p class="critic-review">{{$critic->body}}</p>
 
@@ -232,6 +236,10 @@
                                         <span class="icon-star"></span>
                                         @endfor
 
+                                        @if(Auth::user()->id == $critic->user_id)
+                                        <span class="trash"><a href="/remove/{{$critic->id}}" class="fas fa-trash" title="Edit/Remove Critic"></a></span>
+                                        @endif
+
                                         <article>
                                             <p class="critic-review">{{$critic->body}}</p>
 
@@ -244,23 +252,11 @@
                                     @endphp
                             @endif
                         @endforeach
-                
-                
+                    @if($num == 0)
 
-            {{-- 
-
-                 --}}
-
-            
-
-        @else
-            <div class="reviews">
-                <h3> Critics Reviews</h3>
-                <div class="line"></div>
-                <h4>No reviews yet!</h4>
-                <br>
-            </div>
-        @endif
+                            <h4>No reviews yet!</h4>
+                    @endif
+                @endif
             @if ($num > 3)
                 <div class="all">Show All</div>
                 <div class="few">Show Few</div>
@@ -284,6 +280,12 @@
                 @for ($i = 0; $i < $item->star; $i++)
                     <span class="icon-star"></span>
                     @endfor
+
+                    @if(Auth::user()->id == $item->user_id)
+                    <span class="trash">
+                        <a href="/remove/{{$item->id}}" class="fas fa-trash" title="Edit/Remove Comment"></a>
+                    </span>
+                    @endif
 
                     <article>
                         <p>{{str_limit($item->body,200)}}</p>

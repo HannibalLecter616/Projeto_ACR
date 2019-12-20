@@ -744,3 +744,12 @@ img.avatar {
   width: 250px;
 }
 
+.trash {
+  float: right;
+  margin-right: 2em;
+}
+
+.trash a {
+  color: black;
+}
+

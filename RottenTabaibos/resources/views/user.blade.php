@@ -7,8 +7,11 @@
                         <div class="movie-main">
                             <a href="#" class="movie-link">
 
-                                {{-- @if (empty($pessoa_detalhes['profile_path'])) --}}
+                                 @if (Auth::user()->avatar == ""))
                                     <img src="/images/default_icon.png" alt="" width="300px">
+                                @else 
+                                    <img src="/images/avatars/{{Auth::user()->avatar}}" width="300px">
+                                @endif
                                     <div class="edit_img">Change Profile Picture</div>
                                {{--  @else
                                 {{-- vai buscar a base de dados a imagem --}}

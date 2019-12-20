@@ -5,7 +5,7 @@
 
 
     <main>
-        <form action="/users/update" method="post">
+        <form action="/users/update" method="post" enctype="multipart/form-data">
             @csrf
             <div class="container">
                 <h1>Edit Profile</h1>
@@ -18,9 +18,7 @@
                 
                 <label for="biography"><b>Biography</b></label>
                 <br>
-                <textarea name="biography" cols="80" rows="4">
-                {{Auth::user()->biography}}
-                </textarea>
+                <textarea name="biography" cols="80" rows="4">{{Auth::user()->biography}}</textarea>
                 <br>
                 <label for="email"><b>Email</b></label>
                 <input type="text" value="{{Auth::user()->email}}" name="email">
@@ -29,6 +27,8 @@
                 <br>
                 <input type="date" name="born" value="{{Auth::user()->born}}" />  
                 <br><br>
+
+                <input type="file" name="avatar_profile" title="Profile Picture"> <br><br>
                 <button type="submit" class="updatebtn">Update</button>
 
             </div>

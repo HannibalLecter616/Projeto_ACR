@@ -36,13 +36,26 @@ class UserController extends Controller
     public function update(Request $request){
 
         $user = Auth::user();
+
+        $request->validate([
+            'profile_image'     =>  'image|mimes:png|max:2048'
+        ]);
+
         $id = $user->id;
+        $file = $request->file('avatar_profile');
+        $filename = time().'-'.$file->getClientOriginalExtension();
+
+        $file = $file->move('images/avatars', $filename);
+
+        $user->avatar = $filename;
         
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->email = $request->email;
         $user->biography = $request->biography;
         $user->born = $request->born;
+
+        //dd($user);
 
         $user->save();
 
