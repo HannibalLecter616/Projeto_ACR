@@ -743,3 +743,11 @@ img.avatar {
             opacity: $def_opacity;
         }
     }
+
+    .edit_img{
+        display: none;
+        position: absolute;
+        background:gray;
+        color:white;
+        width: 250px;
+    }

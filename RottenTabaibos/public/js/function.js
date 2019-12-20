@@ -134,6 +134,16 @@ var slideIndex = 0;
     setTimeout(showSlides, 4000); // Change image every 2 seconds
   };
 
+
+  $('.movie-link img').hover(function(){
+      $(".edit_img").fadeIn();
+      }, function(){
+        $('.edit_img').fadeOut();
+      });
+  $(".edit_img").mouseover(function() {
+      $(this).show();
+    });
+
 $(document).ready(showSlides);
 
 });

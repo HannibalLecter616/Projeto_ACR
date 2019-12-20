@@ -767,3 +767,11 @@ img.avatar {
   opacity: 0.8;
 }
 
+.edit_img {
+  display: none;
+  position: absolute;
+  background: gray;
+  color: white;
+  width: 250px;
+}
+

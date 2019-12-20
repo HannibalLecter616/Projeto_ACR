@@ -34,12 +34,18 @@ class UserController extends Controller
     }
 
     public function update(Request $request){
+
         $user = Auth::user();
+        $id = $user->id;
+        
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->email = $request->email;
+        $user->biography = $request->biography;
+        $user->born = $request->born;
 
-        $this->validate($request,[]);
+        $user->save();
 
-        //atualizar na base de dados
-
-        return redirect()->action('UserController@index',['id'=>$user->id]);
+        return redirect()->action('UserController@index',[$id]);
     }
 }

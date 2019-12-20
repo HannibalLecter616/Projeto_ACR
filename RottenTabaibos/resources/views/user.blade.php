@@ -9,6 +9,7 @@
 
                                 {{-- @if (empty($pessoa_detalhes['profile_path'])) --}}
                                     <img src="/images/default_icon.png" alt="" width="300px">
+                                    <div class="edit_img">Change Profile Picture</div>
                                {{--  @else
                                 {{-- vai buscar a base de dados a imagem --}}
                                     {{-- <img src="https://image.tmdb.org/t/p/w500{{$pessoa_detalhes['profile_path']}}" alt="" width="300px"> --}}
@@ -18,10 +19,11 @@
                         <div class="movie-text">
                             <h1>{{Auth::user()->first_name}}  {{Auth::user()->last_name}}</h1>
                             <h4>Biografia</h4>
-                            <h5 class="bio-text"></h5>
+                            <h5 class="bio-text">{{Auth::user()->biography}}</h5>
                             <h4>Email</h4>
                             <h5>{{Auth::user()->email}}</h5>
                             <h4>Born at:</h4>
+                            <h5>{{Auth::user()->born}}</h5>
                             {{-- adicionar campo para idade da pessoa --}}
                             <h4>Account created at:</h4>
                             <h5>{{Auth::user()->created_at}}</h5>

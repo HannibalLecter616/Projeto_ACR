@@ -29,6 +29,7 @@ class CommentsController extends Controller
             'last_name' => $last_name,
             'star' => $request->rating
         ]);
+        
         return redirect()->action('FilmeController@index',['id'=>$request->movie_id]);
     }
 }
