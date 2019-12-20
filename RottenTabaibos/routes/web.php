@@ -22,9 +22,11 @@ Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/uptd_profile', 'UserController@edit');
 
-Route::post('users/update', 'UserController@update');
+Route::post('/users/update', 'UserController@update');
 
 Route::resource('comments', 'CommentsController');
+
+Route::resource('critics', 'CriticsController');
 
 Auth::routes();
 

@@ -73,6 +73,7 @@ $(document).ready(function() {
   $('.all').click(function() {
     $('.few').show();
     if(teste < criticas){
+      teste -= 1;
       $('div.review-properties:gt('+ teste +')').show(300);
     }
     else{
@@ -83,6 +84,7 @@ $(document).ready(function() {
   });
 
   $('.few').click(function () {
+    teste += 1;
     $('div.review-properties').not(':lt('+teste+')').hide(300);
     $('.all').show();
     $('.few').hide();

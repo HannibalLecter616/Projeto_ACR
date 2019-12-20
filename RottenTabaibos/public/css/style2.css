@@ -105,23 +105,7 @@ form {
   opacity: 0.8;
 }
 
-.movie {
-  -webkit-box-flex: 20%;
-          flex: 20%;
-  width: 25%;
-  padding: 0 20px;
-}
-
-.movie img {
-  margin-top: 8px;
-  vertical-align: middle;
-  width: 100%;
-}
-
-.movie:hover {
-  opacity: 0.8;
-}
-
+.movie,
 .movie_more {
   -webkit-box-flex: 20%;
           flex: 20%;
@@ -130,43 +114,33 @@ form {
   margin-bottom: 20px;
 }
 
+.movie img,
 .movie_more img {
   margin-top: 8px;
   vertical-align: middle;
-  max-width: 100%;
+  width: 100%;
 }
 
+.movie:hover,
 .movie_more:hover {
   opacity: 0.8;
 }
 
-@media screen and (max-width: 600px) {
-  .movie {
-    -webkit-box-flex: 40%;
-            flex: 40%;
-  }
-
-  .movie img {
-    width: 100%;
-  }
-
+@media screen and (max-width: 700px) {
+  .movie,
   .movie_more {
     -webkit-box-flex: 40%;
             flex: 40%;
   }
 
+  .movie img,
   .movie_more img {
     width: 100%;
   }
 }
 
-@media screen and (max-width: 1080px) {
-  .movie {
-    -webkit-box-flex: 40%;
-            flex: 40%;
-    max-width: 40%;
-  }
-
+@media screen and (max-width: 1040px) {
+  .movie,
   .movie_more {
     -webkit-box-flex: 40%;
             flex: 40%;
@@ -299,11 +273,6 @@ label {
 .tableCell a {
   text-decoration: none;
   color: black;
-}
-
-.trailer {
-  -webkit-box-flex: 1;
-          flex: 1;
 }
 
 .reviews {
