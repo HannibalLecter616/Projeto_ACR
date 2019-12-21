@@ -1,5 +1,4 @@
-@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
-@charset "UTF-8";
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);@charset "UTF-8";
 
 body {
   font-family: "Poppins", sans-serif;
@@ -17,6 +16,7 @@ header {
 
 .logo-container,
 .nav-links,
+.usernav,
 .quick-search {
   display: -webkit-box;
   display: flex;
@@ -52,7 +52,8 @@ form {
 }
 
 .popular-text,
-.recent-text {
+.recent-text,
+.known_for {
   width: 90%;
   margin: auto;
 }
@@ -76,49 +77,73 @@ form {
   font-weight: bold;
 }
 
-#known_for {
-  margin: auto;
-  width: 80%;
-}
-
 .row {
   display: -webkit-box;
   display: flex;
-  flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-flow: row wrap;
   margin: auto;
+  justify-content: space-around;
   width: 80%;
 }
 
-.movie {
+.people {
   -webkit-box-flex: 20%;
           flex: 20%;
   width: 25%;
   padding: 0 20px;
 }
 
-.movie:hover {
-  opacity: 0.9;
+.people img {
+  margin-top: 8px;
+  vertical-align: middle;
+  max-width: 100%;
 }
 
-.movie img {
+.people:hover {
+  opacity: 0.8;
+}
+
+.movie,
+.movie_more {
+  -webkit-box-flex: 20%;
+          flex: 20%;
+  width: 25%;
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+
+.movie img,
+.movie_more img {
   margin-top: 8px;
   vertical-align: middle;
   width: 100%;
 }
 
-@media screen and (max-width: 600px) {
-  .movie {
+.movie:hover,
+.movie_more:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 700px) {
+  .movie,
+  .movie_more {
     -webkit-box-flex: 40%;
             flex: 40%;
-    max-width: 40%;
+  }
+
+  .movie img,
+  .movie_more img {
+    width: 100%;
   }
 }
 
-@media screen and (max-width: 1080px) {
-  .movie {
+@media screen and (max-width: 1040px) {
+  .movie,
+  .movie_more {
     -webkit-box-flex: 40%;
             flex: 40%;
-    max-width: 40%;
   }
 }
 
@@ -146,8 +171,11 @@ form {
 }
 
 div.movie-text {
+  margin-bottom: 20px;
+  margin-top: 0;
   -webkit-box-flex: 0.8;
           flex: 0.8;
+  margin-right: 50px;
 }
 
 .recent-text {
@@ -162,18 +190,28 @@ div.movie-text {
   border-top-color: #b49c9c;
   width: 80%;
   margin: auto;
+  margin-bottom: 0px;
   margin-top: 15px;
 }
 
 .actors div {
-  margin-top: 3px;
   margin-bottom: 3px;
+  margin-top: 3px;
 }
 
 .avatar-thumb {
-  /* width: 40px;
-  height: 40px; */
   border-radius: 50%;
+}
+
+.user-thumb {
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.user-thumb img {
+  border-radius: 50%;
+  position: relative;
 }
 
 .photo {
@@ -203,6 +241,7 @@ label {
 }
 
 .movie-main {
+  margin-bottom: 0px;
   margin-top: 20px;
 }
 
@@ -216,6 +255,8 @@ label {
 }
 
 .movie-text h5 {
+  text-align: justify;
+  text-justify: inter-word;
   font-weight: 400;
   margin-top: 5px;
 }
@@ -226,8 +267,7 @@ label {
 }
 
 .crew {
-  margin-top: 20px;
-  margin-left: 70px;
+  margin-left: 10px;
 }
 
 .tableCell a {
@@ -235,26 +275,48 @@ label {
   color: black;
 }
 
-.trailer {
-  -webkit-box-flex: 1;
-          flex: 1;
-}
-
 .reviews {
   -webkit-box-flex: 1;
           flex: 1;
+  margin-left: 5%;
+}
+
+.critic-review {
+  text-align: justify;
 }
 
 /* Start Navbar */
+
+.usernav {
+  border-radius: 20px;
+  background-color: #333;
+  margin-right: 20px;
+}
+
+.usernav a.user-thumb-name {
+  display: -webkit-box;
+  display: flex;
+  float: left;
+  color: #f2f2f2;
+  margin: 0 auto;
+  text-align: center;
+  padding: 10px 10px;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.usernav a:hover {
+  background-color: #ddd;
+  color: black;
+}
 
 .topnav {
   justify-content: space-around;
   overflow: hidden;
   background-color: #333;
   border-radius: 20px;
+  margin-right: 20px;
 }
-
-/* Style the links inside the navigation bar */
 
 .topnav a {
   display: -webkit-box;
@@ -262,13 +324,10 @@ label {
   /*added*/
   float: left;
   color: #f2f2f2;
-  text-align: center;
   padding: 10px 10px;
   text-decoration: none;
   font-size: 15px;
 }
-
-/* Change the color of links on hover */
 
 .topnav a:hover {
   background-color: #ddd;
@@ -276,15 +335,53 @@ label {
 }
 
 .topnav a.principal:hover {
-  opacity: 0.9;
+  opacity: 0.8;
   background-color: orange;
 }
-
-/* Add a color to the active/current link */
 
 .topnav a.principal {
   background-color: #dd3737;
   color: white;
+}
+
+.more,
+.less,
+.all,
+.few,
+.all_u_rev,
+.few_u_rev {
+  border-radius: 15px 15px 15px 15px;
+  background-color: #dd3737;
+  clear: both;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 14px;
+  margin: auto;
+  margin-bottom: 20px;
+  padding: 6px 0;
+  text-align: center;
+  text-transform: uppercase;
+  width: 320px;
+}
+
+.link {
+  display: -webkit-box;
+  display: flex;
+}
+
+.moretext span {
+  display: none;
+}
+
+.moretext a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.bio-text {
+  display: block;
 }
 
 @media screen and (max-width: 600px) {
@@ -304,8 +401,8 @@ label {
 
 .utilizadores {
   text-align: center;
-  margin-top: 15px;
   margin-bottom: 15px;
+  margin-top: 15px;
 }
 
 .radio-inline {
@@ -331,6 +428,14 @@ input[type=password]:focus {
   outline: none;
 }
 
+textarea {
+  margin-bottom: 0;
+  margin-top: 10px;
+  border: none;
+  resize: none;
+  background-color: #f1f1f1;
+}
+
 /* Overwrite default styles of hr */
 
 hr {
@@ -338,7 +443,8 @@ hr {
   margin-bottom: 25px;
 }
 
-.registerbtn {
+.registerbtn,
+.updatebtn {
   background-color: #dd3737;
   color: white;
   padding: 16px 20px;
@@ -346,7 +452,11 @@ hr {
   border: none;
   cursor: pointer;
   width: 100%;
-  opacity: 0.9;
+}
+
+.registerbtn:hover,
+.updatebtn:hover {
+  opacity: 0.8;
 }
 
 .registerbtn:hover {
@@ -390,8 +500,8 @@ img.avatar {
 .reset-container {
   max-width: 600px;
   margin: auto;
-  margin-top: 60px;
   margin-bottom: 60px;
+  margin-top: 60px;
 }
 
 .psw {
@@ -434,8 +544,38 @@ img.avatar {
   padding: 4px 50px;
   border: none;
   cursor: pointer;
-  opacity: 0.9;
+  opacity: 0.8;
   width: 100%;
+}
+
+.submit-bttn {
+  background: #dd3737;
+  font-size: 15px;
+  color: white;
+  padding: 12px 50px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.submit-bttn:hover {
+  opacity: 0.8;
+}
+
+.updt_button {
+  background: #dd3737;
+  text-decoration: none;
+  font-size: 15px;
+  color: white;
+  padding: 12px 50px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.updt_button:hover {
+  opacity: 0.8;
 }
 
 /****** Style Star Rating Widget *****/
@@ -482,5 +622,117 @@ img.avatar {
 .rating > label:hover ~ input:checked ~ label,
 .rating > input:checked ~ label:hover ~ label {
   color: #FFED85;
+}
+
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin-bottom: 20px;
+  margin-top: 0px;
+}
+
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+}
+
+@-webkit-keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* On smaller screens, decrease text size */
+
+@media only screen and (max-width: 300px) {
+  .text {
+    font-size: 11px;
+  }
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+
+.dropdown-content {
+  top: 100%;
+  display: none;
+  position: absolute;
+  background-color: #333;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Show the dropdown menu on hover */
+
+.dropdown:hover > .dropdown-content {
+  display: block;
+}
+
+.forum_btn {
+  width: 100%;
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  margin-bottom: 5px;
+  margin-top: 30px;
+  margin-right: 10px;
+  margin-left: 10px;
+  border-radius: 20px 20px 20px 20px;
+  background-color: #dd3737;
+  color: white;
+  padding: 30px 30px;
+  font-size: 30px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+.forum_btn:hover {
+  opacity: 0.8;
+}
+
+.edit_img {
+  display: none;
+  position: absolute;
+  background: gray;
+  color: white;
+  width: 250px;
+}
+
+.trash {
+  float: right;
+  margin-right: 2em;
+}
+
+.trash a {
+  color: black;
 }
 

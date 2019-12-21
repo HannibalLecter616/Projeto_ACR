@@ -38,12 +38,12 @@
     <hr>
         <section class="home">
             <div class="popular">
-                <div class="movie-row">
-                    <div class="popular-text">
-                            <div class="text-row">
-                                <h2> Movies </h2>
-                            </div>
+                <div class="popular-text">
+                    <div class="text-row">
+                        <h2> Movies </h2>
                     </div>
+            </div>
+                <div class="row">
                     @foreach ($search as $movie)
 
                     <div class="movie">

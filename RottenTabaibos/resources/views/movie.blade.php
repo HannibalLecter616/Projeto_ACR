@@ -35,7 +35,9 @@
 
 
                 <h5 class="bio-text">{{$movie['overview']}}</h5>
-                @auth
+
+                {{--@auth--}}
+                @if(Auth::user()->type == 1)
 
                 <h4>Your Review</h4>
                 <form method="POST" action={{route('comments.store')}}>
@@ -59,15 +61,30 @@
                     <input type="submit" class="submit-bttn" value="Submit">
                 </form>
 
+                @elseif(Auth::user()->type == 2)
 
-                {{-- {{ Form::open(['route' => ['comments.store'], 'method' => 'POST']) }}
-                <p>{{ Form::textarea('body', old('body')) }}</p>
-                {{ Form::hidden('movie_id', $movie['id']) }}
-                <p>{{ Form::submit('Send') }}</p>
-                {{ Form::close() }} --}}
+                <form method="POST" action={{route('critics.store')}}>
+                    <div class=" rating-star">
+                        <fieldset class="rating">
+                            <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5"
+                                title="Awesome - 5 stars"></label>
+                            <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4"
+                                title="Pretty good - 4 stars"></label>
+                            <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3"
+                                title="Meh - 3 stars"></label>
+                            <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2"
+                                title="Kinda bad - 2 stars"></label>
+                            <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1"
+                                title="Sucks big time - 1 star"></label>
+                        </fieldset>
+                    </div>
+                        <textarea name="body" placeholder="Give your opinion about this movie" cols="50" rows="3"></textarea>
+                        <input type="hidden" name="movie_id" value={{$movie['id']}}>
+                        {{ csrf_field() }}  
+                        <input type="submit" class="submit-bttn" value="Submit">
+                    </form>
 
-
-                @endauth
+                @endif
             </div>
             <div class="crew">
                 <div class="actors">
@@ -151,50 +168,124 @@
         <div class="line"></div>
         <div class="row">
 
-            @if (count($comment) != 0)
-            <div class="reviews">
-                <h3>Critics Reviews</h3>
-                @for ($i = 0; $i < count($comment); $i++) <div class="review-properties">
+            @php
+                $num = 0;
+                @endphp
+                @if (count($comment) != 0)
 
-                    Reviewed by
-                    <span class="review-author"><strong>{{$comment[$i]['author']}}</strong></span>
-                    <span class="icon-star"></span>
+                    <div class="reviews">
+                    <h3>Critics Reviews</h3>
 
-                    <article>
-                        <p class="critic-review">{{$comment[$i]['content']}}</p>
-                    </article>
-                    <div class="line"></div>
-                    <br>
-            </div>
-            @endfor
+                    @for ($i = 0; $i < count($comment); $i++) 
+                    <div class="review-properties">
 
-            <div class="all">Show All</div>
-            <div class="few">Show Few</div>
+                        Reviewed by
+                        <span class="review-author"><strong>{{$comment[$i]['author']}}</strong></span>
+                        <span class="icon-star"></span>
+
+                        <article>
+                            <p class="critic-review">{{$comment[$i]['content']}}</p>
+                        </article>
+                        <div class="line"></div>
+                        <br>
+                    </div>
+                        @php
+                        $num++;
+                        @endphp
+                    @endfor
+
+                    @if(count($critics) != 0)
+                        @foreach ($critics as $critic)                
+                            @if ($movie['id'] == $critic->movie_id)
+                                <div class="review-properties">
+
+                                    Reviewed by <span class="review-author"><strong>{{$critic->first_name}}
+                                            {{$critic->last_name}}</strong></span> 
+                                    @for ($i = 0; $i < $critic->star; $i++)
+                                        <span class="icon-star"></span>
+                                        @endfor
+
+                                        @if(Auth::user()->id == $critic->user_id)
+                                            <span class="trash"><a href="/remove/{{$critic->id}}" class="fas fa-trash" title="Edit/Remove Critic"></a></span>
+                                        @endif
+                                        
+                                        <article>
+                                            <p class="critic-review">{{$critic->body}}</p>
+
+                                        </article>
+                                        <div class="line"></div>
+                                        <br>
+                                </div>
+                                    @php
+                                    $num++;
+                                    @endphp
+                            @endif
+                        @endforeach
+                    @endif
+
+                    @elseif(count($critics) != 0)
+                        <div class="reviews">
+                        <h3>Critics Reviews</h3>
+                        @foreach ($critics as $critic)                
+                            @if ($movie['id'] == $critic->movie_id)
+                                <div class="review-properties">
+
+                                    Reviewed by <span class="review-author"><strong>{{$critic->first_name}}
+                                            {{$critic->last_name}}</strong></span>
+                                    @for ($i = 0; $i < $critic->star; $i++)
+                                        <span class="icon-star"></span>
+                                        @endfor
+
+                                        @if(Auth::user()->id == $critic->user_id)
+                                        <span class="trash"><a href="/remove/{{$critic->id}}" class="fas fa-trash" title="Edit/Remove Critic"></a></span>
+                                        @endif
+
+                                        <article>
+                                            <p class="critic-review">{{$critic->body}}</p>
+
+                                        </article>
+                                        <div class="line"></div>
+                                        <br>
+                                </div>
+                                    @php
+                                    $num++;
+                                    @endphp
+                            @endif
+                        @endforeach
+                    @if($num == 0)
+
+                            <h4>No reviews yet!</h4>
+                    @endif
+                @endif
+            @if ($num > 3)
+                <div class="all">Show All</div>
+                <div class="few">Show Few</div>
+            @endif
         </div>
-        @else
-        <div class="reviews">
-            <h3> Critics Reviews</h3>
-            <div class="line"></div>
-            <h4>No reviews yet!</h4>
-            <br>
-        </div>
-        @endif
+
+
         @if (count($comments) != 0)
         <div class="reviews">
             <h3>Users Reviews</h3>
             @php
-            $num = 0;
+            $num2 = 0;
             @endphp
 
             @foreach ($comments as $item)
             @if ($movie['id'] == $item->movie_id)
-            <div class="review-properties">
+            <div class="user-review-properties">
 
                 Reviewed by <span class="review-author"><strong>{{$item -> first_name}}
                         {{$item -> last_name}}</strong></span>
                 @for ($i = 0; $i < $item->star; $i++)
                     <span class="icon-star"></span>
                     @endfor
+
+                    @if(Auth::user()->id == $item->user_id)
+                    <span class="trash">
+                        <a href="/remove/{{$item->id}}" class="fas fa-trash" title="Edit/Remove Comment"></a>
+                    </span>
+                    @endif
 
                     <article>
                         <p>{{str_limit($item->body,200)}}</p>
@@ -203,29 +294,39 @@
                     <div class="line"></div>
                     <br>
             </div>
-            @php
-            $num++;
-            @endphp
+                @php
+                $num2++;
+                @endphp
             @endif
             @endforeach
-            @if ($num == 0)
-            <div class="line"></div>
-            <h4>No reviews yet!</h4>
-            <br>
+            
+            @if ($num2 == 0)
+                <div class="line"></div>
+                <h4>No reviews yet!</h4>
+                <br>
+            @endif
+            @if ($num2 >= 3)
+                <div class="all_u_rev">Show All</div>
+                <div class="few_u_rev">Show Few</div>
             @endif
 
-            <div class="all">Show All</div>
-            <div class="few">Show Few</div>
+            
         </div>
-        @else
-        <div class="reviews">
-            <h3>User Reviews</h3>
-            <div class="line"></div>
-            <h4>No reviews yet!</h4>
-            <br>
-        </div>
-        @endif
+            @else
+            <div class="reviews">
+                <h3>User Reviews</h3>
+                <div class="line"></div>
+                <h4>No reviews yet!</h4>
+                <br>
+            </div>
+            @endif
 
+        </div> {{--fecha a row--}}
+
+        <div class="line"></div>
+        <div class="row">
+            {{-- <button type="button" class="forum_btn">See Forum Discussion</button> --}}
+            <a href="/forum" class="forum_btn">Forum</a>
         </div>
         <div class="line"></div>
         <div class="row">
@@ -268,7 +369,8 @@
                 </div>
             </div>
 
-            @for ($i = 0; $i < count($recommendations); $i++) <div class="movie_more">
+            @for ($i = 0; $i < count($recommendations); $i++) 
+            <div class="movie_more">
                 <!-- https://image.tmdb.org/t/p/w185//udDclJoHjfjb8Ekgsd4FDteOkCU.jpg -->
                 <a href="/movie/{{$recommendations[$i]['id']}}" class="movie-link">
                     <img src="https://image.tmdb.org/t/p/w500/.{{$recommendations[$i]['poster_path']}}" alt="">
@@ -281,9 +383,12 @@
                 </div>
         </div>
         @endfor
+        <div class="row">
 
-        <div class="more">Show more</div>
+            <div class="more">Show more</div>
         <div class="less">Show less</div>
+        </div>
+        
     </section>
 </main>
 </body>

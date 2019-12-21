@@ -7,8 +7,12 @@
                         <div class="movie-main">
                             <a href="#" class="movie-link">
 
-                                {{-- @if (empty($pessoa_detalhes['profile_path'])) --}}
+                                 @if (Auth::user()->avatar == ""))
                                     <img src="/images/default_icon.png" alt="" width="300px">
+                                @else 
+                                    <img src="/images/avatars/{{Auth::user()->avatar}}" width="300px">
+                                @endif
+                                    <div class="edit_img">Change Profile Picture</div>
                                {{--  @else
                                 {{-- vai buscar a base de dados a imagem --}}
                                     {{-- <img src="https://image.tmdb.org/t/p/w500{{$pessoa_detalhes['profile_path']}}" alt="" width="300px"> --}}
@@ -18,14 +22,17 @@
                         <div class="movie-text">
                             <h1>{{Auth::user()->first_name}}  {{Auth::user()->last_name}}</h1>
                             <h4>Biografia</h4>
-                            <h5 class="bio-text"></h5>
+                            <h5 class="bio-text">{{Auth::user()->biography}}</h5>
                             <h4>Email</h4>
                             <h5>{{Auth::user()->email}}</h5>
                             <h4>Born at:</h4>
+                            <h5>{{Auth::user()->born}}</h5>
                             {{-- adicionar campo para idade da pessoa --}}
                             <h4>Account created at:</h4>
                             <h5>{{Auth::user()->created_at}}</h5>
+                            <a href="/uptd_profile" class="updt_button">Edit Profile</a>
                         </div>
+                        
                         {{-- <div class="line"></div> --}}
                     </div>
 
@@ -35,8 +42,11 @@
                                 <h2>
                                     Movies Reviewed
                                 </h2>
-
+                                @if(empty($images))
+                                    No movies reviewed yet
+                                @else
                                 <img src="https://image.tmdb.org/t/p/w500/.{{$images['poster_path']}}" alt="" width="300">
+                                @endif
 
                             </div>
                         </div>

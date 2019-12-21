@@ -15,6 +15,7 @@ class FilmeController extends Controller
     {
         $comments = DB::table('comments')->get();
 
+        $critics = DB::table('critics')->get();
 
         $client = new Client([
             'headers' => ['content-type' => 'application/json', 'Accept' => 'application/json'],
@@ -44,6 +45,6 @@ class FilmeController extends Controller
         $images = $response->getBody();
         $images = json_decode($images, true);
 
-        return view('movie', ['movie' => $movie,'crew'=>$crew['cast'],'director'=>$crew['crew'],'trailer'=>$trailer['results'], 'comment' => $comment['results'], 'recommendations'=> $recommendations['results'], 'images'=>$images['backdrops'] ,'comments'=>$comments]);
+        return view('movie', ['movie' => $movie,'crew'=>$crew['cast'],'director'=>$crew['crew'],'trailer'=>$trailer['results'], 'comment' => $comment['results'], 'recommendations'=> $recommendations['results'], 'images'=>$images['backdrops'] ,'comments'=>$comments, 'critics' => $critics]);
     }
 }

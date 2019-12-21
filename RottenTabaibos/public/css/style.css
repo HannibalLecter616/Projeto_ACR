@@ -211,8 +211,6 @@ div.movie-text {
 }
 
 .avatar-thumb {
-    /* width: 40px;
-    height: 40px; */
     border-radius: 50%;
 }
 
@@ -335,7 +333,9 @@ label {
 .more,
 .less,
 .all,
-.few {
+.few,
+.all_u_rev,
+.few_u_rev{
     background-color: #000;
     clear: both;
     color: #fff;
@@ -432,13 +432,19 @@ input[type=password]:focus {
     outline: none;
 }
 
+textarea {
+    resize: none;
+    background-color: #f1f1f1;
+ }
+
 /* Overwrite default styles of hr */
 hr {
     border: 2px solid #f1f1f1;
     margin-bottom: 25px;
+    border: none;
 }
 
-.registerbtn {
+.registerbtn, .updatebtn {
     background-color: rgb(221, 55, 55);
     color: white;
     padding: 16px 20px;

@@ -36,23 +36,7 @@ $(document).ready(function() {
     return false;
     //e.preventDefault();
   });
-
-/*   var more_comment = "Read more";
-  var less_comment = "Read less"; */
-
- /*  $('.critic-review').each(function(){
-    var reviewText = $(this).html();
-    var shorReview = reviewText.substr(0, nInitialCount);
-    var longReview = reviewText.substr(nInitialCount, reviewText.length - nInitialCount);
-
-    if(reviewText.length > nInitialCount){
-      var review = shorReview + '<span class="moreellipses">' +ellipsestext + '&nbsp;</span><span class="moretext"><span>' + longReview+ '</span>&nbsp;&nbsp;<a href="" class="new_link">' + more_comment + '</a></span>';
-      $(this).html(review);
-    }
-  }); */
-
-
-
+  
   var filmes = $(this).find('div.movie_more').length;
   var mostrar = 8;
 
@@ -89,6 +73,7 @@ $(document).ready(function() {
   $('.all').click(function() {
     $('.few').show();
     if(teste < criticas){
+      teste -= 1;
       $('div.review-properties:gt('+ teste +')').show(300);
     }
     else{
@@ -99,9 +84,36 @@ $(document).ready(function() {
   });
 
   $('.few').click(function () {
+    teste += 1;
     $('div.review-properties').not(':lt('+teste+')').hide(300);
     $('.all').show();
     $('.few').hide();
+});
+
+var criticas_user = $(this).find('div.user-review-properties').length;
+var teste_user = 3;
+
+$('div.user-review-properties:gt(2)').hide();
+$('.few_u_rev').hide();
+
+$('.all_u_rev').click(function() {
+  teste_user -= 1;
+  $('.few_u_rev').show();
+  if(teste_user < criticas_user){
+    $('div.user-review-properties:gt('+ teste_user +')').show(300);
+  }
+  else{
+    $('div.user-review-properties:gt('+ criticas_user +')').show(300);
+    
+  }
+  $('.all_u_rev').hide();
+});
+
+$('.few_u_rev').click(function () {
+  teste_user += 1; //
+  $('div.user-review-properties').not(':lt('+teste_user +')').hide(300);
+  $('.all_u_rev').show();
+  $('.few_u_rev').hide();
 });
 
 var pessoas = $(this).find('div.people').length;
@@ -123,6 +135,16 @@ var slideIndex = 0;
     slides[slideIndex - 1].style.display = "block";
     setTimeout(showSlides, 4000); // Change image every 2 seconds
   };
+
+
+  $('.movie-link img').hover(function(){
+      $(".edit_img").fadeIn();
+      }, function(){
+        $('.edit_img').fadeOut();
+      });
+  $(".edit_img").mouseover(function() {
+      $(this).show();
+    });
 
 $(document).ready(showSlides);
 

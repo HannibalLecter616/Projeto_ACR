@@ -8,21 +8,21 @@ class RegistrationController extends Controller
 {
 public function create()
 {
-return view('registration.create'); 
+return view('registration.create');     
 }
 
 public function store()
 {
-$this->validate(request(), [
-'name' => 'required',
-'email' => 'required|email',
-'password' => 'required'
-]);
+    $this->validate(request(), [
+    'name' => 'required',
+    'email' => 'required|email',
+    'password' => 'required',
+    ]);
 
-$user = User::create(request(['name', 'email', 'password']));
+    $user = User::create(request(['name', 'email', 'password' ]));
 
-auth()->login($user);
+    auth()->login($user);
 
-return redirect()->to('/welcome');
+    return redirect()->to('/welcome');
 }
 }
