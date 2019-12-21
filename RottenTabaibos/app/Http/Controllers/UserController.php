@@ -43,7 +43,7 @@ class UserController extends Controller
 
         $id = $user->id;
         $file = $request->file('avatar_profile');
-        $filename = time().'-'.$file->getClientOriginalExtension();
+        $filename = time().'-'.$file->getClientOriginalName();
 
         $file = $file->move('images/avatars', $filename);
 

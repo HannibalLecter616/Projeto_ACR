@@ -668,23 +668,6 @@ img.avatar {
   /* Show the dropdown menu on hover */
   .dropdown:hover > .dropdown-content {display: block;}
 
-    /*     .forum_btn{
-            
-            @include margin-tops(30px, 5px);
-            @include margin-side(10px);
-
-            border-radius: 20px 20px 20px 20px;
-            display: block;
-            width: 100%;
-            border: none;
-            background-color:rgb(221, 55, 55);
-            color: white;
-            padding: 40px 30px;
-            font-size: 30px;
-            cursor: pointer;
-            text-align: center;
-    } */
-
 @mixin appearance($appearance) {
         -webkit-appearance: $appearance;
         -moz-appearance: $appearance;
