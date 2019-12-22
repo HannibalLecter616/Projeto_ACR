@@ -205,10 +205,11 @@
                                     @for ($i = 0; $i < $critic->star; $i++)
                                         <span class="icon-star"></span>
                                         @endfor
-
-                                        @if(Auth::user()->id == $critic->user_id)
-                                            <span class="trash"><a href="/remove/{{$critic->id}}" class="fas fa-trash" title="Edit/Remove Critic"></a></span>
-                                        @endif
+                                        @auth
+                                            @if(Auth::user()->id == $critic->user_id)
+                                                <span class="trash"><a href="/remove/{{$critic->id}}" class="fas fa-trash" title="Edit/Remove Critic"></a></span>
+                                            @endif
+                                        @endauth
                                         
                                         <article>
                                             <p class="critic-review">{{$critic->body}}</p>
@@ -236,11 +237,12 @@
                                     @for ($i = 0; $i < $critic->star; $i++)
                                         <span class="icon-star"></span>
                                         @endfor
-
-                                        @if(Auth::user()->id == $critic->user_id)
-                                        <span class="trash"><a href="/remove/{{$critic->id}}" class="fas fa-trash" title="Edit/Remove Critic"></a></span>
-                                        @endif
-
+                                        @auth
+                                            @if(Auth::user()->id == $critic->user_id)
+                                            <span class="trash"><a href="/remove/{{$critic->id}}" class="fas fa-trash" title="Edit/Remove Critic"></a></span>
+                                            @endif
+                                        @endauth
+                                    
                                         <article>
                                             <p class="critic-review">{{$critic->body}}</p>
 
@@ -281,13 +283,15 @@
                 @for ($i = 0; $i < $item->star; $i++)
                     <span class="icon-star"></span>
                     @endfor
-
-                    @if(Auth::user()->id == $item->user_id)
-                    <span class="trash">
-                        <a href="/remove/{{$item->id}}" class="fas fa-trash" title="Edit/Remove Comment"></a>
-                    </span>
-                    @endif
-
+                    
+                    @auth
+                        @if(Auth::user()->id == $item->user_id)
+                        <span class="trash">
+                            <a href="/remove/{{$item->id}}" class="fas fa-trash" title="Edit/Remove Comment"></a>
+                        </span>
+                        @endif
+                    @endauth
+                    
                     <article>
                         <p>{{str_limit($item->body,200)}}</p>
 

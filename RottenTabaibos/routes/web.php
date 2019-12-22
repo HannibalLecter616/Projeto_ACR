@@ -30,6 +30,8 @@ Route::get('/forum/discussion/{name}/{id}', 'ForumController@post');
 
 Route::post('/users/update', 'UserController@update');
 
+Route::resource('posts', 'ForumController');
+
 Route::resource('comments', 'CommentsController');
 
 Route::resource('critics', 'CriticsController');
