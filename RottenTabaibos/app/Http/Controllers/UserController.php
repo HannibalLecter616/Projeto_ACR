@@ -20,8 +20,9 @@ class UserController extends Controller
         
         $user = Auth::user();
 
+
         $movies = Comment::find($user->id)->movie_id;
-        
+
         if(empty($movies)){
             $images = "";
         }
