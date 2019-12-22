@@ -13,17 +13,25 @@
             {{-- Os posts de cada um dos foruns aparecem aqui --}}
 
             <div class="createPost">
-                <input type="text" placeholder="Create Post" class="post" readonly/>
-            
+                
+                <div class="post">
+                    <input class="input-post-read" type="text" placeholder="Create Post" readonly/>
+                    <button class="post-create-btn" type="submit"><i class="fa fa-plus"></i> Submit</button>
+                    <button class="post-cancel-btn" type="cancel"><i class="fa fa-minus"></i>Cancel</button>
+                </div>
             </div>
 
-            <div class="row">
-                <form class="newpost"  action="/forum/discussion/{{$name}}" method="post">
-                        <label for="title">Title</label>
+            <div class="newpost">
+                <form action="/forum/discussion/{{$name}}" method="post">
+                    <div class="container-post">
+                        <h4>Title</h4>
                         <input type="text" name="title" placeholder="Insert a title for the Post"/>
         
-                        <label for="description">Description</label>
+                        <h4>Description</h4>
                         <textarea name="description" cols="60" rows="5" placeholder="Insert Post Description"></textarea>
+                        <br>
+                        <button class="post-create" type="submit"><i class="fa fa-plus"></i> Submit Post</button>
+                    </div>
 
                 </form>
             </div>
@@ -32,7 +40,7 @@
         
 
             <div class="line"></div>
-
+            <br>
             <div class="forum-discussion">
                 <p>Criado por:</p>
                 <h3>Titulo 1</h3>

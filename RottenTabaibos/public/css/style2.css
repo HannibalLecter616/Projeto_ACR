@@ -396,6 +396,7 @@ label {
 
 .container {
   padding: 16px;
+  width: 80%;
   margin: auto;
 }
 
@@ -416,7 +417,7 @@ input[type=text],
 input[type=password] {
   width: 100%;
   padding: 15px;
-  margin: 5px 0 22px 0;
+  margin: 10px 0 10px 0;
   display: inline-block;
   border: none;
   background: #f1f1f1;
@@ -767,7 +768,7 @@ img.avatar {
 }
 
 .createPost {
-  width: 100%;
+  width: 90%;
   cursor: pointer;
   padding: 0 16px;
   display: -webkit-box;
@@ -778,11 +779,22 @@ img.avatar {
   border: 2px solid #EDEFF1;
   cursor: pointer;
   color: black;
+  width: 100%;
   font-size: 15px;
+  border-radius: 15px 15px 15px 15px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
 }
 
 .createPost .post:hover {
   background-color: white;
+}
+
+.createPost .post input {
+  margin-right: 20px;
+  margin-left: 20px;
 }
 
 .post-btn {
@@ -799,6 +811,73 @@ img.avatar {
 }
 
 .newpost {
+  border: 2px solid #EDEFF1;
+  cursor: pointer;
+  color: black;
+  margin-top: 10px;
+  width: 90%;
+  border-radius: 15px 15px 15px 15px;
+  font-size: 15px;
+}
+
+.newpost:hover {
+  background-color: white;
+}
+
+.input-post-read {
   width: 60%;
+  margin-right: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.post-create {
+  color: white;
+  font-size: 15px;
+  background-color: #dd3737;
+  border-radius: 15px 15px 15px 15px;
+  border: none;
+  outline: none;
+  float: right;
+  padding: 15px;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.post-create-btn,
+.post-cancel-btn {
+  color: white;
+  font-size: 15px;
+  background-color: #dd3737;
+  border-radius: 15px 15px 15px 15px;
+  border: none;
+  outline: none;
+  float: right;
+  padding: 15px;
+  text-align: center;
+  display: -webkit-box;
+  display: flex;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.post-create-btn i,
+.post-cancel-btn i {
+  margin-right: 10px;
+}
+
+.container-post {
+  width: 80%;
+  display: grid;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  overflow: hidden;
 }
 

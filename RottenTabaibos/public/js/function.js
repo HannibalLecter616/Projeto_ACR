@@ -148,11 +148,20 @@ var slideIndex = 0;
 
 
   $('.newpost').hide();
+  $('.post-cancel-btn').hide();
 
-  $('.post, .post-btn').on('click', function(){
+  $('.input-post-read, .post-btn, .post-create-btn').on('click', function(){
     $('.newpost').fadeIn();
-    
+
+    $('.post-create-btn').hide();
+    $('.post-cancel-btn').show();
   });
+
+  $('.post-cancel-btn').on('click', function(){
+    $('.newpost').hide();
+    $('.post-create-btn').show();
+    $('.post-cancel-btn').hide();
+  })
 
 
 $(document).ready(showSlides);
