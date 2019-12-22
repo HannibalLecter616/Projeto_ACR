@@ -22,6 +22,12 @@ Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/uptd_profile', 'UserController@edit');
 
+Route::get('/forum', 'ForumController@index');
+
+Route::get('/forum/discussion/{name}', 'ForumController@topic');
+
+Route::get('/forum/discussion/{name}/{id}', 'ForumController@post');
+
 Route::post('/users/update', 'UserController@update');
 
 Route::resource('comments', 'CommentsController');

@@ -36,7 +36,7 @@
 
                 <h5 class="bio-text">{{$movie['overview']}}</h5>
 
-                {{--@auth--}}
+                @auth
                 @if(Auth::user()->type == 1)
 
                 <h4>Your Review</h4>
@@ -85,6 +85,7 @@
                     </form>
 
                 @endif
+                @endauth
             </div>
             <div class="crew">
                 <div class="actors">

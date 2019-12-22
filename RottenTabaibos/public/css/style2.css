@@ -312,7 +312,7 @@ label {
 
 .topnav {
   justify-content: space-around;
-  overflow: hidden;
+  /*overflow: hidden;*/
   background-color: #333;
   border-radius: 20px;
   margin-right: 20px;
@@ -321,6 +321,7 @@ label {
 .topnav a {
   display: -webkit-box;
   display: flex;
+  border-radius: 20px;
   /*added*/
   float: left;
   color: #f2f2f2;
@@ -395,7 +396,7 @@ label {
 
 .container {
   padding: 16px;
-  max-width: 600px;
+  width: 80%;
   margin: auto;
 }
 
@@ -416,7 +417,7 @@ input[type=text],
 input[type=password] {
   width: 100%;
   padding: 15px;
-  margin: 5px 0 22px 0;
+  margin: 10px 0 10px 0;
   display: inline-block;
   border: none;
   background: #f1f1f1;
@@ -734,5 +735,149 @@ img.avatar {
 
 .trash a {
   color: black;
+}
+
+.forum-topics {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-flow: row wrap;
+  margin: auto;
+  font-size: 20px;
+  padding: 30px 10px;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  justify-content: space-around;
+  width: 50%;
+  border-radius: 15px 15px 15px 15px;
+  cursor: pointer;
+  background-color: #dd3737;
+  box-shadow: 2px 2px 2px grey;
+}
+
+.forum-topics a {
+  color: white;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+}
+
+.forum-topics:hover {
+  opacity: 0.8;
+}
+
+.createPost {
+  width: 90%;
+  cursor: pointer;
+  padding: 0 16px;
+  display: -webkit-box;
+  display: flex;
+}
+
+.createPost .post {
+  border: 2px solid #EDEFF1;
+  cursor: pointer;
+  color: black;
+  width: 100%;
+  font-size: 15px;
+  border-radius: 15px 15px 15px 15px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+.createPost .post:hover {
+  background-color: white;
+}
+
+.createPost .post input {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.post-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border: none;
+  outline: none;
+  background-color: #dd3737;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 50%;
+}
+
+.newpost {
+  border: 2px solid #EDEFF1;
+  cursor: pointer;
+  color: black;
+  margin-top: 10px;
+  width: 90%;
+  border-radius: 15px 15px 15px 15px;
+  font-size: 15px;
+}
+
+.newpost:hover {
+  background-color: white;
+}
+
+.input-post-read {
+  width: 60%;
+  margin-right: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.post-create {
+  color: white;
+  font-size: 15px;
+  background-color: #dd3737;
+  border-radius: 15px 15px 15px 15px;
+  border: none;
+  outline: none;
+  float: right;
+  padding: 15px;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.post-create-btn,
+.post-cancel-btn {
+  color: white;
+  font-size: 15px;
+  background-color: #dd3737;
+  border-radius: 15px 15px 15px 15px;
+  border: none;
+  outline: none;
+  float: right;
+  padding: 15px;
+  text-align: center;
+  display: -webkit-box;
+  display: flex;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.post-create-btn i,
+.post-cancel-btn i {
+  margin-right: 10px;
+}
+
+.container-post {
+  width: 80%;
+  display: grid;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  overflow: hidden;
 }
 
