@@ -21,7 +21,6 @@ class UserController extends Controller
         
         $user = Auth::user();
         $movies = $user->comments;
-        // $image = $movie->movie_id;
         
         if(empty($movies)){
             $images = "";
