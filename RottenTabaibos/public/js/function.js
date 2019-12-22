@@ -149,9 +149,11 @@ var slideIndex = 0;
 
   $('.newpost').hide();
 
-  $('.post').on('click', function(){
+  $('.post, .post-btn').on('click', function(){
     $('.newpost').fadeIn();
+    
   });
+
 
 $(document).ready(showSlides);
 
