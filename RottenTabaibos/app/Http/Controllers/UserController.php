@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use DB;
+use App\User;
+use App\Comment;
+
 
 class UserController extends Controller
 {
@@ -15,7 +17,10 @@ class UserController extends Controller
         $client = new Client([
             'headers' => ['content-type' => 'application/json', 'Accept' => 'application/json'],
         ]);
-        $movies = DB::table('comments')->where('user_id', Auth::id())->value('movie_id');
+        
+        $user = Auth::user();
+
+        $movies = Comment::find($user->id)->movie_id;
         
         if(empty($movies)){
             $images = "";
@@ -60,5 +65,12 @@ class UserController extends Controller
         $user->save();
 
         return redirect()->action('UserController@index',[$id]);
+    }
+
+    public function api()
+    {
+        $data = User::all();
+
+        return $data;
     }
 }
