@@ -300,13 +300,14 @@ label {
 
 .topnav {
     justify-content: space-around;
-    overflow: hidden;
+    /*overflow: hidden;*/
     background-color: #333;
     border-radius: 20px;
     margin-right: 20px;
 
     a {
         display: flex;
+        border-radius: 20px;
         /*added*/
         float: left;
         color: #f2f2f2;
@@ -383,9 +384,8 @@ label {
 
 /* End Navbar */
 
-.container {
+.container{
     padding: 16px;
-    max-width: 600px;
     margin: auto;
 }
 
@@ -710,3 +710,62 @@ img.avatar {
             color: black;
         }
     }
+    .forum-topics{
+        display: flex;
+        flex-flow: row wrap;
+        margin:auto;
+        font-size: 20px;
+        padding: 30px 10px;
+        @include margin-tops(1em, 1em);
+        justify-content: space-around;
+        width: 50%;
+        border-radius: 15px 15px 15px 15px ;
+        cursor: pointer;
+        background-color: rgb(221, 55, 55);
+        box-shadow: 2px 2px 2px grey;
+        a{
+            color: white;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+            
+        }
+        &:hover{
+            opacity: $def_opacity;
+        }
+    }
+
+    .createPost{
+        width: 100%;
+        cursor: pointer;
+        padding: 0 16px;
+        display: flex;
+
+        .post{
+            border: 2px solid #EDEFF1 ;
+            cursor: pointer;
+            color: black;
+            font-size: 15px;
+            &:hover{
+                background-color: white;
+            }
+        }
+    }
+
+    .post-btn{
+        position: fixed; 
+        bottom: 20px; 
+        right: 20px; 
+        border: none; 
+        outline: none; 
+        background-color: rgb(221, 55, 55);
+        color: white; 
+        cursor: pointer; 
+        padding: 15px;
+        border-radius: 50%; 
+    }
+
+    .newpost{
+        width: 60%;
+    }
+

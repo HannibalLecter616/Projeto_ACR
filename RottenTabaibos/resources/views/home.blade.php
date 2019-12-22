@@ -1,8 +1,6 @@
 @extends('layouts.layout')
 
     @section('content')
-
-
     <main>
         <section class="home">
             <div class="popular">

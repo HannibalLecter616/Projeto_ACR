@@ -146,6 +146,13 @@ var slideIndex = 0;
       $(this).show();
     });
 
+
+  $('.newpost').hide();
+
+  $('.post').on('click', function(){
+    $('.newpost').fadeIn();
+  });
+
 $(document).ready(showSlides);
 
 });
