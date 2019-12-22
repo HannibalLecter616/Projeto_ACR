@@ -19,8 +19,10 @@ class CriticsController extends Controller
 
     public function store(CommentRequest $request)
     {
-        $first_name = DB::table('users')->where('id', Auth::id())->value('first_name');
-        $last_name = DB::table('users')->where('id', Auth::id())->value('last_name');
+        $user = Auth::user();
+
+        $first_name = User::find($user->id)->first_name;
+        $last_name = User::find($user->id)->last_name;
 
         Critic::create([
             'body' => $request->body,

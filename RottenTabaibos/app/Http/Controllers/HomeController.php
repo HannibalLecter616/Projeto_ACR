@@ -25,4 +25,5 @@ class HomeController extends Controller
 
         return view('home', ['popular' => $popular['results'], 'upcoming' => $upcoming['results']]);
     }
+    
 }

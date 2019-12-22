@@ -7,15 +7,20 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use App\User;
+use App\Comment;
+use App\Critic;
+
 
 class FilmeController extends Controller
 {
 
     public function index($id)
     {
-        $comments = DB::table('comments')->get();
-
-        $critics = DB::table('critics')->get();
+        // $comments = DB::table('comments')->get();
+        $comments = Comment::all();  
+        // $critics = DB::table('critics')->get();
+        $critics = Critic::all();
 
         $client = new Client([
             'headers' => ['content-type' => 'application/json', 'Accept' => 'application/json'],

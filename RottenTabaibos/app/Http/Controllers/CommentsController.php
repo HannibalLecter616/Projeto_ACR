@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Comment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\CommentRequest;
-use DB;
+use App\User;
+use App\Comment;
 
 class CommentsController extends Controller
 {
@@ -18,8 +18,10 @@ class CommentsController extends Controller
     public function store(CommentRequest $request)
     {
 
-        $first_name = DB::table('users')->where('id', Auth::id())->value('first_name');
-        $last_name = DB::table('users')->where('id', Auth::id())->value('last_name');
+        $user = Auth::user();
+
+        $first_name = User::find($user->id)->first_name;
+        $last_name = User::find($user->id)->last_name;
 
         Comment::create([
             'body' => $request->body,
@@ -31,5 +33,12 @@ class CommentsController extends Controller
         ]);
         
         return redirect()->action('FilmeController@index',['id'=>$request->movie_id]);
+    }
+
+    public function api()
+    {
+        $data = Comment::all();
+
+        return $data;
     }
 }
