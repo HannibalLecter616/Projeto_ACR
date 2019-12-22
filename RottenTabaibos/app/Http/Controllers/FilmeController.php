@@ -17,9 +17,7 @@ class FilmeController extends Controller
 
     public function index($id)
     {
-        // $comments = DB::table('comments')->get();
         $comments = Comment::all();  
-        // $critics = DB::table('critics')->get();
         $critics = Critic::all();
 
         $client = new Client([
