@@ -13,23 +13,30 @@ use App\Comment;
 
 class UserController extends Controller
 {
+
     public function index(){
         $client = new Client([
             'headers' => ['content-type' => 'application/json', 'Accept' => 'application/json'],
         ]);
         
         $user = Auth::user();
-
-
-        $movies = Comment::find($user->id)->movie_id;
-
+        $movies = $user->comments;
+      
         if(empty($movies)){
             $images = "";
         }
         else{
-            $response = $client->request('GET', 'https://api.themoviedb.org/3/movie/' . $movies . '?api_key=684b8c6e53471a5a6fc82a6c144fa9a0');
-            $images = $response->getBody();
-            $images = json_decode($images, true);
+            $images = array();
+            foreach ($movies as $movie) {
+                $response = $client->request('GET', 'https://api.themoviedb.org/3/movie/' . $movie->movie_id . '?api_key=684b8c6e53471a5a6fc82a6c144fa9a0');
+                $image = $response->getBody();
+                $image = json_decode($image, true);
+                if (!in_array($image, $images)) {
+                    # code...
+                    array_push($images, $image);
+                }
+                
+            }
         }
 
         return view('user',['images'=>$images]);

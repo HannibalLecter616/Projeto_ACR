@@ -30,6 +30,11 @@
                             <i class="fas fa-globe-africa" style="color: red;"> </i>{{$movie['original_title']}}
                             Website</a>
                     </div>
+                    @if(!$average==0)
+                   <div class="rate">
+                        <i class="fas fa-star-half-alt" style="color: red;"></i></i> {{$average}}
+                    </div>
+                    @endif
                 </div>
                 <h4>Synopsis</h4>
 
