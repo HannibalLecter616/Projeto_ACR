@@ -29,22 +29,24 @@ class ForumController extends Controller
 
         if(Auth::check())
         {
+            $posts = Post::all();
+
             //se o topico for filmes ... 
             if($name == "movies"){
                 $name = "Movies";
-                return view('discussion' ,['name' => $name]);
+                return view('discussion' ,['name' => $name, 'post' => $posts]);
             } 
 
             if($name == "series"){
                 //se o topico for series ...
                 $name = "Series"; 
-                return view('discussion' ,['name' => $name]);
+                return view('discussion' ,['name' => $name, 'post' => $posts]);
             } 
 
             if($name == "random"){
                 //se o topico for random ...
                 $name = "Random";
-                return view('discussion' ,['name' => $name]);
+                return view('discussion' ,['name' => $name, 'post' => $posts]);
             }     
         }else{
             return redirect('login');
@@ -56,15 +58,16 @@ class ForumController extends Controller
         
         $user = Auth::user();
 
-        /*
+        
         Post::create([
-            'body' => $request->body,
-            'user_id' => Auth::id(),
+            'type' => $request->type,
+            'user_id' => $user->id,
             'movie_id' => $request->movie_id,
-            'first_name' => $first_name,
-            'last_name' => $last_name,
+            'title' => $request->title,
+            'description' => $request->description,
         ]);
-        */
 
+        return redirect()->action('ForumController@topic',['name'=>$request->type]);
+    
     }
 }

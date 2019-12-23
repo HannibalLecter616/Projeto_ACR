@@ -15,9 +15,10 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('type'); // verifica se é dos movies, series ou random
+            $table->string('type'); // verifica se é dos movies, series ou random
             $table->string('title');
             $table->string('description');
+            $table->integer('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('movie_id')->nullable();
             $table->timestamps();
         });

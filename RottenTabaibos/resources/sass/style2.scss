@@ -829,3 +829,20 @@ img.avatar {
         //margin: auto;
     }
 
+    .post-full{
+        width: 90%;
+        border: 2px solid #EDEFF1 ;
+        border-radius: 15px 15px 15px 15px; 
+        @include margin-tops(10px, 10px);
+        @include margin-side(auto);
+        .post{
+            @include margin-side(20px);
+            @include margin-tops(20px, 0);
+            .post-author{
+                font-size: 12px;
+            }
+        }
+    }
+
+    
+
