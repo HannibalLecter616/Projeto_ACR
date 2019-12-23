@@ -68,6 +68,7 @@
 
                 @elseif(Auth::user()->type == 2)
 
+
                 <form method="POST" action={{route('critics.store')}}>
                     <div class=" rating-star">
                         <fieldset class="rating">
