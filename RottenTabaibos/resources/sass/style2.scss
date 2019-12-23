@@ -738,13 +738,11 @@ img.avatar {
 
     .createPost{
         width: 90%;
-        cursor: pointer;
         padding: 0 16px;
         display: flex;
 
         .post{
-            border: 2px solid #EDEFF1 ;
-            cursor: pointer;
+            border: 2px solid #EDEFF1;
             color: black;
             width: 100%;
             font-size: 15px;
@@ -754,7 +752,7 @@ img.avatar {
             &:hover{
                 background-color: white;
             }
-            input{
+            .input-post-read{
                 @include margin-side(20px);
             }
         }
@@ -775,7 +773,6 @@ img.avatar {
 
     .newpost{
         border: 2px solid #EDEFF1 ;
-        cursor: pointer;
         color: black;
         margin-top: 10px;
         width: 90%;
@@ -831,4 +828,21 @@ img.avatar {
         overflow: hidden;
         //margin: auto;
     }
+
+    .post-full{
+        width: 90%;
+        border: 2px solid #EDEFF1 ;
+        border-radius: 15px 15px 15px 15px; 
+        @include margin-tops(10px, 10px);
+        @include margin-side(auto);
+        .post{
+            @include margin-side(20px);
+            @include margin-tops(20px, 0);
+            .post-author{
+                font-size: 12px;
+            }
+        }
+    }
+
+    
 
