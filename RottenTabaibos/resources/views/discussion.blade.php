@@ -65,16 +65,24 @@
             @if (count($post) != 0)
 
                     @for ($i = 0; $i < count($post); $i++) 
-                    <div class="post-full">
-                        <div class="post">
-                            <span class="post-author">  Criado por: <strong>{{$post[$i]['user_id']}}</strong></span>
-                            <p class="post-title"><strong>{{$post[$i]['title']}}</strong></p>
-    
-                            <article>
-                                <p class="post-body">{{$post[$i]['description']}}</p>
-                            </article>
+
+                        @if ($post[$i]['type'] == $temp)
+                        <div class="post-full">
+                            <div class="post">
+                                <span class="post-author">  Criado por: <strong>{{$post[$i]['first_name']}} {{$post[$i]['last_name']}}</strong></span>
+                                <p class="post-title"><strong>{{$post[$i]['title']}}</strong></p>
+        
+                                <article>
+                                    <p class="post-body">{{$post[$i]['description']}}</p>
+                                </article>
+                                <button class="post-like">Like</button>
+                                <button class="post-dislike" >Dislike</button>
+                                <button class="post-reply">Reply</button>
+                            </div>
                         </div>
-                        </div>
+                        
+                        @endif
+                    
 
                     @endfor
             @endif

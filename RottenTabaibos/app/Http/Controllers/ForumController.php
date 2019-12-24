@@ -33,7 +33,7 @@ class ForumController extends Controller
 
             //se o topico for filmes ... 
             if($name == "movies"){
-                $name = "Movies";
+                $name = "Movies";                
                 return view('discussion' ,['name' => $name, 'post' => $posts]);
             } 
 
@@ -62,6 +62,8 @@ class ForumController extends Controller
         Post::create([
             'type' => $request->type,
             'user_id' => $user->id,
+            'first_name' => $user->first_name,
+            'last_name' => $user->last_name,
             'movie_id' => $request->movie_id,
             'title' => $request->title,
             'description' => $request->description,

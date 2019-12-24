@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Reply extends Model
 {
     //
-    protected $fillable = ['type', 'title','description','movie_id', 'user_id', 'first_name', 'last_name', 'likes', 'dislikes'];
+    protected $fillable = ['user_id', 'first_name', 'last_name', 'post_id', 'likes', 'dislikes','reply_id'];
 
     public function user()
     {

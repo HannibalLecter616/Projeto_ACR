@@ -800,6 +800,9 @@ img.avatar {
         text-align: center;
         @include margin-tops(10px, 10px);
         @include margin-side(10px);
+        &:hover{
+            opacity: $def_opacity;
+        }
     }
     .post-create-btn,
     .post-cancel-btn{
@@ -817,6 +820,27 @@ img.avatar {
         @include margin-side(10px);
         i{
             margin-right: 10px;
+        }
+        &:hover{
+            opacity: $def_opacity;
+        }
+    }
+    .post-like,
+    .post-dislike,
+    .post-reply{
+        color:white;
+        background-color: rgb(221, 55, 55);
+        border-radius: 15px 15px 15px 15px;
+        border: none; 
+        outline: none;
+        float: left;
+        padding: 5px 20px;
+        text-align: center;
+        display: flex;
+        @include margin-tops(10px, 10px);
+        @include margin-side(10px);
+        &:hover{
+            opacity: $def_opacity;
         }
     }
 
