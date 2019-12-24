@@ -13,14 +13,15 @@ class CreateReplyTable extends Migration
      */
     public function up()
     {
-        Schema::create('reply', function (Blueprint $table) {
+        Schema::create('replies', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
             $table->string('first_name');
             $table->string('last_name');
+            $table->string('reply');
             $table->integer('post_id');
-            $table->integer('likes');
-            $table->integer('dislikes');
+            $table->integer('likes')->nullable();
+            $table->integer('dislikes')->nullable();
             $table->integer('reply_id')->nullable();
             $table->timestamps();
         });
@@ -33,6 +34,6 @@ class CreateReplyTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reply');
+        Schema::dropIfExists('replies');
     }
 }

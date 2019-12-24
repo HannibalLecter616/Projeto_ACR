@@ -788,7 +788,7 @@ img.avatar {
         cursor:pointer
     }
 
-    .post-create{
+    .post-create,.reply-create{
         color:white;
         font-size: 15px;
         background-color: rgb(221, 55, 55);
@@ -852,6 +852,13 @@ img.avatar {
         overflow: hidden;
         //margin: auto;
     }
+    .container-reply{
+        width: 80%;
+        display: grid;
+        @include margin-tops(5px, 5px);
+        @include margin-side(auto);
+        overflow: hidden;
+    }
 
     .post-full{
         width: 90%;
@@ -865,6 +872,12 @@ img.avatar {
             .post-author{
                 font-size: 12px;
             }
+        }
+        .reply{
+            @include margin-side(20px);
+            @include margin-tops(20px, 0);
+            float: right;
+            width: 80%;
         }
     }
 

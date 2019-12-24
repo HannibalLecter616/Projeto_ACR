@@ -828,7 +828,8 @@ img.avatar {
   cursor: pointer;
 }
 
-.post-create {
+.post-create,
+.reply-create {
   color: white;
   font-size: 15px;
   background-color: #dd3737;
@@ -844,7 +845,8 @@ img.avatar {
   margin-left: 10px;
 }
 
-.post-create:hover {
+.post-create:hover,
+.reply-create:hover {
   opacity: 0.8;
 }
 
@@ -912,6 +914,16 @@ img.avatar {
   overflow: hidden;
 }
 
+.container-reply {
+  width: 80%;
+  display: grid;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  margin-right: auto;
+  margin-left: auto;
+  overflow: hidden;
+}
+
 .post-full {
   width: 90%;
   border: 2px solid #EDEFF1;
@@ -931,5 +943,14 @@ img.avatar {
 
 .post-full .post .post-author {
   font-size: 12px;
+}
+
+.post-full .reply {
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-bottom: 0;
+  margin-top: 20px;
+  float: right;
+  width: 80%;
 }
 

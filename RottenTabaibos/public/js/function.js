@@ -162,7 +162,16 @@ var slideIndex = 0;
     $('.post-create-btn').show();
     $('.post-cancel-btn').hide();
   })
+  
+  $('.new_reply').hide();
 
+  $(document).on('click','.post-reply', function(){
+    var closestDiv = $(this).closest('div');
+    
+    $('.new_reply').not(closestDiv.next('.new_reply')).hide();
+    closestDiv.next('.new_reply').fadeToggle(100);
+
+  })
 
 $(document).ready(showSlides);
 

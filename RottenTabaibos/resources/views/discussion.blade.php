@@ -43,14 +43,12 @@
                 <form method="post" action="{{route('posts.store')}}" >
                     @csrf
                     <div class="container-post">
-
                         <h4>Title</h4>
                         <input type="text" name="title" placeholder="Insert a title for the Post"/>
         
                         <h4>Description</h4>
                         <textarea name="description" cols="60" rows="5" placeholder="Insert Post Description"></textarea>
                         <br>
-
                         <input type="hidden" name="type" value="{{$temp}}">
                         <button class="post-create" type="submit"><i class="fa fa-plus"></i> Submit Post</button>
                     </div>
@@ -67,25 +65,64 @@
                     @for ($i = 0; $i < count($post); $i++) 
 
                         @if ($post[$i]['type'] == $temp)
-                        <div class="post-full">
-                            <div class="post">
-                                <span class="post-author">  Criado por: <strong>{{$post[$i]['first_name']}} {{$post[$i]['last_name']}}</strong></span>
-                                <p class="post-title"><strong>{{$post[$i]['title']}}</strong></p>
-        
-                                <article>
-                                    <p class="post-body">{{$post[$i]['description']}}</p>
-                                </article>
-                                <button class="post-like">Like</button>
-                                <button class="post-dislike" >Dislike</button>
-                                <button class="post-reply">Reply</button>
+                            @php
+                                $name = $post[$i]['first_name']." ".$post[$i]['last_name'];
+                                $id =  $post[$i]['id'];
+                            @endphp
+
+                            <div class="post-full">
+                                <div class="post">
+                                    <span class="post-author">  Criado por: <strong>{{$name}}</strong></span>
+                                    <p class="post-title"><strong>{{$post[$i]['title']}}</strong></p>
+
+                                    <article>
+                                        <p class="post-body">{{$post[$i]['description']}}</p>
+                                    </article>
+                                    <button class="post-like">Like</button>
+                                    <button class="post-dislike" >Dislike</button>
+                                    <button class="post-reply">Reply</button>
+                                </div>
+
+                            <div class="new_reply">
+                                <form class="reply_comments" method="post" action="{{route('replies.store')}}" >
+                                    @csrf
+                                    <div class="container-reply">
+    
+                                    <h4>Reply to {{$name}}</h4>
+                                        <textarea name="reply" cols="60" rows="5" placeholder="Insert Reply"></textarea>
+                                        <input type="hidden" name="type" value="{{$temp}}">
+                                        <input type="hidden" name="post_id" value={{$id}}>
+                                        <button class="reply-create" type="submit"><i class="fa fa-plus"></i> Send</button>
+                                    </div>
+                                </form>
                             </div>
+
+                            @if (count($replies) != 0)
+                                @for ($j = 0; $j < count($replies); $j++)
+                            
+                                    @if ($replies[$j]['post_id'] == $id)
+                                            <br>
+                                            <div class="reply">
+                                                <div class="post-author">  Criado por: <strong>{{$name}}</strong></div>
+
+                                                <article>
+                                                    <p class="post-body">{{$replies[$j]['reply']}}</p>
+                                                </article>
+                                                <button class="post-like">Like</button>
+                                                <button class="post-dislike" >Dislike</button>
+                                                <button class="post-reply">Reply</button>
+                                            </div>
+                                        @endif
+                                    
+                                @endfor
+                                 
+                            @endif
+
                         </div>
                         
                         @endif
-                    
-
                     @endfor
-            @endif
+                @endif
         </div>
 
             

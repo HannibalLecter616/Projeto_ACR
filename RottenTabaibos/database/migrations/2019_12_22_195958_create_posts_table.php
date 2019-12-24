@@ -21,8 +21,8 @@ class CreatePostsTable extends Migration
             $table->integer('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('first_name');
             $table->string('last_name');
-            $table->integer('likes');
-            $table->integer('dislikes');
+            $table->integer('likes')->nullable();
+            $table->integer('dislikes')->nullable();
             $table->string('movie_id')->nullable();
             $table->timestamps();
         });

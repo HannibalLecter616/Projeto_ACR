@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Reply extends Model
 {
     //
-    protected $fillable = ['user_id', 'first_name', 'last_name', 'post_id', 'likes', 'dislikes','reply_id'];
+    protected $fillable = ['user_id', 'first_name', 'last_name', 'post_id','reply', 'likes', 'dislikes','reply_id'];
 
     public function user()
     {

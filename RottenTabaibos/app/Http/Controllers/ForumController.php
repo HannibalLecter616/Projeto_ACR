@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\User;
 use App\Post;
+use App\Reply;
 
 class ForumController extends Controller
 {
@@ -29,24 +30,25 @@ class ForumController extends Controller
 
         if(Auth::check())
         {
+            $replies = Reply::all();
             $posts = Post::all();
-
+        
             //se o topico for filmes ... 
             if($name == "movies"){
                 $name = "Movies";                
-                return view('discussion' ,['name' => $name, 'post' => $posts]);
+                return view('discussion' ,['name' => $name, 'post' => $posts, 'replies'=>$replies]);
             } 
 
             if($name == "series"){
                 //se o topico for series ...
                 $name = "Series"; 
-                return view('discussion' ,['name' => $name, 'post' => $posts]);
+                return view('discussion' ,['name' => $name, 'post' => $posts, 'replies'=>$replies]);
             } 
 
             if($name == "random"){
                 //se o topico for random ...
                 $name = "Random";
-                return view('discussion' ,['name' => $name, 'post' => $posts]);
+                return view('discussion' ,['name' => $name, 'post' => $posts, 'replies'=>$replies]);
             }     
         }else{
             return redirect('login');
@@ -70,6 +72,5 @@ class ForumController extends Controller
         ]);
 
         return redirect()->action('ForumController@topic',['name'=>$request->type]);
-    
     }
 }
