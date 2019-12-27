@@ -40,14 +40,21 @@
                     <h2>
                         Movies Reviewed
                     </h2>
-                    @if(empty($images))
-                    No movies reviewed yet
-                    @else
-                    @foreach ($images as $image)
-                    <img src="https://image.tmdb.org/t/p/w500/.{{$image['poster_path']}}" alt="" width="300">
-                    @endforeach
-                    @endif
                 </div>
+            </div>
+            
+                @if(empty($images))
+                    No movies reviewed yet
+                @else
+                    @foreach ($images as $image)
+                    <div class="movie">
+                        <img src="https://image.tmdb.org/t/p/w500/.{{$image['poster_path']}}" alt="" width="300">
+                    </div>
+                    @endforeach
+                @endif
+            
+        </div>
+
             </div>
         </div>
     </section>

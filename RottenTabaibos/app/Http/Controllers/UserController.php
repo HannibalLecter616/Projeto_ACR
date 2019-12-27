@@ -15,35 +15,46 @@ class UserController extends Controller
 {
 
     public function index(){
-        $client = new Client([
-            'headers' => ['content-type' => 'application/json', 'Accept' => 'application/json'],
-        ]);
-        
-        $user = Auth::user();
-        $movies = $user->comments;
-        
-        if(empty($movies)){
-            $images = "";
-        }
-        else{
-            $images = array();
-            foreach ($movies as $movie) {
-                $response = $client->request('GET', 'https://api.themoviedb.org/3/movie/' . $movie->movie_id . '?api_key=684b8c6e53471a5a6fc82a6c144fa9a0');
-                $image = $response->getBody();
-                $image = json_decode($image, true);
-                if (!in_array($image, $images)) {
-                    # code...
-                    array_push($images, $image);
-                }
-                
+        if(Auth::check())
+        {
+            $client = new Client([
+                'headers' => ['content-type' => 'application/json', 'Accept' => 'application/json'],
+            ]);
+            
+            $user = Auth::user();
+            $movies = $user->comments;
+          
+            if(empty($movies)){
+                $images = "";
             }
+            else{
+                $images = array();
+                foreach ($movies as $movie) {
+                    $response = $client->request('GET', 'https://api.themoviedb.org/3/movie/' . $movie->movie_id . '?api_key=684b8c6e53471a5a6fc82a6c144fa9a0');
+                    $image = $response->getBody();
+                    $image = json_decode($image, true);
+                    if (!in_array($image, $images)) {
+                        # code...
+                        array_push($images, $image);
+                    }
+                    
+                }
+            }
+    
+            return view('user',['images'=>$images]);
+        }else{
+            return redirect('home');
         }
-
-        return view('user',['images'=>$images]);
     }
 
     public function edit(){
-        return view('edit');
+        if(Auth::check()){
+            return view('edit');
+        }
+        else{
+            return redirect('home');
+        }
+        
     }
 
     public function update(Request $request){

@@ -738,13 +738,11 @@ img.avatar {
 
     .createPost{
         width: 90%;
-        cursor: pointer;
         padding: 0 16px;
         display: flex;
 
         .post{
-            border: 2px solid #EDEFF1 ;
-            cursor: pointer;
+            border: 2px solid #EDEFF1;
             color: black;
             width: 100%;
             font-size: 15px;
@@ -754,7 +752,7 @@ img.avatar {
             &:hover{
                 background-color: white;
             }
-            input{
+            .input-post-read{
                 @include margin-side(20px);
             }
         }
@@ -775,7 +773,6 @@ img.avatar {
 
     .newpost{
         border: 2px solid #EDEFF1 ;
-        cursor: pointer;
         color: black;
         margin-top: 10px;
         width: 90%;
@@ -791,7 +788,7 @@ img.avatar {
         cursor:pointer
     }
 
-    .post-create{
+    .post-create,.reply-create{
         color:white;
         font-size: 15px;
         background-color: rgb(221, 55, 55);
@@ -803,6 +800,9 @@ img.avatar {
         text-align: center;
         @include margin-tops(10px, 10px);
         @include margin-side(10px);
+        &:hover{
+            opacity: $def_opacity;
+        }
     }
     .post-create-btn,
     .post-cancel-btn{
@@ -821,6 +821,27 @@ img.avatar {
         i{
             margin-right: 10px;
         }
+        &:hover{
+            opacity: $def_opacity;
+        }
+    }
+    .post-like,
+    .post-dislike,
+    .post-reply{
+        color:white;
+        background-color: rgb(221, 55, 55);
+        border-radius: 15px 15px 15px 15px;
+        border: none; 
+        outline: none;
+        float: left;
+        padding: 5px 20px;
+        text-align: center;
+        display: flex;
+        @include margin-tops(10px, 10px);
+        @include margin-side(10px);
+        &:hover{
+            opacity: $def_opacity;
+        }
     }
 
     .container-post{
@@ -831,4 +852,34 @@ img.avatar {
         overflow: hidden;
         //margin: auto;
     }
+    .container-reply{
+        width: 80%;
+        display: grid;
+        @include margin-tops(5px, 5px);
+        @include margin-side(auto);
+        overflow: hidden;
+    }
+
+    .post-full{
+        width: 90%;
+        border: 2px solid #EDEFF1 ;
+        border-radius: 15px 15px 15px 15px; 
+        @include margin-tops(10px, 10px);
+        @include margin-side(auto);
+        .post{
+            @include margin-side(20px);
+            @include margin-tops(20px, 0);
+            .post-author{
+                font-size: 12px;
+            }
+        }
+        .reply{
+            @include margin-side(20px);
+            @include margin-tops(20px, 0);
+            float: right;
+            width: 80%;
+        }
+    }
+
+    
 

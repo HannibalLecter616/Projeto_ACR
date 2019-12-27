@@ -769,7 +769,6 @@ img.avatar {
 
 .createPost {
   width: 90%;
-  cursor: pointer;
   padding: 0 16px;
   display: -webkit-box;
   display: flex;
@@ -777,7 +776,6 @@ img.avatar {
 
 .createPost .post {
   border: 2px solid #EDEFF1;
-  cursor: pointer;
   color: black;
   width: 100%;
   font-size: 15px;
@@ -792,7 +790,7 @@ img.avatar {
   background-color: white;
 }
 
-.createPost .post input {
+.createPost .post .input-post-read {
   margin-right: 20px;
   margin-left: 20px;
 }
@@ -812,7 +810,6 @@ img.avatar {
 
 .newpost {
   border: 2px solid #EDEFF1;
-  cursor: pointer;
   color: black;
   margin-top: 10px;
   width: 90%;
@@ -831,7 +828,8 @@ img.avatar {
   cursor: pointer;
 }
 
-.post-create {
+.post-create,
+.reply-create {
   color: white;
   font-size: 15px;
   background-color: #dd3737;
@@ -845,6 +843,11 @@ img.avatar {
   margin-top: 10px;
   margin-right: 10px;
   margin-left: 10px;
+}
+
+.post-create:hover,
+.reply-create:hover {
+  opacity: 0.8;
 }
 
 .post-create-btn,
@@ -871,6 +874,36 @@ img.avatar {
   margin-right: 10px;
 }
 
+.post-create-btn:hover,
+.post-cancel-btn:hover {
+  opacity: 0.8;
+}
+
+.post-like,
+.post-dislike,
+.post-reply {
+  color: white;
+  background-color: #dd3737;
+  border-radius: 15px 15px 15px 15px;
+  border: none;
+  outline: none;
+  float: left;
+  padding: 5px 20px;
+  text-align: center;
+  display: -webkit-box;
+  display: flex;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.post-like:hover,
+.post-dislike:hover,
+.post-reply:hover {
+  opacity: 0.8;
+}
+
 .container-post {
   width: 80%;
   display: grid;
@@ -879,5 +912,45 @@ img.avatar {
   margin-right: auto;
   margin-left: auto;
   overflow: hidden;
+}
+
+.container-reply {
+  width: 80%;
+  display: grid;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  margin-right: auto;
+  margin-left: auto;
+  overflow: hidden;
+}
+
+.post-full {
+  width: 90%;
+  border: 2px solid #EDEFF1;
+  border-radius: 15px 15px 15px 15px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.post-full .post {
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-bottom: 0;
+  margin-top: 20px;
+}
+
+.post-full .post .post-author {
+  font-size: 12px;
+}
+
+.post-full .reply {
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-bottom: 0;
+  margin-top: 20px;
+  float: right;
+  width: 80%;
 }
 
