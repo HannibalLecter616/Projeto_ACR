@@ -34,4 +34,10 @@ class CriticsController extends Controller
         ]);
         return redirect()->action('FilmeController@index',['id'=>$request->movie_id]);
     }
+
+    public function destroy($id){
+        $ident = Critic::find($id);
+        Critic::find($id)->delete();
+        return redirect()->action('FilmeController@index',['id'=>$ident->movie_id]);
+    }
 }

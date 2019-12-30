@@ -1,5 +1,32 @@
 $(document).ready(function() {
+  
+  if (window.location.pathname == '/search/popular/1'|| window.location.pathname == '/search/popular/2'
+   || window.location.pathname == '/search/popular/3'|| window.location.pathname == '/search/popular/4'
+   || window.location.pathname == '/search/popular/5'|| window.location.pathname == '/search/popular/6'
+   || window.location.pathname == '/search/popular/7'|| window.location.pathname == '/search/popular/8'
+   || window.location.pathname == '/search/popular/9'|| window.location.pathname == '/search/popular/10') {
+    $(".pagination_popular").show();
+    $(".procura-principal").hide();
+  }
 
+  if (window.location.pathname == '/search/top/1'|| window.location.pathname == '/search/top/2'
+   || window.location.pathname == '/search/top/3'|| window.location.pathname == '/search/top/4'
+   || window.location.pathname == '/search/top/5'|| window.location.pathname == '/search/top/6'
+   || window.location.pathname == '/search/top/7'|| window.location.pathname == '/search/top/8'
+   || window.location.pathname == '/search/top/9'|| window.location.pathname == '/search/top/10') {
+    $(".pagination_top").show();
+    $(".procura-principal").hide();
+  }
+
+  if (window.location.pathname == '/search/recent/1'|| window.location.pathname == '/search/recent/2'
+   || window.location.pathname == '/search/recent/3'|| window.location.pathname == '/search/recent/4'
+   || window.location.pathname == '/search/recent/5'|| window.location.pathname == '/search/recent/6'
+   || window.location.pathname == '/search/recent/7'|| window.location.pathname == '/search/recent/8'
+   || window.location.pathname == '/search/recent/9'|| window.location.pathname == '/search/recent/10') {
+    $(".pagination_recent").show();
+    $(".procura-principal").hide();
+  }
+  
   var $target = $('html,body'); 
   
   var nInitialCount = 300; //Intial characters to display

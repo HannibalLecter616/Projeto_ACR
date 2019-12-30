@@ -34,9 +34,10 @@
                     $interval = $now->diff($date);
                     $age = $interval->y;
                 @endphp
-
-                @if(empty($pessoa_detalhes['deathday']))
-                    <i class="fas fa-birthday-cake"></i> {{$pessoa_detalhes['birthday']}} ({{$age}} years old)
+                @if(empty($pessoa_detalhes['birthday']))
+                    <i class="fas fa-birthday-cake"></i> (Undefined)
+                @elseif(empty($pessoa_detalhes['deathday']))
+                    <i class="fas fa-birthday-cake"></i> {{$pessoa_detalhes['birthday']}} ({{$age}} years old)  
                 @else
                     <i class="fas fa-birthday-cake"></i> {{$pessoa_detalhes['birthday']}} - {{$pessoa_detalhes['deathday']}} ({{$age}} years old)
                 @endif
@@ -52,9 +53,11 @@
         <div class="known_for">
         <h2>Known for:</h3>
         </div>
+        @php
+            $temp = 0;
+        @endphp
                      @if ($pessoa_detalhes['known_for_department'] == "Directing" || $pessoa_detalhes['known_for_department'] == "Writing")
                         @for ($i = 0; $i < count($conhecido); $i++)
-                            {{-- @if ($numero < 8 ) --}}
                                     <div class="movie_more">
                                         <a href="/movie/{{$conhecido[$i]['id']}}" class="movie-link">
 
@@ -74,10 +77,12 @@
                                             @endif
                                         </div>
                                     </div>
+                                    @php
+                                        $temp++;
+                                    @endphp
                         @endfor
                     @else
                         @for ($i = 0; $i < count($known_for); $i++)
-                               {{--  @if ($numero < 8 ) --}}
                                     @if($known_for[$i]['popularity'] >= 10.000)
                                         <div class="movie_more">
                                             <a href="/movie/{{$known_for[$i]['id']}}" class="movie-link">
@@ -98,13 +103,18 @@
                                                 @endif
                                             </div>
                                         </div>
-                                @endif
+                                        @php
+                                        $temp++;
+                                    @endphp
+                                @endif   
                         @endfor
                     @endif
             </div>
             <br>
+            @if ($temp >= 8)
                 <div class="more">Show more</div>
                 <div class="less">Show less</div>
+            @endif
     </section>
 </main>
 @endsection

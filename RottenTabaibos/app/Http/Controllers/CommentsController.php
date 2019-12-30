@@ -17,7 +17,6 @@ class CommentsController extends Controller
 
     public function store(CommentRequest $request)
     {
-
         $user = Auth::user();
 
         $first_name = User::find($user->id)->first_name;
@@ -33,6 +32,13 @@ class CommentsController extends Controller
         ]);
         
         return redirect()->action('FilmeController@index',['id'=>$request->movie_id]);
+    }
+
+    public function destroy($id){
+        $ident = Comment::find($id);
+        Comment::find($id)->delete();
+        //dd($comment);
+        return redirect()->action('FilmeController@index',['id'=>$ident->movie_id]);
     }
 
     public function api()
