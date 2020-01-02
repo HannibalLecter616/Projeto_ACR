@@ -73,4 +73,34 @@ class ForumController extends Controller
 
         return redirect()->action('ForumController@topic',['name'=>$request->type]);
     }
+
+    public function addLike($id){
+        $post = Post::find($id);
+       //dd($post);
+        if($post)
+        {
+            $likes = $post->likes;
+            $likes += 1;
+            //dd($likes);
+            $post->likes = $likes;
+            $post->save();
+        }
+
+        return redirect()->action('ForumController@topic',['name'=>$post->type]);
+    }
+
+    public function addDislike($id){
+        $post = Post::find($id);
+       //dd($post);
+        if($post)
+        {
+            $dislikes = $post->dislikes;
+            $dislikes += 1;
+            //dd($dislikes);
+            $post->dislikes = $dislikes;
+            $post->save();
+        }
+
+        return redirect()->action('ForumController@topic',['name'=>$post->type]);
+    }
 }

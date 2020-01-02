@@ -78,8 +78,15 @@
                                     <article>
                                         <p class="post-body">{{$post[$i]['description']}}</p>
                                     </article>
-                                    <button class="post-like">Like</button>
-                                    <button class="post-dislike" >Dislike</button>
+                                    <form action="/forum/discussion/post/like/{{$post[$i]['id']}}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="post-like">Like</button>
+                                    </form>
+                                   
+                                    <form action="/forum/discussion/post/dislike/{{$post[$i]['id']}}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="post-dislike">Dislike</button>
+                                    </form>
                                     <button class="post-reply">Reply</button>
                                 </div>
 
@@ -108,8 +115,17 @@
                                                 <article>
                                                     <p class="post-body">{{$replies[$j]['reply']}}</p>
                                                 </article>
-                                                <button class="post-like">Like</button>
-                                                <button class="post-dislike" >Dislike</button>
+
+                                                <form action="/forum/discussion/reply/like/{{$replies[$j]['id']}}" method="POST">
+                                                    @csrf
+                                                    <button type="submit" class="post-like">Like</button>
+                                                </form>
+
+                                                <form action="/forum/discussion/reply/dislike/{{$replies[$j]['id']}}" method="POST">
+                                                    @csrf
+                                                    <button type="submit" class="post-dislike">Dislike</button>
+                                                </form>
+
                                                 <button class="post-reply">Reply</button>
                                             </div>
                                         @endif

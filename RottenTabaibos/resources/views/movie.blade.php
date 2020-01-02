@@ -213,7 +213,14 @@
                                         @endfor
                                         @auth
                                             @if(Auth::user()->id == $critic->user_id)
-                                                <span class="trash"><a href="/remove/{{$critic->id}}" class="fas fa-trash" title="Edit/Remove Critic"></a></span>
+
+                                            <form action="/remove/critics/{{$critic->id}}" method="POST">
+                                                @csrf  
+                                                <input type="hidden" name="movie_comment" value="{{$critic->movie_id}}">
+                                                <input type="hidden" name="comment_id" value="{{$critic->id}}">
+                                                <input type="submit"class="fas fa-trash"/>
+                                            </form>
+
                                             @endif
                                         @endauth
                                         
@@ -245,7 +252,13 @@
                                         @endfor
                                         @auth
                                             @if(Auth::user()->id == $critic->user_id)
-                                            <span class="trash"><a href="/remove/{{$critic->id}}" class="fas fa-trash" title="Edit/Remove Critic"></a></span>
+                                            
+                                            <form action="/remove/critics/{{$critic->id}}" method="POST">
+                                                @csrf  
+                                                <input type="hidden" name="movie_comment" value="{{$critic->movie_id}}">
+                                                <input type="hidden" name="comment_id" value="{{$critic->id}}">
+                                                <input type="submit"class="fas fa-trash"/>
+                                            </form>
                                             @endif
                                         @endauth
                                     
@@ -292,9 +305,15 @@
                     
                     @auth
                         @if(Auth::user()->id == $item->user_id)
-                        <span class="trash">
-                            <a href="/remove/{{$item->id}}" class="fas fa-trash" title="Edit/Remove Comment"></a>
-                        </span>
+                        @php
+                            $id = $item->user_id;
+                        @endphp
+                            <form action="/remove/comments/{{$item->id}}" method="POST">
+                                @csrf  
+                                <input type="hidden" name="movie_comment" value="{{$item->movie_id}}">
+                                <input type="hidden" name="comment_id" value="{{$item->id}}">
+                                <input type="submit"class="fas fa-trash"/>
+                            </form>
                         @endif
                     @endauth
                     
@@ -336,7 +355,6 @@
 
         <div class="line"></div>
         <div class="row">
-            {{-- <button type="button" class="forum_btn">See Forum Discussion</button> --}}
             <a href="/forum" class="forum_btn">Forum</a>
         </div>
         <div class="line"></div>
