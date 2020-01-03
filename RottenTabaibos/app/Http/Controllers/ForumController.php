@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Post;
 use App\Reply;
+use App\Like;
 
 class ForumController extends Controller
 {
@@ -74,19 +75,40 @@ class ForumController extends Controller
         return redirect()->action('ForumController@topic',['name'=>$request->type]);
     }
 
-    public function addLike($id){
-        $post = Post::find($id);
-       //dd($post);
-        if($post)
-        {
-            $likes = $post->likes;
-            $likes += 1;
-            //dd($likes);
-            $post->likes = $likes;
-            $post->save();
+
+
+
+    public function addLike(request $request) {
+        
+        $post_id = $request->post_id; 
+        $currentUser = Auth::user();
+        $addLike = 0;
+
+        if ($currentUser) {
+
+            $currentUserPostsLikes = $currentUser->likes;
+
+            foreach ($currentUserPostsLikes as $postLike) {
+                if ($post_id == $postLike->post_id) {
+                    $postLike->forceDelete();
+                    $addLike = 1;
+                }
+            }
+            if ($addLike == 0) {
+                $newLike = new Like;
+                $newLike->post_id = $post_id;
+                $newLike->user_id = $currentUser->id;
+                $newLike->like_type = 1;
+                $newLike->save(); 
+            }
         }
 
-        return redirect()->action('ForumController@topic',['name'=>$post->type]);
+
+        $numLikes = count(collect(Post::find($post_id)->likes)); 
+
+        return $numLikes;
+
+
     }
 
     public function addDislike($id){

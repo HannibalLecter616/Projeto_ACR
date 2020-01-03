@@ -38,9 +38,9 @@ Route::post('/remove/comments/{id}', 'CommentsController@destroy');
 
 Route::post('/remove/critics/{id}', 'CriticsController@destroy');
 
-Route::post('/forum/discussion/post/like/{id}', 'ForumController@addLike');
+Route::get('/post/like/', 'ForumController@addLike');
 
-Route::post('/forum/discussion/post/dislike/{id}', 'ForumController@addDislike');
+Route::get('/post/dislike/', 'ForumController@addDislike');
 
 Route::post('/forum/discussion/reply/like/{id}', 'ReplyController@addLike');
 

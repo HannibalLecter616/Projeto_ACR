@@ -200,6 +200,32 @@ var slideIndex = 0;
 
   })
 
-$(document).ready(showSlides);
+
+
+  $(".post-like").click(function (e) {
+
+      var post_id = $(this).attr('post_id'); 
+
+      $.ajax({
+          type: 'get',
+          url: '/post/like/',
+          dataType: 'json',
+          data: {
+              '_token': '<?php echo csrf_token() ?>',
+              'post_id': post_id,
+          },
+          success: function (data) {
+
+            $(".num_likes[post_id = " + post_id + "]").text(data);
+
+          }
+      });
+
+  });
+
+
+  $(document).ready(showSlides);
+
+
 
 });

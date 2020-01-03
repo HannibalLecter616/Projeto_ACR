@@ -78,10 +78,7 @@
                                     <article>
                                         <p class="post-body">{{$post[$i]['description']}}</p>
                                     </article>
-                                    <form action="/forum/discussion/post/like/{{$post[$i]['id']}}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="post-like">Like</button>
-                                    </form>
+                                    <button type="submit" class="post-like" post_id="{{$post[$i]['id']}}"><span post_id="{{$post[$i]['id']}}" class="num_likes"></span> Like</button>
                                    
                                     <form action="/forum/discussion/post/dislike/{{$post[$i]['id']}}" method="POST">
                                         @csrf
