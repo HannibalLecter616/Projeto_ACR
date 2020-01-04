@@ -22,6 +22,10 @@ Route::get('/movie/{id}', 'FilmeController@index');
 
 Route::get('/user/{id}', 'UserController@index');
 
+Route::get('/user/{id}/reviews', 'UserController@reviews');
+
+Route::get('/user/{id}/posts', 'UserController@posts');
+
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/uptd_profile', 'UserController@edit');

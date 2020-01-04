@@ -738,6 +738,7 @@ img.avatar {
         width: 90%;
         padding: 0 16px;
         display: flex;
+        margin:auto;
 
         .post{
             border: 2px solid #EDEFF1;
@@ -878,6 +879,20 @@ img.avatar {
             width: 80%;
         }
     }
+    .my-post{
+        width: 60%;
+        border: 2px solid #EDEFF1 ;
+        border-radius: 15px 15px 15px 15px; 
+        @include margin-tops(10px, 10px);
+        @include margin-side(auto);
+        .post{
+            @include margin-side(20px);
+            @include margin-tops(20px, 0);
+            .post-author{
+                font-size: 12px;
+            }
+        }
+    }
     .browse_all{
         padding: 5px 5px;
         border-radius: 15px;
@@ -913,3 +928,18 @@ img.avatar {
       .images{
           margin: auto;
       }
+      .review{
+          display:flex;
+          margin: auto;
+          .review_movie{
+              float:left;
+                @include margin-tops(20px, 20px);
+                @include margin-side(30px);
+          }
+          .content{
+            display: block;
+            @include margin-tops(20px, 20px);
+            @include margin-side(30px);
+        }
+      }
+      

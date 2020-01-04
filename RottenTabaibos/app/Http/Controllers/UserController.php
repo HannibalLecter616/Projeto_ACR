@@ -86,6 +86,52 @@ class UserController extends Controller
         return redirect()->action('UserController@index',[$id]);
     }
 
+    public function posts($id)
+    {
+        $user = User::find($id);
+        $posts = $user->posts;
+
+        return view('posts',['posts'=>$posts]);
+    }
+
+    public function reviews($id)
+    {
+        $client = new Client([
+            'headers' => ['content-type' => 'application/json', 'Accept' => 'application/json'],
+        ]);
+
+        $user = User::find($id);
+        $reviews = "";
+        $movies = array();
+        if($user->type == 1){
+            $reviews = $user->comments;
+            
+            foreach($reviews as $review)
+            {
+                $movie_id = $review->movie_id;
+                $response = $client->request('GET', 'https://api.themoviedb.org/3/movie/' . $movie_id . '?api_key=684b8c6e53471a5a6fc82a6c144fa9a0');
+                $film = $response->getBody();
+                $film = json_decode($film, true);
+
+                $movies[$movie_id] = $film;
+            }
+        }
+        elseif($user->type == 2){
+            $reviews = $user->critics;
+            foreach($reviews as $review)
+            {
+                $movie_id = $review->movie_id;
+                $response = $client->request('GET', 'https://api.themoviedb.org/3/movie/' . $movie_id . '?api_key=684b8c6e53471a5a6fc82a6c144fa9a0');
+                $film = $response->getBody();
+                $film = json_decode($film, true);
+
+                $movies[$movie_id] = $film;
+            }
+        }
+
+        return view('reviews',['reviews'=>$reviews, 'movies'=>$movies]);
+    }
+
     public function api()
     {
         $data = User::all();
