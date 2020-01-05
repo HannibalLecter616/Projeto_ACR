@@ -25,50 +25,55 @@
         <hr>
         <form method="POST" action="{{ route('register') }}">
             @csrf
-            
+            <script>
+              function showMagazine(){
+                    if(document.getElementById('pro_critic').checked){
+
+                    document.getElementById('magazine').style.display = "block";
+                    }else{
+                    document.getElementById('magazine').style.display = "none";
+                    }
+                }
+            </script>
             <div class="container">
-                <h1 style="text-align: center;">Registo</h1>
-                <p>Por favor insira os dados de modo a criar uma conta </p>
-                <hr>                
-               
+                <h1 style="text-align: center;">Register</h1>
+                <p>Please insert the following data </p>
+                <hr>
                 <form>
-                    <label for="utilizador_tipo"><b>Tipo de Utilizador</b></label> <br>
+                    <label for="utilizador_tipo"><b>Type of User</b></label> <br>
                         <div class="utilizadores">
-                            <label class="radio-inline">
-                              <input type="radio" name="utilizador">Comum
-                            </label>
-                            <label class="radio-inline">
-                              <input type="radio" name="utilizador">Critico Profissional
+                            <label for="type" class="radio-inline">
+                              <input type="radio" onclick="showMagazine()" name="type" id="common" value="1">Common
+                              <input type="radio" onclick="showMagazine()" name="type" id="pro_critic" value="2">Professional Critic
                             </label>
                         </div>
-                </form>   
-                <hr>
-                
+                </form>
+                <hr> 
 
-                <label for="primmeiro_nome"><b>Primeiro Nome</b></label>
-                <input type="text" placeholder="Inserir Primeiro Nome" name="primeiro_nome" required>
 
-                <label for="ultimo_nome"><b>Ultimo Nome</b></label>
-                <input type="text" placeholder="Inserir Ultimo Nome" name="ultimo_nome" required>
+                <label for="first_name"><b>First Name</b></label>
+                <input type="text" placeholder="Insert First Name" name="first_name" required>
+
+                <label for="last_name"><b>Last Name</b></label>
+                <input type="text" placeholder="Insert Last Name" name="last_name" required>
 
                 <label for="email"><b>Email</b></label>
-                <input type="text" placeholder="Inserir Email" name="email" required>
-
-<!--Mostrar só se for selecionado o utilizador Critico-->
-
-                <label for="jornal"><b>Jornal/Revista/Entidade Crítica</b></label>
-                <input type="text" placeholder="Inserir Empresa que representa" name="jornal" required>
-<!------------------------------------------------------>
+                <input type="text" placeholder="Insert Email" name="email" required>
+                
+                <div id="magazine" style="display:none;">
+                    <label for="journal"><b>Magazine/Company</b></label>
+                    <input type="text" placeholder="Insert Magazine" name="journal"> 
+                </div>
                 <label for="password"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="password" required>
 
-                <label for="password_confirmation"><b>Repetir a Password</b></label>
-                <input type="password" placeholder="Repetir Password" name="password_confirmation" required>
-                
-                
+                <label for="password_confirmation"><b>Repeat Password</b></label>
+                <input type="password" placeholder="Repeat Password" name="password_confirmation" required>
+
+
                 <hr>
 
-                <p>Ao criar a conta, concorda com os nossos <a href="#">Termos e Privacidade</a>.</p>
+                <p>By creating an account you are agreeing with our <a href="#">Terms and Privacy</a>.</p>
                 <button type="submit" class="registerbtn">{{ __('Register') }}</button>
             </div>
 
@@ -77,7 +82,7 @@
             </div>
         </form>
 </body>
-
+    <script type="text/javascript" src="/../js/function.js"></script>
 </html>
 <!--
 <div class="container">

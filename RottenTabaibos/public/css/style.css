@@ -1,23 +1,30 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+
+
 body {
     font-family: 'Poppins', sans-serif;
 }
 
 header {
     display: flex;
-    width: 90%;
+    width: 100%;
     margin: auto;
-    height: 60px;
+    height: auto;
     align-items: center;
 }
 
 .logo-container,
 .nav-links,
+.usernav,
 .quick-search {
     display: flex;
 }
 
-#quick-search-container{
+
+#quick-search-container {
     margin-right: 20px;
+    margin-left: 20px;
 }
 
 #quick-search-input {
@@ -43,7 +50,8 @@ form {
 }
 
 .popular-text,
-.recent-text {
+.recent-text,
+.known_for {
     width: 90%;
     margin: auto;
 }
@@ -55,23 +63,112 @@ form {
 
 .text-row h2 {
     flex: 1;
+    font-weight: 700;
+}
+
+.text-row a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+#known_for {
+    margin: auto;
+    width: 80%;
 }
 
 .row {
     display: flex;
-    width: 80%;
+    flex-flow: row wrap;
     margin: auto;
+    justify-content: space-around;
+    width: 80%;
+}
+
+.people {
+    flex: 20%;
+    width: 25%;
+    padding: 0 20px;
+}
+
+.people:hover {
+    opacity: 0.9;
+}
+
+.people img {
+    margin-top: 8px;
+    vertical-align: middle;
+    max-width: 100%;
 }
 
 .movie {
-    width: 250px;
+    flex: 20%;
+    width: 25%;
+    padding: 0 20px;
 }
 
-.movie-row{
-    display: inline-flex;
-    width: 90%;
-    margin: auto;
+.movie:hover {
+    opacity: 0.9;
 }
+
+.movie img {
+    margin-top: 8px;
+    vertical-align: middle;
+    max-width: 100%;
+}
+
+.movie_more {
+    flex: 20%;
+    width: 25%;
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+
+.movie_more:hover {
+    opacity: 0.9;
+}
+
+.movie_more img {
+    margin-top: 8px;
+    vertical-align: middle;
+    max-width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+    .movie {
+        flex: 40%;
+    }
+
+    .movie img {
+        width: 100%;
+    }
+
+    .movie_more{
+
+        flex: 40%;
+    }
+    .movie_more img {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1080px) {
+    .movie {
+        flex: 40%;
+    }
+    .movie_more{
+
+        flex: 40%;
+    }
+}
+
+.movie-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    width: 80%;
+}
+
 .movie-main {
     width: 350px;
 }
@@ -89,10 +186,11 @@ form {
 
 div.movie-text {
     flex: 0.8;
+    margin-right: 50px;
 
 }
 
-.recent-text {
+.recent-text,.known_for {
     border-top-width: 1px;
     border-top-style: solid;
     border-top-color: rgb(180, 156, 156);
@@ -113,14 +211,34 @@ div.movie-text {
 }
 
 .avatar-thumb {
-    width: 40px;
-    height: 40px;
     border-radius: 50%;
+}
+
+.user-thumb {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-thumb img {
+    border-radius: 50%;
+    position: relative;
+}
+
+.photo {
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    object-fit: cover;
 }
 
 .list-cast {
     display: flex;
     align-items: center;
+    max-width: 300px;
+}
+
+.list-cast-info {
+    margin-left: 10px;
 }
 
 
@@ -144,6 +262,8 @@ label {
 }
 
 .movie-text h5 {
+    text-align: justify;
+    text-justify: inter-word;
     font-weight: 400;
     margin-top: 5px;
 }
@@ -154,8 +274,7 @@ label {
 }
 
 .crew {
-    margin-top: 20px;
-    margin-left: 70px;
+    margin-left: 10px;
 }
 
 .tableCell a {
@@ -163,84 +282,170 @@ label {
     color: black;
 }
 
-.trailer {
-    flex: 1;
-}
-
 .reviews {
     flex: 1;
+    margin-left:5%;
 }
 
-
+.critic-review{
+    text-align: justify;
+}
 /* Start Navbar */
+
 .topnav {
     justify-content: space-around;
-    background-color: #333;
     overflow: hidden;
+    background-color: #333;
     border-radius: 20px;
-  }
-  
-  /* Style the links inside the navigation bar */
-  .topnav a {
+    margin-right: 20px;
+}
+
+.usernav {
+    border-radius: 20px;
+    background-color: #333;
+    margin-right: 20px;
+}
+
+.usernav a.user-thumb-name {
+    display: flex;
+    /*added*/
     float: left;
     color: #f2f2f2;
+    margin: 0 auto;
     text-align: center;
     padding: 10px 10px;
     text-decoration: none;
     font-size: 15px;
-  }
-  
-  /* Change the color of links on hover */
-  .topnav a:hover {
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    display: flex;
+    /*added*/
+    float: left;
+    color: #f2f2f2;
+    padding: 10px 10px;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+/**/
+.more,
+.less,
+.all,
+.few,
+.all_u_rev,
+.few_u_rev{
+    background-color: #000;
+    clear: both;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-size: 14px;
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 6px 0;
+    text-align: center;
+    text-transform: uppercase;
+    width: 320px;
+}
+
+.link {
+    display: flex;
+}
+
+.moretext span {
+    display: none;
+}
+
+.moretext a {
+
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.bio-text {
+    display: block;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover,
+.usernav a:hover {
     background-color: #ddd;
     color: black;
-  }
-  
-  /* Add a color to the active/current link */
-  .topnav a.principal {
+}
+
+.topnav a.principal:hover {
+    opacity: 0.9;
+    background-color: orange;
+}
+
+/* Add a color to the active/current link */
+.topnav a.principal {
     background-color: rgb(221, 55, 55);
     color: white;
-  }
-  /* End Navbar */
+}
 
-  .container {
+
+@media screen and (max-width: 600px) {
+
+    .topnav a.principal,
+    .topnav a {
+        float: none;
+    }
+}
+
+/* End Navbar */
+
+.container {
     padding: 16px;
     max-width: 600px;
     margin: auto;
-  }
+}
 
-.utilizadores{
+.utilizadores {
     text-align: center;
     margin-top: 15px;
     margin-bottom: 15px;
 }
-.radio-inline{
+
+.radio-inline {
     margin-right: 30px;
     margin-left: 30px;
 }
-  /* Full-width input fields */
-  input[type=text], input[type=password] {
+
+/* Full-width input fields */
+input[type=text],
+input[type=password] {
     width: 100%;
     padding: 15px;
     margin: 5px 0 22px 0;
     display: inline-block;
     border: none;
     background: #f1f1f1;
-  }
-  
-  input[type=text]:focus, input[type=password]:focus {
+}
+
+input[type=text]:focus,
+input[type=password]:focus {
     background-color: #ddd;
     outline: none;
-  }
-  
-  /* Overwrite default styles of hr */
-  hr {
+}
+
+textarea {
+    resize: none;
+    background-color: #f1f1f1;
+ }
+
+/* Overwrite default styles of hr */
+hr {
     border: 2px solid #f1f1f1;
     margin-bottom: 25px;
-  }
+    border: none;
+}
 
-  .registerbtn {
-    background-color:rgb(221, 55, 55);
+.registerbtn, .updatebtn {
+    background-color: rgb(221, 55, 55);
     color: white;
     padding: 16px 20px;
     margin: 8px 0;
@@ -248,31 +453,34 @@ label {
     cursor: pointer;
     width: 100%;
     opacity: 0.9;
-  }
-  
-  .registerbtn:hover {
-    opacity:1;
-  }
-  
-  /* Add a blue text color to links */
-  a {
+}
+
+.registerbtn:hover {
+    opacity: 1;
+}
+
+/* Add a blue text color to links */
+a {
     color: dodgerblue;
-  }
-  
-  /* Set a grey background color and center the text of the "sign in" section */
-  .signin {
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
     background-color: #f1f1f1;
     text-align: center;
-  }
-
-  .avatar-container{
-    text-align: center; 
-    margin: 24px 0 12px 0; 
-  }
-  img.avatar { 
-    width: 50%; 
 }
-.loginbtn, .reset_password{
+
+.avatar-container {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 50%;
+}
+
+.loginbtn,
+.reset_password {
     background-color: rgb(221, 55, 55);
     color: white;
     padding: 20px 20px;
@@ -280,36 +488,39 @@ label {
     cursor: pointer;
     width: 105%;
     opacity: 0.9;
-} 
-.login-container, .reset-container{
+}
+
+.login-container,
+.reset-container {
     max-width: 600px;
     margin: auto;
     margin-top: 60px;
     margin-bottom: 60px;
 }
-.psw{
-    float:right;
+
+.psw {
+    float: right;
 }
 
-.procura-principal{
-   text-align: center;
-   width: 60%;
-   margin: auto;
+.procura-principal {
+    text-align: center;
+    width: 60%;
+    margin: auto;
 }
 
-.campos-procura{
+.campos-procura {
     margin: auto;
     margin-right: 20px;
     display: inline-block;
-    overflow:hidden;
-    border-radius:15px;
+    overflow: hidden;
+    border-radius: 15px;
     box-shadow: 1px 1px 5px grey;
-    background:  #ddd;
+    background: #ddd;
     width: 220px;
- 
+
 }
 
-.campos-procura select{
+.campos-procura select {
     border: 0;
     color: rgb(8, 6, 6);
     background: #ddd;
@@ -318,18 +529,29 @@ label {
     padding: 2px 10px;
     text-align: center;
     text-align-last: center;
- }
- 
- .campos-procura .searchbtn{
-    background:rgb(221, 55, 55);
+}
+
+.campos-procura .searchbtn {
+    background: rgb(221, 55, 55);
     font-size: 15px;
     color: white;
-    padding:  4px 50px;
+    padding: 4px 50px;
     border: none;
     cursor: pointer;
     opacity: 0.9;
     width: 100%;
- }
+}
+
+.submit-bttn {
+    background: rgb(221, 55, 55);
+    font-size: 15px;
+    color: white;
+    padding: 4px 50px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+    width: 100%;
+}
 
 /****** movie.blade.php *****/
  /* Color of the icons */
@@ -397,3 +619,69 @@ label {
 .rating>input:checked~label:hover~label {
     color: #FFED85;
 }
+
+.slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 4s;
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+    .text {
+        font-size: 11px
+    }
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    top: 100%;
+    display: none;
+    position: absolute;
+    background-color: #333;
+    z-index: 1;
+  }
+
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    float: none;
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  /* Show the dropdown menu on hover */
+  .dropdown:hover > .dropdown-content {display: block;}
