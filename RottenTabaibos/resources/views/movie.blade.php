@@ -287,7 +287,7 @@
 
 
         @if (count($comments) != 0)
-        <div class="reviews">
+        <div class="reviews" id="user_reviews">
             <h3>Users Reviews</h3>
             @php
             $num2 = 0;
@@ -329,10 +329,11 @@
                 @endphp
             @endif
             @endforeach
+
             
             @if ($num2 == 0)
                 <div class="line"></div>
-                <h4>No reviews yet!</h4>
+                <h4 id="no_reviews_yet">No reviews yet!</h4>
                 <br>
             @endif
             @if ($num2 >= 3)

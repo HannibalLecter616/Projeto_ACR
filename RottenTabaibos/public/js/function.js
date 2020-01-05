@@ -239,7 +239,7 @@ var rating = $("input[name=rating]:checked").val();
 $.ajax({
     type: 'get', // Type get
     url: '/comment/add/', // Ajax url
-    dataType: 'json', já volto <3 5 mi
+    dataType: 'json', 
     data: { // Send data to ajax
         '_token': '<?php echo csrf_token() ?>',  
         'movie_id': movie_id,
@@ -248,41 +248,50 @@ $.ajax({
     },
     success: function (data) {
 
-
-var info = '<div class="user-review-properties">Reviewed by <span class="review-author"><strong>' + data[3] + ' ' + data[4] + '</strong></span>;
+      var info = '<div class="user-review-properties">Reviewed by <span class="review-author"><strong>' + data[3] + ' ' + data[4] + '</strong></span>';
                 
-for (var i = 0; i < rating; i++) {
-    info += '<span class="icon-star"></span>';
-}
+      for (var i = 0; i < rating; i++) {
+          info += '<span class="icon-star"></span>';
+      }
 
 
-if (data[1] == data[6]) {
+      if (data[1] == data[6]) {
 
                               info += '<form action="/remove/comments/' + data[7] + '" method="POST">\
                                 <input type="hidden" name="_token" value="' + data[8] + '">\
-                                <input type="hidden" name="movie_comment" value="' + movie_id + '">\
+            <input type="hidden" name="movie_comment" value="' + movie_id + '">\
                                 <input type="hidden" name="comment_id" value="' + data[7] + '">\
                                 <input type="submit"class="fas fa-trash"/>\
                             </form>';
 
-}
+      }
                     
-                    info += '<article>\
-                        <p>' + data[0].substring(0, 200) + '</p>\
-                    </article>\
-                    <div class="line"></div>\
-                    <br>\
-            </div>';
+      info += '<article>\
+        <p>' + data[0].substring(0, 200) + '</p>\
+         </article>\
+        <div class="line"></div>\
+        <br>\
+        </div>';
 
-$(".reviews").append(info);
+          var criticas_user = $('.user-review-properties').length;
 
+          if (criticas_user == 0) {
+      $("#user_reviews").append(info);
+      $("#no_reviews_yet").hide();
+          } else {
+      $(".user-review-properties:last").append(info);
+          }
 
+          $("#input_body").val("");
+
+  if (criticas_user > 3) {
+  $('div.user-review-properties:gt(2)').hide();
+}
     }
 });
 
 
   });
-
 
 
 
