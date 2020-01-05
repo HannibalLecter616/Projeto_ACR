@@ -22,16 +22,22 @@ class CommentsController extends Controller
         $first_name = User::find($user->id)->first_name;
         $last_name = User::find($user->id)->last_name;
 
-        Comment::create([
+
+        $token = csrf_token();
+
+
+        $comm = Comment::create([
             'body' => $request->body,
-            'user_id' => Auth::id(),
+            'user_id' => $user->id,
             'movie_id' => $request->movie_id,
             'first_name' => $first_name,
             'last_name' => $last_name,
             'star' => $request->rating
         ]);
+
+        return [$request->body, $user->id, $request->movie_id, $first_name, $last_name, $request->rating, $user->id, $comm->id, $token];
         
-        return redirect()->action('FilmeController@index',['id'=>$request->movie_id]);
+        // return redirect()->action('FilmeController@index',['id'=>$request->movie_id]);
     }
 
     public function destroy($id){

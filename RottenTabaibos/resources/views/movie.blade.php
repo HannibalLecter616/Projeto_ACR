@@ -60,8 +60,8 @@
                             title="Sucks big time - 1 star"></label>
                     </fieldset>
                 </div>
-                    <input type="text" name="body" placeholder="What did you think of this movie?">
-                    <input type="hidden" name="movie_id" value={{$movie['id']}}>
+                    <input type="text" id="input_body" name="body" placeholder="What did you think of this movie?">
+                    <input type="hidden" id="input_movie_id" name="movie_id" value={{$movie['id']}}>
                     {{ csrf_field() }}  
                     <input type="submit" class="submit-bttn" value="Submit">
                 </form>

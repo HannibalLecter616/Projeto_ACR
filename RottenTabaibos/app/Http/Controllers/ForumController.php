@@ -33,23 +33,52 @@ class ForumController extends Controller
         {
             $replies = Reply::all();
             $posts = Post::all();
+
+
+            // Buscar likes
+            $numLikes = 0;
+            $numDislikes = 0;
+
+            $Likes = [];
+            $Dislikes = [];
+
+            foreach($posts as $p) {
+                $totalLikes = $p->postLikes;
+
+                foreach($totalLikes as $l) {
+                    if ($l->like_type == 0) {
+                        $numDislikes++;
+                    } else if ($l->like_type == 1) {
+                        $numLikes++;
+                    }
+                }
+
+                $Likes[$p->id] = $numLikes;
+                $Dislikes[$p->id] = $numDislikes;
+
+                $numLikes = 0;
+                $numDislikes = 0;
+   
+            }
+
+
         
             //se o topico for filmes ... 
             if($name == "movies"){
                 $name = "Movies";                
-                return view('discussion' ,['name' => $name, 'post' => $posts, 'replies'=>$replies]);
+                return view('discussion' ,['name' => $name, 'post' => $posts, 'replies'=>$replies, 'Likes' => $Likes, 'Dislikes' => $Dislikes]);
             } 
 
             if($name == "series"){
                 //se o topico for series ...
                 $name = "Series"; 
-                return view('discussion' ,['name' => $name, 'post' => $posts, 'replies'=>$replies]);
+                return view('discussion' ,['name' => $name, 'post' => $posts, 'replies'=>$replies, 'Likes' => $Likes, 'Dislikes' => $Dislikes]);
             } 
 
             if($name == "random"){
                 //se o topico for random ...
                 $name = "Random";
-                return view('discussion' ,['name' => $name, 'post' => $posts, 'replies'=>$replies]);
+                return view('discussion' ,['name' => $name, 'post' => $posts, 'replies'=>$replies, 'Likes' => $Likes, 'Dislikes' => $Dislikes]);
             }     
         }else{
             return redirect('login');
@@ -81,6 +110,7 @@ class ForumController extends Controller
     public function addLike(request $request) {
         
         $post_id = $request->post_id; 
+        $like_type = $request->like_type;
         $currentUser = Auth::user();
         $addLike = 0;
 
@@ -88,41 +118,41 @@ class ForumController extends Controller
 
             $currentUserPostsLikes = $currentUser->likes;
 
+            // Remove like/dislike if already exists
             foreach ($currentUserPostsLikes as $postLike) {
                 if ($post_id == $postLike->post_id) {
-                    $postLike->forceDelete();
-                    $addLike = 1;
+                    $postLike->forceDelete(); // Remove the like to create a new one
+                }
+                if ($post_id == $postLike->post_id && $like_type == $postLike->like_type) {
+                    $addLike = 1; // Remove the like and don't create a new one
                 }
             }
+
+            // Add new like/dislike
             if ($addLike == 0) {
                 $newLike = new Like;
                 $newLike->post_id = $post_id;
                 $newLike->user_id = $currentUser->id;
-                $newLike->like_type = 1;
+                $newLike->like_type = $like_type; // 1 - Like, 0 - Dislike
                 $newLike->save(); 
             }
         }
 
+        $numLikes = 0;
+        $numDislikes = 0;
+        $post = Post::find($post_id);
+        $totalLikes = $post->postLikes;
 
-        $numLikes = count(collect(Post::find($post_id)->likes)); 
-
-        return $numLikes;
-
-
-    }
-
-    public function addDislike($id){
-        $post = Post::find($id);
-       //dd($post);
-        if($post)
-        {
-            $dislikes = $post->dislikes;
-            $dislikes += 1;
-            //dd($dislikes);
-            $post->dislikes = $dislikes;
-            $post->save();
+        foreach($totalLikes as $l) {
+            if ($l->like_type == 0) {
+                $numDislikes++;
+            } else if ($l->like_type == 1) {
+                $numLikes++;
+            }
         }
 
-        return redirect()->action('ForumController@topic',['name'=>$post->type]);
+        return [$numDislikes, $numLikes];
+
     }
+
 }

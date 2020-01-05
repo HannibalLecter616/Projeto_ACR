@@ -204,24 +204,86 @@ var slideIndex = 0;
 
   $(".post-like").click(function (e) {
 
-      var post_id = $(this).attr('post_id'); 
+      var post_id = $(this).attr('post_id');  // Get attribute post_id from element with class post_like (this)
+      var like_type = $(this).attr('like_type');
 
       $.ajax({
-          type: 'get',
-          url: '/post/like/',
-          dataType: 'json',
-          data: {
+          type: 'get', // Type get
+          url: '/post/like/', // Ajax url
+          dataType: 'json', 
+          data: { // Send data to ajax
               '_token': '<?php echo csrf_token() ?>',
+              'like_type': like_type,
               'post_id': post_id,
           },
           success: function (data) {
 
-            $(".num_likes[post_id = " + post_id + "]").text(data);
+            $(".num_likes1[post_id = " + post_id + "]").text(data[1]); // Changes the text with the number of Likes
+            $(".num_likes0[post_id = " + post_id + "]").text(data[0]); // Dislikes
 
           }
       });
 
   });
+
+
+
+
+  $(".submit-bttn").click(function (e) {
+e.preventDefault();
+
+var movie_id = $("#input_movie_id").val();
+var body = $("#input_body").val();
+var rating = $("input[name=rating]:checked").val();
+
+$.ajax({
+    type: 'get', // Type get
+    url: '/comment/add/', // Ajax url
+    dataType: 'json', já volto <3 5 mi
+    data: { // Send data to ajax
+        '_token': '<?php echo csrf_token() ?>',  
+        'movie_id': movie_id,
+        'body': body,
+        'rating': rating,
+    },
+    success: function (data) {
+
+
+var info = '<div class="user-review-properties">Reviewed by <span class="review-author"><strong>' + data[3] + ' ' + data[4] + '</strong></span>;
+                
+for (var i = 0; i < rating; i++) {
+    info += '<span class="icon-star"></span>';
+}
+
+
+if (data[1] == data[6]) {
+
+                              info += '<form action="/remove/comments/' + data[7] + '" method="POST">\
+                                <input type="hidden" name="_token" value="' + data[8] + '">\
+                                <input type="hidden" name="movie_comment" value="' + movie_id + '">\
+                                <input type="hidden" name="comment_id" value="' + data[7] + '">\
+                                <input type="submit"class="fas fa-trash"/>\
+                            </form>';
+
+}
+                    
+                    info += '<article>\
+                        <p>' + data[0].substring(0, 200) + '</p>\
+                    </article>\
+                    <div class="line"></div>\
+                    <br>\
+            </div>';
+
+$(".reviews").append(info);
+
+
+    }
+});
+
+
+  });
+
+
 
 
   $(document).ready(showSlides);

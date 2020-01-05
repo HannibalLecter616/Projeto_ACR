@@ -57,3 +57,4 @@ Route::resource('critics', 'CriticsController');
 Auth::routes();
 
 
+Route::get('/comment/add', 'CommentsController@store');

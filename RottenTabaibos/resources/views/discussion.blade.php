@@ -78,12 +78,8 @@
                                     <article>
                                         <p class="post-body">{{$post[$i]['description']}}</p>
                                     </article>
-                                    <button type="submit" class="post-like" post_id="{{$post[$i]['id']}}"><span post_id="{{$post[$i]['id']}}" class="num_likes"></span> Like</button>
-                                   
-                                    <form action="/forum/discussion/post/dislike/{{$post[$i]['id']}}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="post-dislike">Dislike</button>
-                                    </form>
+                                    <button type="submit" class="post-like" like_type="1" post_id="{{$post[$i]['id']}}"> Like (<span post_id="{{$post[$i]['id']}}" class="num_likes1">{{ $Likes[$post[$i]['id']] }}</span>)</button>
+                                    <button type="submit" class="post-like" like_type="0" post_id="{{$post[$i]['id']}}"> Dislike (<span post_id="{{$post[$i]['id']}}" class="num_likes0">{{ $Dislikes[$post[$i]['id']] }}</span>)</button>
                                     <button class="post-reply">Reply</button>
                                 </div>
 
